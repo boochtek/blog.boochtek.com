@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Shell &#8211; BoochTek, LLC</title>
+	<atom:link href="http://blog.boochtek.com/category/programming/programming-languages/shell/feed" rel="self" type="application/rss+xml" />
+	<link>http://blog.boochtek.com</link>
+	<description>Web Development, Ruby on Rails, Open Source</description>
+	<lastBuildDate>Thu, 07 Jul 2016 04:22:08 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.3</generator>
+	<item>
+		<title>Burying the Lede</title>
+		<link>http://blog.boochtek.com/2014/03/11/readable-shell-scripts</link>
+		<comments>http://blog.boochtek.com/2014/03/11/readable-shell-scripts#respond</comments>
+		<pubDate>Wed, 12 Mar 2014 04:28:22 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[GNU/Linux]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[System Admin]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=110</guid>
+		<description><![CDATA[Most of us don&#8217;t write very readable shell scripts. There are plenty of things we could do better, but today I want to talk about one in particular — burying the lede. The term &#8220;burying the lede&#8221; comes from the field of journalism. Here&#8217;s the Wiktionary definition: To begin a story with details of secondary importance to the reader &#8230; <a href="http://blog.boochtek.com/2014/03/11/readable-shell-scripts" class="more-link">Continue reading<span class="screen-reader-text"> "Burying the Lede"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Most of us don&#8217;t write very readable shell scripts. There are plenty of things we could do better, but today I want to talk about one in particular — burying the lede.</p>
+<p>The term &#8220;burying the lede&#8221; comes from the field of journalism. Here&#8217;s the <a href="http://en.wiktionary.org/wiki/bury_the_lede">Wiktionary definition</a>:</p>
+<blockquote><p>To begin a story with details of secondary importance to the reader while postponing more essential points or facts.</p></blockquote>
+<p>Like a good news article, code should tell a story. And the story should start with what&#8217;s most important. In the case of code, the most important information is the high-level functionality — a succinct summary of what the program does. In other words, write (and organize) the code top-down, as opposed to bottom-up.</p>
+<p>Unfortunately, shell script doesn&#8217;t make this easy. Due to the way shell scripts are interpreted, you can&#8217;t call a function until after you&#8217;ve defined it. This leads to most of us structuring our code like this:</p>
+<pre>function do_something { ... }
+function do_something_else { ... }
+
+do_something
+do_something_else</pre>
+<p>The problem with this is that the function definitions will likely take quite a few lines, and we won&#8217;t see what the top-level functionality is until we reach the end of the script.</p>
+<p>I&#8217;d like to propose a standard way to structure shell scripts to mitigate this issue. (I&#8217;m really only talking about shell scripts that have function definitions within them.) I&#8217;m sure I&#8217;ve seen a few scripts do this, but it&#8217;s not very common at all.</p>
+<p>My proposal is simple:</p>
+<pre>function main {
+  do_something
+  do_something_else
+}
+function do_something { ... }
+function do_something_else { ... }
+
+main</pre>
+<p>This structure lets us start with the lede. We describe the top-level functionality right away. Only then do we get to the secondary details. The name <code>main</code> makes it pretty clear that it contains the top-level functionality.</p>
+<p>I&#8217;ve recently started writing my shell code like this, and I&#8217;m happy with the results. I&#8217;ve also started to use some other programming techniques in my shell scripts to improve readability: better naming, extracting more methods, and moving helper methods into separate files. It feels good to treat shell scripts like real code instead of just some stuff I&#8217;ve hacked together.</p>
+<p>PS. The WordPress theme I&#8217;m currently using (Twenty Eleven) also buries the lede — I can barely even see the title of the blog post on my screen without scrolling. I&#8217;m going to have to change that soon.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2014/03/11/readable-shell-scripts/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Yak Shaving #1: Cursor Keys</title>
+		<link>http://blog.boochtek.com/2014/03/03/yak-shaving-cursor-keys</link>
+		<comments>http://blog.boochtek.com/2014/03/03/yak-shaving-cursor-keys#respond</comments>
+		<pubDate>Tue, 04 Mar 2014 04:02:59 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Shell]]></category>
+		<category><![CDATA[System Admin]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=129</guid>
+		<description><![CDATA[I recently decided to start using Emacs again. I used it extensively from the early 1990s until the early 2000s. I pretty much stopped using it when I had a sysadmin job with no Emacs on the servers, and no ability to install it. With the rising popularity of tmux and tmate for remote pairing, and my dislike &#8230; <a href="http://blog.boochtek.com/2014/03/03/yak-shaving-cursor-keys" class="more-link">Continue reading<span class="screen-reader-text"> "Yak Shaving #1: Cursor Keys"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I recently decided to start using Emacs again. I used it extensively from the early 1990s until the early 2000s. I pretty much stopped using it when I had a sysadmin job with no Emacs on the servers, and no ability to install it. With the rising popularity of tmux and tmate for remote pairing, and my dislike for vim&#8217;s modes, I decided to try going back to Emacs in the terminal.</p>
+<p>One thing I <strong>really</strong> want in a text editor is good cursor key support. Shifted cursor keys<br />
+should select text, and Control+left and right should move by words. (<a href="https://developer.apple.com/library/mac/documentation/UserExperience/Conceptual/AppleHIGuidelines/KeyboardShortcuts/KeyboardShortcuts.html">Apple HIG</a> says to use Option+left and right to move by words; most apps on Mac OS X seem to support both.) Things have worked this way on almost every text editor on every OS I&#8217;ve used &#8212; Amiga, DOS, Windows, NeXT, Mac, Motif, Gnome, KDE. It&#8217;s a part of the <a href="https://en.wikipedia.org/wiki/Common_User_Access">CUA</a> standard that&#8217;s been in common usage on everything since the mid-1980s.</p>
+<p>Enabling cursor keys in Emacs was pretty easy. I&#8217;ve decided to use <a href="https://github.com/bbatsov/prelude#readme">Prelude</a> to make getting started with Emacs easy. Emacs comes with the cursor keys enabled, but Prelude disables them. Undoing Prelude&#8217;s change is pretty easy:</p>
+<pre>(setq prelude-guru nil)</pre>
+<p>Trying to make shifted cursor keys work is where the trouble began. They work in the GUI version of Emacs, but not from the terminal. It turns out that the Mac Terminal doesn&#8217;t distinguish between cursor keys and shifted cursor keys in its default configuration. So I had to figure out how to configure key bindings in Terminal.</p>
+<p>That&#8217;s easy enough &#8212; they&#8217;re in the preferences. But what should I set them to? This took a lot of research. Terminal emulation and ANSI code sequences are obscure, complex, and inconsistent. I eventually found the info I needed. For starters, Shift+Right, Shift+Left, Shift+Home, and Shift+End are defined in the terminfo. The rest I was able to piece together from various sources around the Internet.</p>
+<p>I&#8217;m also trying to <a href="https://github.com/boochtek/mac_config">script my Mac configuration</a>. So instead of manually adding all the keybindings in the Terminal preferences pane, I decided to write a script. Mac OS X does a decent job of allowing you to change preferences from the command line. For example, to always show the tab bar:</p>
+<pre>defaults write -app Terminal ShowTabBar 1</pre>
+<p>Easy enough, except for a couple problems. First, I had to figure out the obscure syntax used in the preferences for key codes. I was able to piece these together with some more Internet research. But the really big problem is that the keyboard bindings are 2 levels deep within a &#8220;dictionary&#8221; (hash map). And the <code>defaults</code> command doesn&#8217;t handle that. There are some obscure utilities that handle nested preferences, but <a href="https://groups.google.com/forum/#!topic/macenterprise/YgJnfqpyKNs">they don&#8217;t work well with the preferences caching in Mac OS X 10.9</a> &#8212; a problem I ran into while testing.</p>
+<p>So now I&#8217;m writing a utility in Python that does what the <code>defaults</code> command does, but that will handle nested dictionaries.</p>
+<p>There&#8217;s a term for this process of having to solve one issue before you can solve another, and the issues get several layers deep. It&#8217;s called <em>yak shaving</em>.</p>
+<p>Here&#8217;s another good example:</p>
+<figure id="attachment_143" style="width: 480px" class="wp-caption alignnone"><a href="http://blog.boochtek.com/wp-content/uploads/2014/03/ibaDjk7AeIcvxv.gif"><img class="size-full wp-image-143" alt="Father from Malcolm in the middle having to fix one thing before fixing another, ad infinitum." src="http://blog.boochtek.com/wp-content/uploads/2014/03/ibaDjk7AeIcvxv.gif" width="480" height="360" /></a><figcaption class="wp-caption-text">Yak shaving &#8211; home repairs</figcaption></figure>
+<p>I&#8217;m sure this will be the first of many posts about me yak shaving.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2014/03/03/yak-shaving-cursor-keys/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

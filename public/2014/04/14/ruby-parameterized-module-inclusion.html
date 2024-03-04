@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+<head><script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=t1Bf4PY_" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden"};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://blog.boochtek.com/2014/04/14/ruby-parameterized-module-inclusion","20221204105328","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1670151208");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+		<link rel="pingback" href="http://blog.boochtek.com/xmlrpc.php">
+		<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+<title>Ruby Pattern: Parameterized Module Inclusion &#8211; BoochTek, LLC</title>
+<link rel="dns-prefetch" href="//web.archive.org/web/20221204105328/http://fonts.googleapis.com/"/>
+<link rel="dns-prefetch" href="//web.archive.org/web/20221204105328/http://s.w.org/"/>
+<link href="https://web.archive.org/web/20221204105328/https://fonts.gstatic.com/" crossorigin rel="preconnect"/>
+<link rel="alternate" type="application/rss+xml" title="BoochTek, LLC » Feed" href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/feed"/>
+<link rel="alternate" type="application/rss+xml" title="BoochTek, LLC » Comments Feed" href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/comments/feed"/>
+<link rel="alternate" type="application/rss+xml" title="BoochTek, LLC » Ruby Pattern: Parameterized Module Inclusion Comments Feed" href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2014/04/14/ruby-parameterized-module-inclusion/feed"/>
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/web.archive.org\/web\/20221204105328\/https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/web.archive.org\/web\/20221204105328\/https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/web.archive.org\/web\/20221204105328\/http:\/\/blog.boochtek.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.2"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="twentysixteen-fonts-css" href="https://web.archive.org/web/20221204105328cs_/https://fonts.googleapis.com/css?family=Merriweather%3A400%2C700%2C900%2C400italic%2C700italic%2C900italic%7CMontserrat%3A400%2C700%7CInconsolata%3A400&amp;subset=latin%2Clatin-ext&amp;display=fallback" type="text/css" media="all"/>
+<link rel="stylesheet" id="genericons-css" href="https://web.archive.org/web/20221204105328cs_/http://blog.boochtek.com/wp-content/themes/twentysixteen/genericons/genericons.css?ver=20201208" type="text/css" media="all"/>
+<link rel="stylesheet" id="twentysixteen-style-css" href="https://web.archive.org/web/20221204105328cs_/http://blog.boochtek.com/wp-content/themes/twentysixteen/style.css?ver=20201208" type="text/css" media="all"/>
+<link rel="stylesheet" id="twentysixteen-block-style-css" href="https://web.archive.org/web/20221204105328cs_/http://blog.boochtek.com/wp-content/themes/twentysixteen/css/blocks.css?ver=20190102" type="text/css" media="all"/>
+<!--[if lt IE 10]>
+<link rel='stylesheet' id='twentysixteen-ie-css'  href='http://blog.boochtek.com/wp-content/themes/twentysixteen/css/ie.css?ver=20170530' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentysixteen-ie8-css'  href='http://blog.boochtek.com/wp-content/themes/twentysixteen/css/ie8.css?ver=20170530' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='twentysixteen-ie7-css'  href='http://blog.boochtek.com/wp-content/themes/twentysixteen/css/ie7.css?ver=20170530' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 9]>
+<script type='text/javascript' src='http://blog.boochtek.com/wp-content/themes/twentysixteen/js/html5.js?ver=3.7.3'></script>
+<![endif]-->
+<script type="text/javascript" src="https://web.archive.org/web/20221204105328js_/http://blog.boochtek.com/wp-includes/js/jquery/jquery.js?ver=1.12.4"></script>
+<script type="text/javascript" src="https://web.archive.org/web/20221204105328js_/http://blog.boochtek.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1"></script>
+<link rel="https://api.w.org/" href="http://blog.boochtek.com/wp-json/"/>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.boochtek.com/xmlrpc.php?rsd"/>
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.boochtek.com/wp-includes/wlwmanifest.xml"/> 
+<link rel="prev" title="Brilliant – My Very Own Programming Language" href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2014/03/30/brilliant-my-own-programming-language"/>
+<link rel="next" title="TDD Is Alive And Well" href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2014/05/05/tdd-is-alive-and-well"/>
+<meta name="generator" content="WordPress 4.7.2"/>
+<link rel="canonical" href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2014/04/14/ruby-parameterized-module-inclusion"/>
+<link rel="shortlink" href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/?p=184"/>
+<link rel="alternate" type="application/json+oembed" href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblog.boochtek.com%2F2014%2F04%2F14%2Fruby-parameterized-module-inclusion"/>
+<link rel="alternate" type="text/xml+oembed" href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblog.boochtek.com%2F2014%2F04%2F14%2Fruby-parameterized-module-inclusion&amp;format=xml"/>
+</head>
+
+<body class="post-template-default single single-post postid-184 single-format-standard">
+<div id="page" class="site">
+	<div class="site-inner">
+		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+		<header id="masthead" class="site-header" role="banner">
+			<div class="site-header-main">
+				<div class="site-branding">
+					
+											<p class="site-title"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/" rel="home">BoochTek, LLC</a></p>
+												<p class="site-description">Web Development, Ruby on Rails, Open Source</p>
+									</div><!-- .site-branding -->
+
+							</div><!-- .site-header-main -->
+
+					</header><!-- .site-header -->
+
+		<div id="content" class="site-content">
+
+<div id="primary" class="content-area">
+	<main id="main" class="site-main" role="main">
+		
+<article id="post-184" class="post-184 post type-post status-publish format-standard hentry category-ruby">
+	<header class="entry-header">
+		<h1 class="entry-title">Ruby Pattern: Parameterized Module Inclusion</h1>	</header><!-- .entry-header -->
+
+	
+	
+	<div class="entry-content">
+		<p>I&#8217;ve run across a pattern in Ruby lately that I really like. It solves some problems that I&#8217;ve struggled with for several years. Let me start with the problems.</p>
+<p>Let&#8217;s say you want to include an ORM in a model class, and want to tell it what database table to use. Typically, you&#8217;d do this:</p>
+<pre>class User
+  include MyORM::Model
+  table 'people'
+end</pre>
+<p>But that <code>table</code> call is more like an option to the module inclusion than anything else. So what we&#8217;d really like is something like this:</p>
+<pre>class User
+  include MyORM::Model, table: 'people'
+end</pre>
+<p>But that&#8217;s not valid Ruby; <code>include</code> doesn&#8217;t let you pass anything other than a module.</p>
+<p>So when I was learning about <a href="https://web.archive.org/web/20221204105328/https://github.com/solnic/virtus">Virtus</a>, I noticed that its example of how to include it is a bit different than the standard Ruby idiomatic <code>include</code>:</p>
+<pre>class User
+  include Virtus.model
+end</pre>
+<p>At first glance, it reads like the first example. But on closer inspection and consideration, it&#8217;s quite a bit different. Where <code>MyORM::Model</code> is a constant that refers to a module, <code>Virtus.model</code> is a method call. So there&#8217;s a method named <code>model</code> in the <code>Virtus</code> module. That method returns another module &#8212; which is exactly what&#8217;s needed in order to include it into our model class.</p>
+<p>The easiest way to implement <code style="font-style: inherit;">Virtus.model</code> would be this:</p>
+<pre>module Virtus
+  def model
+    ::Virtus::Model
+  end
+end
+
+module Virtus::Model
+  # ...
+end</pre>
+<p>If <code>Virtus.model</code> doesn&#8217;t need to take any arguments, that&#8217;s perfectly fine. In fact, I&#8217;ve started to use this implementation of the pattern for modules that don&#8217;t need parameters.</p>
+<p>Because <code>Virtus.model</code> is a method, we can also call it with options:</p>
+<pre>class User
+  include Virtus.model(constructor: false, mass_assignment: false)
+end</pre>
+<p>We could even pass a block. But how do we process those options? There are a few different ways. However we do it, we have to be sure to return a module. And we can create modules in a few different ways.</p>
+<p>Virtus uses the builder pattern. It takes the parameters passed in and builds a module dynamically. By that, I mean that it calls <code>Module.new</code> and then adds methods to that module. It does this by mixing in other modules, but it could do it by dynamically defining methods as well.</p>
+<p>I&#8217;ve never seen this pattern in any other language. It&#8217;s obviously only possible because we can dynamically create modules.</p>
+<p>The use of this idiom seems to be catching on a bit in the Ruby community. I&#8217;ve started using it myself, and will be adding it to my <a href="https://web.archive.org/web/20221204105328/https://github.com/boochtek/includable-activerecord">Includable::ActiveRecord</a> gem soon.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-footer">
+		<span class="byline"><span class="author vcard"><img alt="" src="https://web.archive.org/web/20221204105328im_/http://2.gravatar.com/avatar/52bfd7cb9ac37808464919f9685ca62f?s=49&amp;d=blank&amp;r=g" srcset="https://web.archive.org/web/20221204105328im_/http://2.gravatar.com/avatar/52bfd7cb9ac37808464919f9685ca62f?s=98&amp;d=blank&amp;r=g 2x" class="avatar avatar-49 photo" height="49" width="49"/><span class="screen-reader-text">Author </span> <a class="url fn n" href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/author/booch">Craig Buchek</a></span></span><span class="posted-on"><span class="screen-reader-text">Posted on </span><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2014/04/14/ruby-parameterized-module-inclusion" rel="bookmark"><time class="entry-date published" datetime="2014-04-14T23:57:29+00:00">April 14, 2014</time><time class="updated" datetime="2014-05-27T22:29:52+00:00">May 27, 2014</time></a></span><span class="cat-links"><span class="screen-reader-text">Categories </span><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/programming/programming-languages/ruby" rel="category tag">Ruby</a></span>			</footer><!-- .entry-footer -->
+</article><!-- #post-184 -->
+
+<div id="comments" class="comments-area">
+
+			<h2 class="comments-title">
+			2 thoughts on &ldquo;Ruby Pattern: Parameterized Module Inclusion&rdquo;		</h2>
+
+		
+		<ol class="comment-list">
+					<li id="comment-2718" class="comment even thread-even depth-1">
+			<article id="div-comment-2718" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="https://web.archive.org/web/20221204105328im_/http://0.gravatar.com/avatar/f04aeb28129f653b207e8b5d92706096?s=42&amp;d=blank&amp;r=g" srcset="https://web.archive.org/web/20221204105328im_/http://0.gravatar.com/avatar/f04aeb28129f653b207e8b5d92706096?s=84&amp;d=blank&amp;r=g 2x" class="avatar avatar-42 photo" height="42" width="42"/>						<b class="fn"><a href="https://web.archive.org/web/20221204105328/http://dirtyinformation.com/" rel="external nofollow" class="url">Amos King</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2014/04/14/ruby-parameterized-module-inclusion#comment-2718">
+							<time datetime="2014-05-27T22:48:51+00:00">
+								May 27, 2014 at 10:48 PM							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I think it would be interesting to try using a block as the config to your include. Make a capitalized method that returns a module. Then you could pass a block with curly braces to that method.</p>
+<p><code></p>
+<pre>class User
+  include MyORM::Model {
+    table "people"
+  }
+end</pre>
+<p></code></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2014/04/14/ruby-parameterized-module-inclusion?replytocom=2718#respond" onclick="return addComment.moveForm( &quot;div-comment-2718&quot;, &quot;2718&quot;, &quot;respond&quot;, &quot;184&quot; )" aria-label="Reply to Amos King">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-2730" class="comment byuser comment-author-booch bypostauthor odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-2730" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="https://web.archive.org/web/20221204105328im_/http://2.gravatar.com/avatar/52bfd7cb9ac37808464919f9685ca62f?s=42&amp;d=blank&amp;r=g" srcset="https://web.archive.org/web/20221204105328im_/http://2.gravatar.com/avatar/52bfd7cb9ac37808464919f9685ca62f?s=84&amp;d=blank&amp;r=g 2x" class="avatar avatar-42 photo" height="42" width="42"/>						<b class="fn">Craig Buchek</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2014/04/14/ruby-parameterized-module-inclusion#comment-2730">
+							<time datetime="2014-05-31T10:49:14+00:00">
+								May 31, 2014 at 10:49 AM							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I seem to have forgotten to mention that this is related to the Factory pattern. In fact, I think it&#8217;s a special case of the Factory pattern.</p>
+<p>I thought I was using this pattern on the following code, but realized that it&#8217;s just the Factory pattern:</p>
+<p><code></p>
+<pre>
+module Preserves
+  def self.repository(*options, &#038;block)
+    repository = Repository.new(*options)
+    repository.instance_eval(&#038;block)
+    repository
+  end
+end
+
+UserRepository = Preserves.repository(model: User) do
+end
+</pre>
+<p></code></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2014/04/14/ruby-parameterized-module-inclusion?replytocom=2730#respond" onclick="return addComment.moveForm( &quot;div-comment-2730&quot;, &quot;2730&quot;, &quot;respond&quot;, &quot;184&quot; )" aria-label="Reply to Craig Buchek">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+		<div id="respond" class="comment-respond">
+		<h2 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/web/20221204105328/http://blog.boochtek.com/2014/04/14/ruby-parameterized-module-inclusion#respond" style="display:none;">Cancel reply</a></small></h2>			<form action="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+				<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" aria-required="true" required="required"/></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true" required="required"/></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200"/></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"/> <input type="hidden" name="comment_post_ID" value="184" id="comment_post_ID"/>
+<input type="hidden" name="comment_parent" id="comment_parent" value="0"/>
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="e745ea21dd"/></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="203"/></p>			</form>
+			</div><!-- #respond -->
+	
+</div><!-- .comments-area -->
+
+	<nav class="navigation post-navigation" role="navigation">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2014/03/30/brilliant-my-own-programming-language" rel="prev"><span class="meta-nav" aria-hidden="true">Previous</span> <span class="screen-reader-text">Previous post:</span> <span class="post-title">Brilliant &#8211; My Very Own Programming Language</span></a></div><div class="nav-next"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2014/05/05/tdd-is-alive-and-well" rel="next"><span class="meta-nav" aria-hidden="true">Next</span> <span class="screen-reader-text">Next post:</span> <span class="post-title">TDD Is Alive And Well</span></a></div></div>
+	</nav>
+	</main><!-- .site-main -->
+
+	<aside id="content-bottom-widgets" class="content-bottom-widgets" role="complementary">
+			<div class="widget-area">
+			<section id="search-2" class="widget widget_search">
+<form role="search" method="get" class="search-form" action="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/">
+	<label>
+		<span class="screen-reader-text">Search for:</span>
+		<input type="search" class="search-field" placeholder="Search …" value="" name="s"/>
+	</label>
+	<button type="submit" class="search-submit"><span class="screen-reader-text">Search</span></button>
+</form>
+</section>		<section id="recent-posts-3" class="widget widget_recent_entries">		<h2 class="widget-title">Recent Posts</h2>		<ul>
+					<li>
+				<a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2016/07/06/you-dont-have-to-be-right">You Don&#8217;t Have to Be Right</a>
+						</li>
+					<li>
+				<a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2016/02/10/first-open-space">My First Open Space</a>
+						</li>
+					<li>
+				<a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2016/01/19/resolutions-2016">Resolutions for 2016</a>
+						</li>
+					<li>
+				<a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2016/01/04/team-values">Team Values</a>
+						</li>
+					<li>
+				<a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2015/12/28/year-in-review-2015">2015 Year in Review</a>
+						</li>
+				</ul>
+		</section>		<section id="archives-2" class="widget widget_archive"><h2 class="widget-title">Archives</h2>		<ul>
+			<li><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2016/07">July 2016</a></li>
+	<li><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2016/02">February 2016</a></li>
+	<li><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2016/01">January 2016</a></li>
+	<li><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2015/12">December 2015</a></li>
+	<li><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2015/11">November 2015</a></li>
+	<li><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2015/09">September 2015</a></li>
+	<li><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2015/08">August 2015</a></li>
+	<li><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2015/06">June 2015</a></li>
+	<li><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2015/05">May 2015</a></li>
+	<li><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2015/04">April 2015</a></li>
+	<li><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2015/02">February 2015</a></li>
+	<li><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2014/05">May 2014</a></li>
+	<li><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2014/04">April 2014</a></li>
+	<li><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2014/03">March 2014</a></li>
+	<li><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2014/02">February 2014</a></li>
+	<li><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2014/01">January 2014</a></li>
+	<li><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2013/02">February 2013</a></li>
+	<li><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2012/01">January 2012</a></li>
+	<li><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2011/08">August 2011</a></li>
+	<li><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/2010/01">January 2010</a></li>
+		</ul>
+		</section>		</div><!-- .widget-area -->
+	
+	</aside><!-- .content-bottom-widgets -->
+
+</div><!-- .content-area -->
+
+
+	<aside id="secondary" class="sidebar widget-area" role="complementary">
+		<section id="pages-2" class="widget widget_pages"><h2 class="widget-title">Pages</h2>		<ul>
+			<li class="page_item page-item-2"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/about">About</a></li>
+		</ul>
+		</section><section id="categories-4" class="widget widget_categories"><h2 class="widget-title">Categories</h2>		<ul>
+	<li class="cat-item cat-item-17"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/agile">Agile</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/programming/architecture">Architecture</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/blogging">Blogging</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/programming/programming-languages/brilliant">Brilliant</a>
+</li>
+	<li class="cat-item cat-item-30"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/agile/empathy">Empathy</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/agile/estimation-agile">Estimation</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/gadgets">Gadgets</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/open-source/linux">GNU/Linux</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/programming/programming-languages">Languages</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/programming/oop">OOP</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/open-source">Open Source</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/programming">Programming</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/programming/programming-languages/python">Python</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/resolutions">Resolutions</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/agile/retrospectives">Retrospectives</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/programming/programming-languages/ruby">Ruby</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/webdev/rails">Ruby on Rails</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/security">Security</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/programming/programming-languages/shell">Shell</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/sysadmin">System Admin</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/agile/tdd">TDD</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/category/webdev">Web Development</a>
+</li>
+		</ul>
+</section>	</aside><!-- .sidebar .widget-area -->
+
+		</div><!-- .site-content -->
+
+		<footer id="colophon" class="site-footer" role="contentinfo">
+			
+			
+			<div class="site-info">
+								<span class="site-title"><a href="https://web.archive.org/web/20221204105328/http://blog.boochtek.com/" rel="home">BoochTek, LLC</a></span>
+								<a href="https://web.archive.org/web/20221204105328/https://wordpress.org/" class="imprint">
+					Proudly powered by WordPress				</a>
+			</div><!-- .site-info -->
+		</footer><!-- .site-footer -->
+	</div><!-- .site-inner -->
+</div><!-- .site -->
+
+<script type="text/javascript" src="https://web.archive.org/web/20221204105328js_/http://blog.boochtek.com/wp-content/themes/twentysixteen/js/skip-link-focus-fix.js?ver=20170530"></script>
+<script type="text/javascript" src="https://web.archive.org/web/20221204105328js_/http://blog.boochtek.com/wp-includes/js/comment-reply.min.js?ver=4.7.2"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var screenReaderText = {"expand":"expand child menu","collapse":"collapse child menu"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://web.archive.org/web/20221204105328js_/http://blog.boochtek.com/wp-content/themes/twentysixteen/js/functions.js?ver=20181217"></script>
+<script type="text/javascript" src="https://web.archive.org/web/20221204105328js_/http://blog.boochtek.com/wp-includes/js/wp-embed.min.js?ver=4.7.2"></script>
+<script async="async" type="text/javascript" src="https://web.archive.org/web/20221204105328js_/http://blog.boochtek.com/wp-content/plugins/akismet/_inc/form.js?ver=4.0.3"></script>
+</body>
+</html>
+<!--
+     FILE ARCHIVED ON 10:53:28 Dec 04, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 08:11:08 Feb 23, 2024.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  exclusion.robots: 0.199
+  exclusion.robots.policy: 0.178
+  cdx.remote: 0.164
+  esindex: 0.014
+  LoadShardBlock: 133.387 (6)
+  PetaboxLoader3.datanode: 198.511 (7)
+  load_resource: 150.094
+  PetaboxLoader3.resolve: 57.27
+-->

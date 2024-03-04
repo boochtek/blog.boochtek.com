@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Security &#8211; BoochTek, LLC</title>
+	<atom:link href="http://blog.boochtek.com/category/security/feed" rel="self" type="application/rss+xml" />
+	<link>http://blog.boochtek.com</link>
+	<description>Web Development, Ruby on Rails, Open Source</description>
+	<lastBuildDate>Thu, 07 Jul 2016 04:22:08 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.3</generator>
+	<item>
+		<title>Potential F5 Vulnerability</title>
+		<link>http://blog.boochtek.com/2015/08/31/potential-f5-vulnerability</link>
+		<comments>http://blog.boochtek.com/2015/08/31/potential-f5-vulnerability#respond</comments>
+		<pubDate>Tue, 01 Sep 2015 03:52:53 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Security]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=249</guid>
+		<description><![CDATA[It all started with an email about a WebInspect report. It listed a buffer overflow, which we had marked as a false positive. I read the WebInspect report carefully, and found a note at the bottom that said you could test manually to confirm whether it was a false positive or not. Unfortunately, the manual test listed had a &#8230; <a href="http://blog.boochtek.com/2015/08/31/potential-f5-vulnerability" class="more-link">Continue reading<span class="screen-reader-text"> "Potential F5 Vulnerability"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>It all started with an email about a WebInspect report. It listed a buffer overflow, which we had marked as a false positive. I read the WebInspect report carefully, and found a note at the bottom that said you could test manually to confirm whether it was a false positive or not. Unfortunately, the manual test listed had a few problems. First, it jammed the lines together, without the proper line-breaks. Second, it assumed the site was using HTTP, not HTTPS, so used <code>telnet</code>. Third, it was testing against a page that didn&#8217;t exist, giving a 404. Keeping those in mind, I tried the manual test using the <code>openssl s_client</code> command:</p>
+<pre>openssl s_client -quiet -connect mysite.example.com:443
+POST /login HTTP/1.1
+Host: mysite.example.com
+Transfer-Encoding: chunked
+
+c00000000</pre>
+<p>The test terminated immediately. The report said that this meant that the server was vulnerable to a buffer overflow and arbitrary code execution.</p>
+<p>At first, we thought this was caused by Apache or Tomcat, or possibly the application code. But the reported vulnerability was an Apache CVE from 2002 (<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2002-0392">CVE-2002-0392</a>), fixed by vendors long ago. After a while, we realized that if we hit the servers directly, we did not get the indication of a vulnerability. If we hit the site through the F5 VIP, we saw the immediate termination of the connection. The issue is with handling of HTTP chunked encoding. Nginx had a similar issue in 2013 (<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-2028">CVE-2013-2028</a>).</p>
+<p>So we turned our attention to the F5 load balancers. We were able to confirm that other sites using F5 load balancers were exhibiting the same behavior. We also confirmed that WebInspect run against the servers directly did not show the issue (even as a false positive). We reported the issue to F5, and they are looking into it.</p>
+<p>I&#8217;m disclosing this publicly now for a few reasons. First, I&#8217;m not a security researcher, and almost nobody follows my blog &#8212; especially people looking for security issues that could be exploited. Second, I&#8217;ve not developed a payload, so I have no idea whether this is exploitable. But at this point, it&#8217;s merely a potential vulnerability. I&#8217;m not sure I&#8217;ll even spend the time to research and create a payload to prove the vulnerability. If I do, I&#8217;ll be more careful with the disclosure.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2015/08/31/potential-f5-vulnerability/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Resolutions</title>
+		<link>http://blog.boochtek.com/2015/02/02/resolutions</link>
+		<comments>http://blog.boochtek.com/2015/02/02/resolutions#respond</comments>
+		<pubDate>Tue, 03 Feb 2015 05:42:13 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Agile]]></category>
+		<category><![CDATA[Blogging]]></category>
+		<category><![CDATA[Brilliant]]></category>
+		<category><![CDATA[Resolutions]]></category>
+		<category><![CDATA[Security]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=198</guid>
+		<description><![CDATA[January kept me pretty busy, so I&#8217;m a little late to this. But better late than never. And as an Agile practitioner, I don&#8217;t think personal retrospectives should be limited to one time of year. Review of 2014 Last year I wrote a blog entry listing my goals for 2014. As far as New Year&#8217;s resolutions go, I &#8230; <a href="http://blog.boochtek.com/2015/02/02/resolutions" class="more-link">Continue reading<span class="screen-reader-text"> "Resolutions"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>January kept me pretty busy, so I&#8217;m a little late to this. But better late than never. And as an Agile practitioner, I don&#8217;t think personal retrospectives should be limited to one time of year.</p>
+<h1>Review of 2014</h1>
+<p>Last year I wrote a blog entry listing <a href="http://blog.boochtek.com/2014/01/04/open-source-resolutions">my goals for 2014</a>. As far as New Year&#8217;s resolutions go, I was relatively successful &#8212; about 50% of my goals accomplished. Unfortunately, my Open Source contributions weren&#8217;t as strong as I had hoped; while I released some of my own work, I didn&#8217;t do much else. I did increase my blogging; getting in on a weekly blogging pact helped immensely. I also increased my participation on the <a href="http://thisagilelife.com/">This Agile Life podcast</a> to a level that I&#8217;m happy with. But the accomplishment I&#8217;m most proud of was giving a <a href="https://www.youtube.com/watch?v=hc_wtllfKtQ">presentation at RubyConf</a>.</p>
+<h1>Plans for 2015</h1>
+<p>I&#8217;d like to keep things rolling from last year, but crank up a few things. My plans are quite ambitious, so I don&#8217;t expect to get everything done by any means. But I think by setting the bar high, I&#8217;ll end up with a lot I can be proud of.</p>
+<h2>Job Hunting</h2>
+<p>Late last year, I took the jump into independent consulting. So far, I&#8217;ve really enjoyed it, and I&#8217;m booked up through April. My wife graduates in May, so we&#8217;ve got the possibility of moving if that makes sense. So I&#8217;ll be looking for consulting projects in town, but I&#8217;ll also be looking at jobs in San Francisco and Chicago. The possibilities are exciting, and I&#8217;ll be taking my time to find something just right.</p>
+<h2>Conferences</h2>
+<p>I was incredibly nervous leading up to my RubyConf presentation. Part of that was just the common fear of public speaking. For me, that only kicks in at around 100 people, and this audience was around 250. I think another reason was that I chose a really ambitious topic, and I kept finding more that I wanted to talk about, but wasn&#8217;t prepared for. But I think I did a pretty good job presenting an advanced topic. And I was so pumped by the sense of accomplishment as soon as I finished. So I&#8217;m hoping to do it more. I&#8217;ve already submitted a couple proposals, and plan to submit several more.</p>
+<h2>Blogging</h2>
+<p>I believe that blogging is important for me to get my thoughts down &#8212; for myself and to share with others. I was really successful last year when I had a partner to keep me honest, via a pact. So I&#8217;ve started up <a href="https://github.com/booch/pact">another pact</a> this year, which will hopefully ensure I&#8217;ll keep things going. I&#8217;ve got a really long backlog of topics, so as long as I keep at it, I&#8217;ll have plenty to write about.</p>
+<p>I also want to move away from WordPress to a static system &#8212; probably <a href="https://middlemanapp.com/">Middleman</a>. I&#8217;ve got 2 major problems with WordPress. First, I no longer trust its security, nor the security of any application written in PHP. Second, it generates HTML every time someone requests a page, instead of when the content is updated. I find that to be a waste of resources, and problematic from a security standpoint. The main problem with moving to a static blogging system is that I really want to allow comments, pingbacks, and tweetbacks. So I&#8217;ll have to find a way to integrate those.</p>
+<h2>Programming Language Design</h2>
+<p>Last year I started thinking about programming language design, and started implementing a language tentatively called <a href="http://blog.boochtek.com/2014/03/30/brilliant-my-own-programming-language">Brilliant</a>. I&#8217;ve done a lot more thinking on the topic, and have a lot of notes. But I haven&#8217;t implemented much more yet. This year, I&#8217;d like to get my thoughts more organized, and write a series of blog posts on various aspects of language design. The most interesting part seems to be the trade-offs involved in the ways that various language features interact. So I&#8217;d like to make some progress on the language implementation, but more importantly, I&#8217;d like to get a lot of my design ideas written down.</p>
+<p>I&#8217;m also going to spend a lot of time learning a bunch more programming languages, so I have a better understanding of possible features, combinations of features, and their interactions. I&#8217;ve already start with Elixir, Clojure, and Racket. I&#8217;m hoping to also look at OCaml, Factor, and Haskell. I&#8217;ll probably also take a look at the 2 &#8220;Seven Languages in Seven Weeks&#8221; books.</p>
+<h2>Agile Book</h2>
+<p>I think people often have trouble getting started with Agile. I started on a book last year, and got down quite a lot of good ideas. But I realized that I&#8217;m going to have a hard time organizing all those ideas into something coherent. Still, I&#8217;d like to try to get something out there that lets people get started with Agile. My idea is to present a toolbox of practices to get started with and build on that foundation over time with additional practices. Sort of a playbook on how to get started over the first 6 to 12 months and be successful. I want to make some progress on the book, at least enough to decide whether it&#8217;s worth the effort to finish it and self-publish it.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2015/02/02/resolutions/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Empathy</title>
+		<link>http://blog.boochtek.com/2014/02/07/empathy</link>
+		<comments>http://blog.boochtek.com/2014/02/07/empathy#respond</comments>
+		<pubDate>Sat, 08 Feb 2014 03:23:48 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Agile]]></category>
+		<category><![CDATA[Security]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=116</guid>
+		<description><![CDATA[I facilitated our team retrospective this morning. I felt like we made a little forward progress, but not as much as I would have liked. But it really brought one thing to the forefront of my thoughts today &#8212; empathy gained through communication. We have a pretty large team by Agile standards &#8212; we had 20 &#8230; <a href="http://blog.boochtek.com/2014/02/07/empathy" class="more-link">Continue reading<span class="screen-reader-text"> "Empathy"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I facilitated our team retrospective this morning. I felt like we made a little forward progress, but not as much as I would have liked. But it really brought one thing to the forefront of my thoughts today &#8212; empathy gained through communication.</p>
+<p>We have a pretty large team by Agile standards &#8212; we had 20 people in our retro: 16 developers, 3 QA folks, and 1 manager. Out of those, only about 5 or 6 speak up regularly. I recently sent out a survey to the team, trying to get feedback on how we could improve our retros. A couple of the questions tried to get a feel for why people aren&#8217;t speaking up more. Only about half the people responded, and the answers didn&#8217;t really answer my question as well as I had hoped.</p>
+<p>So on <a href="http://dirtyinformation.com/">Amos</a>&#8216;s suggestion, we did the <a href="http://www.akashb.com/blog/2012/05/28/agile-retrospectives-the-safety-check/">Safety Check</a> exercise. We got a good set of answers to why people don&#8217;t feel safe. About half of the answers were about the fear of looking stupid in front of other people. About half of <em>those</em> mentioned the manager &#8212; they&#8217;re worried they might get in trouble for what they say. We talked some about fear and how it&#8217;s more often than not misplaced. And that the worst consequences are usually not as bad as you might think. But then we got to the crux of the problem &#8212; there&#8217;s not enough trust amongst the team, and especially between the team members and the manager.</p>
+<p>About half of our team is new (within the past 6 months) &#8212; including the manager. While the developers have made some good progress building trust amongst each other, we haven&#8217;t had as much time with the manager to build trust between him and the rest of the team. So the lack of trust isn&#8217;t at all surprising.</p>
+<p>Honestly, I already knew we had trust issues, and wanted to address them, but needed a way to lead the team to that same realization. With this exercise driving out the issue, we were then able to have a conversation about trust. The conversation was pretty good. We got more voices to contribute than probably any other topic we&#8217;d previously covered. (I was disappointed that the manager kept quiet though. I later found that he was trying to mitigate people&#8217;s fears by keeping quiet, but I urged him to contribute more in the future.)</p>
+<p>But one point really stood out in my mind &#8212; a point of view that I hadn&#8217;t previously thought much about. Lauren, one of our QA analysts, pointed out that most human communication is non-verbal. We give tons of cues via body language, facial expressions, eye contact, tone of voice, even posture. I don&#8217;t recall if Lauren said it explicitly, but she pointed out that these cues build empathy between the speakers. She encouraged us to use more voice chat and video chat, as opposed to IRC text chat, because it would create more empathy between the people communicating, which would lead to more trust.</p>
+<p>I spent most of the rest of the day talking to people on the phone or via Google Hangouts voice. And every single time, I consciously noticed that I was gaining empathy for the person I was speaking with. I assume (and hope) that that&#8217;s working both ways. I suppose that it&#8217;s always been happening, but I never really noticed it.</p>
+<p>I&#8217;ve heard a lot of talk about empathy among Agile practitioners lately. It&#8217;s been mentioned on the <a href="http://rubyrogues.com/">Ruby Rogues</a> podcast, and <a href="http://maitria.com/angela.html">Angela Harms</a> has been preaching it for years. I already understood how important it is. But until today, I didn&#8217;t really <em>feel</em> it happening.</p>
+<p>So if you&#8217;re looking to build trust with someone, spend some time talking with them. Preferably in person, but if that&#8217;s not possible, seriously consider video or voice modes of communication, instead of sending an email or an instant message.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2014/02/07/empathy/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>What I Want in a Blog Engine</title>
+		<link>http://blog.boochtek.com/2014/02/02/blogging-software</link>
+		<comments>http://blog.boochtek.com/2014/02/02/blogging-software#respond</comments>
+		<pubDate>Mon, 03 Feb 2014 04:50:43 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Blogging]]></category>
+		<category><![CDATA[Security]]></category>
+		<category><![CDATA[System Admin]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=100</guid>
+		<description><![CDATA[I&#8217;m considering moving away from WordPress, for a couple reasons: Security. There have been several vulnerabilities over the past few years, and I&#8217;ve never really had a high level of confidence that it&#8217;s secure. In addition, I now find the whole PHP model &#8212; every web app running as a single user, instead of leveraging UNIX &#8230; <a href="http://blog.boochtek.com/2014/02/02/blogging-software" class="more-link">Continue reading<span class="screen-reader-text"> "What I Want in a Blog Engine"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;m considering moving away from <a href="http://wordpress.org">WordPress</a>, for a couple reasons:</p>
+<ul>
+<li>Security. There have been several vulnerabilities over the past few years, and I&#8217;ve never really had a high level of confidence that it&#8217;s secure. In addition, I now find the whole PHP model &#8212; every web app running as a single user, instead of leveraging UNIX permissions &#8212; to be broken.</li>
+<li>Speed. I started to realize a couple years ago that a blog engine should generate static pages. The static pages should be updated whenever new content is added. There&#8217;s really no reason to re-generate the page every time someone wants to read it. At the very least, Server-Side Includes (<a href="https://en.wikipedia.org/wiki/Server_Side_Includes">SSI</a>) or Edge-Side Includes (<a href="https://en.wikipedia.org/wiki/Edge_Side_Includes">ESI</a>) should be used.</li>
+</ul>
+<p>Now that I&#8217;m starting to actually blog consistently, it makes sense to change. But before I move to something different, I want to be sure that I find all the features that I need. This post is my thought process about what I want.</p>
+<h2>Requirements</h2>
+<ul>
+<li>Self hosted. I like to run my own servers. Partly so I can keep full control, and partly because I enjoy doing some system admin stuff (as long as it doesn&#8217;t take too much time).</li>
+<li>Generation of static pages. Almost everything should be a static page by the time a user requests a page. Obviously, submitting comments would hit a dynamic page, and comment approval would likely be done through a dynamic part of the site. But <em>publishing</em> a blog post or comments should generate static files to be served by Apache or nginx.</li>
+<li>Categories (or maybe tags). I want readers to be able to find other things that I&#8217;ve written that might interest them. A list of categories in a sidebar would help them find what interests them.</li>
+<li>Site map. Especially an <a href="http://www.sitemaps.org/protocol.html">XML sitemap</a>, so Google can index better. I also like the idea of readers being able to see everything in one place.</li>
+<li>Archives. This is another way of letting readers see everything I&#8217;ve written, organized by publication date.</li>
+<li>RSS and/or Atom. I want readers to be able to subscribe to my blog.</li>
+<li>Media. I don&#8217;t think I necessarily need a media manager, just a simple way to add pictures to blog posts.</li>
+<li>Comments. I want to allow comments, but I don&#8217;t want to use anything like <a href="http://disqus.com/">Disqus</a>. I want the comments to be in my own database, so they won&#8217;t disappear. I also dislike requiring JavaScript just to see comments. And I&#8217;ve worked at places where Disqus wouldn&#8217;t work, due to web proxy servers. Comments should be moderated by the site admin, editor, or author. Readers should not have to log in to post a comment, but it would be nice to <em>allow</em> users to log into Twitter or some other social network to provide their info.</li>
+<li>Pingbacks and Tweetbacks. I&#8217;d like to be able to see who&#8217;s referring to my articles.</li>
+</ul>
+<h2><b>Nice to Have</b></h2>
+<ul>
+<li>Free. I almost consider this to be a requirement, but I&#8217;d be willing to entertain a 1-time payment for something that meets my needs really well. I need to try to counteract my DIY-at-all-non-monetary-costs mentality.</li>
+<li>Open Source. I think Open Source is likely to provide a more useful product, especially in this space. An Open Source option is more likely to improve over time.</li>
+<li>Not PHP. I&#8217;ve got several problems with PHP. First, the whole PHP model of running in the same context as Apache (or nginx) breaks UNIX conventions. A security issue in a PHP program exposes more than just the program itself &#8212; it exposes Apache and every other PHP program. Under the UNIX model, each program runs in a different user context, isolating bugs to that program only. PHP is also a &#8220;hacky&#8221; language. PHP programmers tend to not be as rigorous (in many ways), leading to more vulnerabilities. Finally, the PHP language itself has had several misfeatures that have lead to security issues &#8212; much more than Ruby or Java.</li>
+<li>Not MySQL. I&#8217;d like to be able to remove MySQL from my servers. PostgreSQL would be much preferred. Storing everything in git would be fine too &#8212; maybe even preferred. I&#8217;d even be fine with MongoDB or some other simple NoSQL database.</li>
+<li>Admin console. I can&#8217;t imagine approving comments without this, but I&#8217;m not closed to that possibility.</li>
+<li>Edit history. I want to be able to update posts, but see what the previous versions looked like. (Not sure if I care whether the public can or cannot see the various revisions.)</li>
+<li>WYSIWYG. I&#8217;d be willing to settle for Markdown. In fact, I&#8217;d prefer (extended) Markdown as the canonical form behind the WYSIWYG.</li>
+<li>Code highlighting. A lot of my blog posts (will) include code in various languages. I&#8217;d like the blogging software to be able to handle that well. Syntax highlighting would be great. Any other related features would also be nice.</li>
+<li>Through-the-web editing. I&#8217;d like to be able to edit a page from any device from anywhere that has Internet access.</li>
+<li>Reader-submitted edits. This is probably going to be the hardest thing to find, but I&#8217;d like a <em>really</em> easy way for readers to let me know of typos and such by simply submitting a fix for them. The author or editor of the post would have to approve the edits, obviously.</li>
+<li>Import from WordPress. I don&#8217;t have a ton of content in WordPress, or else this would probably be a more firm requirement.</li>
+<li>Community. Community helps software thrive, adding improvements and ensuring security.</li>
+<li>Plugins. It would be nice for the blog engine to be extensible.</li>
+<li>Unpublished drafts and previews. I&#8217;d really like to be able to see by blog posts before I release them to the world.</li>
+<li>CMS abilities. I&#8217;d really like the ability to edit non-blog web pages the same way as blog entries.</li>
+<li>Themes. It would be nice to have decently looking themes, so I could have other people help me make the site look nice.</li>
+<li>Posting my tweets in a sidebar area. I&#8217;d be OK with this being done in client-side JavaScript. I&#8217;d also be OK with periodic polling of my Twitter feed, and updating the static content when appropriate.</li>
+</ul>
+<h2>Candidates</h2>
+<p>I&#8217;ve been playing with <a href="http://jekyllrb.com/">Jekyll</a> lately, using it to generate a simple static site that can be updated easily. It&#8217;s pretty nice, and pretty easy to use. Something based on Jekyll would work well. The trickiest part will be figuring out how to manage comments. Or maybe I&#8217;ll just have to learn to live more minimally.</p>
+<p><a href="http://octopress.org/">Octopress</a> is the obvious candidate. It fits most of my needs and wants. Most likely I&#8217;ll write my own commenting engine and add it to my Octopress template.</p>
+<p>The only other candidate that I&#8217;ve found is <a href="https://ghost.org/">Ghost</a>. It&#8217;s written in JavaScript and runs on Node. I don&#8217;t find Node to be that compelling, but the templates look great, and it&#8217;s designed for coding blogs.</p>
+<p>I&#8217;ll probably take a quick look at <a href="http://dropplets.com/">Droplets</a>, too. It&#8217;s written in PHP, but seems to fit my other requirements.</p>
+<p>Unfortunately, that seems to be all there is in this space. Maybe I need to investigate more. Or maybe Octopress just has the static blog generation marked cornered. Either way, I&#8217;ll probably change my blogging software in the next month or two. Wish me luck!</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2014/02/02/blogging-software/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

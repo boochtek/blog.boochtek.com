@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<!--[if IE 6]>
+<html id="ie6" lang="en-US">
+<![endif]-->
+<!--[if IE 7]>
+<html id="ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html id="ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head><script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=t1Bf4PY_" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden"};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://blog.boochtek.com:80/2013/02/22/my-thoughts-on-python-vs-ruby","20140131214026","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1391204426");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width"/>
+<title>My Thoughts on Python vs. Ruby | BoochTek, LLC</title>
+<link rel="profile" href="http://gmpg.org/xfn/11"/>
+<link rel="stylesheet" type="text/css" media="all" href="https://web.archive.org/web/20140131214026cs_/http://blog.boochtek.com/wp-content/themes/twentyeleven/style.css"/>
+<link rel="pingback" href="http://blog.boochtek.com/xmlrpc.php"/>
+<!--[if lt IE 9]>
+<script src="http://blog.boochtek.com/wp-content/themes/twentyeleven/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+<link rel="alternate" type="application/rss+xml" title="BoochTek, LLC » Feed" href="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/feed"/>
+<link rel="alternate" type="application/rss+xml" title="BoochTek, LLC » Comments Feed" href="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/comments/feed"/>
+<link rel="alternate" type="application/rss+xml" title="BoochTek, LLC » My Thoughts on Python vs. Ruby Comments Feed" href="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/2013/02/22/my-thoughts-on-python-vs-ruby/feed"/>
+<script type="text/javascript" src="https://web.archive.org/web/20140131214026js_/http://blog.boochtek.com/wp-includes/js/comment-reply.min.js?ver=3.8"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.boochtek.com/xmlrpc.php?rsd"/>
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.boochtek.com/wp-includes/wlwmanifest.xml"/> 
+<link rel="prev" title="Debugging Pattern – Grenade" href="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/2012/01/11/grenade-debugging-pattern"/>
+<link rel="next" title="What’s Your Open Source Resolution?" href="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/2014/01/04/open-source-resolutions"/>
+<meta name="generator" content="WordPress 3.8"/>
+<link rel="canonical" href="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/2013/02/22/my-thoughts-on-python-vs-ruby"/>
+<link rel="shortlink" href="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/?p=76"/>
+</head>
+
+<body class="single single-post postid-76 single-format-standard single-author singular two-column right-sidebar">
+<div id="page" class="hfeed">
+	<header id="branding" role="banner">
+			<hgroup>
+				<h1 id="site-title"><span><a href="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/" title="BoochTek, LLC" rel="home">BoochTek, LLC</a></span></h1>
+				<h2 id="site-description">Web Development, Ruby on Rails, Open Source</h2>
+			</hgroup>
+
+						<a href="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/">
+									<img src="https://web.archive.org/web/20140131214026im_/http://blog.boochtek.com/wp-content/themes/twentyeleven/images/headers/chessboard.jpg" width="1000" height="288" alt=""/>
+							</a>
+			
+								<form method="get" id="searchform" action="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/">
+		<label for="s" class="assistive-text">Search</label>
+		<input type="text" class="field" name="s" id="s" placeholder="Search"/>
+		<input type="submit" class="submit" name="submit" id="searchsubmit" value="Search"/>
+	</form>
+			
+			<nav id="access" role="navigation">
+				<h3 class="assistive-text">Main menu</h3>
+								<div class="skip-link"><a class="assistive-text" href="#content" title="Skip to primary content">Skip to primary content</a></div>
+				<div class="skip-link"><a class="assistive-text" href="#secondary" title="Skip to secondary content">Skip to secondary content</a></div>
+								<div class="menu"><ul><li><a href="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/">Home</a></li><li class="page_item page-item-2"><a href="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/about">About</a></li></ul></div>
+			</nav><!-- #access -->
+	</header><!-- #branding -->
+
+
+	<div id="main">
+
+		<div id="primary">
+			<div id="content" role="main">
+
+				
+					<nav id="nav-single">
+						<h3 class="assistive-text">Post navigation</h3>
+						<span class="nav-previous"><a href="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/2012/01/11/grenade-debugging-pattern" rel="prev"><span class="meta-nav">&larr;</span> Previous</a></span>
+						<span class="nav-next"><a href="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/2014/01/04/open-source-resolutions" rel="next">Next <span class="meta-nav">&rarr;</span></a></span>
+					</nav><!-- #nav-single -->
+
+					
+<article id="post-76" class="post-76 post type-post status-publish format-standard hentry category-programming category-python category-ruby">
+	<header class="entry-header">
+		<h1 class="entry-title">My Thoughts on Python vs. Ruby</h1>
+
+				<div class="entry-meta">
+			<span class="sep">Posted on </span><a href="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/2013/02/22/my-thoughts-on-python-vs-ruby" title="11:03 AM" rel="bookmark"><time class="entry-date" datetime="2013-02-22T11:03:06+00:00">February 22, 2013</time></a><span class="by-author"> <span class="sep"> by </span> <span class="author vcard"><a class="url fn n" href="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/author/booch" title="View all posts by Craig Buchek" rel="author">Craig Buchek</a></span></span>		</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<p>I&#8217;ve been using Python at work for the past few months.  I learned Python back in the early 2000s, but never used it for any large projects.  I learned Ruby in late 2005, and it quickly became my language of choice for most cases.</p>
+<p>So while I still prefer Ruby, and will likely use Ruby more in the future than Python, I wanted to assess the strengths and weaknesses of Python in relation to Ruby.  Perhaps some of the lessons could be applied when writing Ruby, and it could help to decide when to use each.  Also, I&#8217;m interested in programming language design, and wanted to document pros and cons in that light.</p>
+<p><span style="color: #000000; font-weight: bold;">Where Python Sucks (As Compared to Ruby)</span></p>
+<ul>
+<li>Have to explicitly include <strong>self</strong> in <strong>EVERY</strong> method declaration.
+<ul>
+<li>Including <strong>@classmethod</strong> declarations (although people usually use the name <strong>cls</strong> instead of <strong>self</strong> there).</li>
+<li>Except <strong>@staticmethod</strong> declarations.</li>
+</ul>
+</li>
+<li>Have to use <strong>self</strong> everywhere to reference an object’s own attributes.</li>
+<li>Inconsistency of things like the <strong>len()</strong> function, when everything else is a method.</li>
+<li>Inconsistency of having some built-in classes with lower-case names.
+<ul>
+<li>And they’re not whole words, so you have to memorize them: <strong>list</strong>, <strong>dict</strong>, <strong>str</strong>, <strong>int</strong>.</li>
+<li>Even more bizarre is <strong>dict</strong> vs. <strong>OrderedDict</strong>.</li>
+</ul>
+</li>
+<li>I’m not a fan of <strong>True</strong> and <strong>False</strong> being uppercase.
+<ul>
+<li>I’m a bit less concerned about <strong>None</strong>, for some reason.</li>
+<li>If they’re going to be uppercase, they might as well be all caps, in my opinion.</li>
+</ul>
+</li>
+<li>Inconsistency of camelCase versus snake_case in some modules.</li>
+<li>Claims to prefer explicit over implicit, yet does not use <strong>new</strong> to create an object.
+<ul>
+<li>It is nicely concise, but makes it look too much like a regular function call.</li>
+</ul>
+</li>
+<li>The implementation of lambdas is too limited.
+<ul>
+<li>Makes using <strong>map</strong> function not very useful.</li>
+</ul>
+</li>
+<li>Class methods are less than ideal to implement.
+<ul>
+<li>Probably better to use functions within a module instead, in many cases.</li>
+</ul>
+</li>
+<li>Lack of good functional programming tools makes it harder to manipulate lists.
+<ul>
+<li>Have to often resort to creating an initial list and adding to it in a <strong>for</strong> loop.</li>
+</ul>
+</li>
+<li>I don’t understand why r&#8217;regex_string&#8217; doesn’t just create an actual regular expression object.</li>
+<li>I miss Ruby’s method-call-or-property-getter syntax.
+<ul>
+<li>Nice that I can get it by adding <strong>@property</strong> to method definitions, but that’s a bit messy.</li>
+</ul>
+</li>
+<li>I don’t understand why lists don’t have a <strong>join()</strong> method; it seems backwards to call <strong>join</strong> on the string used to connect the list elements.</li>
+<li>I miss <strong>unless</strong>; seems like with all the keywords, Python would have added that.</li>
+<li>I really miss <strong>||=</strong> to memoize.
+<ul>
+<li>The distinction between unset variables and variables set to <strong>None</strong> makes it hard.</li>
+<li>I also miss <strong>+=</strong>.</li>
+</ul>
+</li>
+<li>I really miss statement modifiers (<strong>if</strong> or <strong>unless</strong> at the end of the statement/expression instead of the beginning).</li>
+<li>I miss being able to assign to a compound statement (<strong>x = if True: 1; else: 2</strong>).
+<ul>
+<li>While Python does allow this simple case, it does not allow more complex cases.</li>
+</ul>
+</li>
+<li>The way modules, files, and classes work, I either have a lot of classes in one file, or have to come up with more module names in order to split classes into different files.</li>
+<li>The preference for bare functions within modules over class methods often leads to functions outside of classes, when they’d make more sense more closely associated with the class.</li>
+<li>I don’t quite understand the necessity for <strong>pass</strong>.
+<ul>
+<li>Seems like allowing 0 lines of indented code would suffice instead.</li>
+</ul>
+</li>
+<li>I miss implicit <strong>return</strong>.
+<ul>
+<li>Explicit <strong>return</strong> looks a bit nicer, but is less concise, and I&#8217;ve gotten out of the habit.</li>
+</ul>
+</li>
+<li>Mixins turn out to be more useful than multiple inheritance.</li>
+<li>I miss string interpolation.</li>
+<li>I really miss <strong>Array#first</strong> and <strong>Array#last</strong>.</li>
+<li>I really don’t like that 0 is falsey.
+<ul>
+<li>I could live with empty lists and dicts being false, but not 0.0 and 0.</li>
+</ul>
+</li>
+<li>Comparing a string to a regular expression seems harder than it should be.</li>
+<li>Converting to a Boolean is not as easy a Ruby’s <strong>!!</strong> syntax.
+<ul>
+<li>OK, <strong>bool(expression)</strong> isn&#8217;t so bad, I guess.</li>
+</ul>
+</li>
+</ul>
+<h1>Where Python Rocks</h1>
+<ul>
+<li>Indentation removes the need for <strong>end</strong> everywhere.</li>
+<li>Import statements are nice.
+<ul>
+<li>Can import everything, or just a few things.</li>
+</ul>
+</li>
+<li>Annotations are nice for aspect-oriented modification of methods.
+<ul>
+<li>Does it make it hard to debug though, like <strong>alias_method_chain</strong> in Ruby?</li>
+<li>It’s kind of tricky to write them though, due to doubly-nested function definitions.</li>
+</ul>
+</li>
+<li>List comprehensions are more powerful than <strong>map</strong>.
+<ul>
+<li>But <strong>map</strong> can be more concise for the most common cases.</li>
+</ul>
+</li>
+<li>Can add arbitrary attributes to any object, class, or module.</li>
+<li>The object creation syntax is nicely concise.</li>
+<li>Sometimes the ability to add a bare function within a module is nice.</li>
+<li>Keyword arguments are nicely done.
+<ul>
+<li>Ruby’s emulation via hashes without braces is OK, but the corner cases are problematic.</li>
+</ul>
+</li>
+<li>Docstrings as part of the language is nice.</li>
+<li>The new <strong>with</strong> keyword looks like a halfway-decent replacement for blocks.
+<ul>
+<li>Seems like a lot more work that using blocks and <strong>yield</strong> though.</li>
+</ul>
+</li>
+<li>Python 3 drops support for octal literals starting with a 0.
+<ul>
+<li>Still allows it via a 0o prefix.</li>
+</ul>
+</li>
+<li>No support for all the crazy Perl-inspired globals.</li>
+<li>The names <strong>list</strong> and <strong>dictionary</strong> are better than <strong>array</strong> and <strong>hash</strong>.
+<ul>
+<li>The Ruby names are more about the implementation, especially <strong>hash</strong>.</li>
+<li>I’d much prefer the name <strong>map</strong> over <strong>hash</strong>, or even <strong>dictionary</strong>.</li>
+<li>The name <strong>list</strong> is only slightly better than <strong>array</strong>.</li>
+</ul>
+</li>
+<li>List and string slicing is quite nice.
+<ul>
+<li>I do wish that the syntax was “..” instead of “:” though.</li>
+<li>Slice assignment is even cooler.</li>
+</ul>
+</li>
+<li>I prefer the Python <strong>dict</strong> syntax over the Ruby <strong>hash</strong> syntax (“:” vs. “=&gt;”).
+<ul>
+<li>The Ruby 1.9 symbol hash syntax is an improvement, but not quite as good.</li>
+</ul>
+</li>
+<li>Checking for string containment is nice: <strong>if substring in string</strong>.</li>
+</ul>
+<h1>Where Ruby Rocks</h1>
+<ul>
+<li>Consistency.</li>
+<li>Blocks.</li>
+<li>Excellent functional tools to deal with Enumerable.</li>
+<li>Meta-programming.</li>
+<li>Optional parentheses.</li>
+<li>Modules and classes are also objects.</li>
+</ul>
+<p>&nbsp;</p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+		This entry was posted in <a href="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/category/programming" title="View all posts in Programming" rel="category tag">Programming</a>, <a href="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/category/programming/programming-languages/python" title="View all posts in Python" rel="category tag">Python</a>, <a href="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/category/programming/programming-languages/ruby" title="View all posts in Ruby" rel="category tag">Ruby</a> by <a href="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/author/booch">Craig Buchek</a>. Bookmark the <a href="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/2013/02/22/my-thoughts-on-python-vs-ruby" title="Permalink to My Thoughts on Python vs. Ruby" rel="bookmark">permalink</a>.		
+			</footer><!-- .entry-meta -->
+</article><!-- #post-76 -->
+
+						<div id="comments">
+	
+	
+	
+									<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/web/20140131214026/http://blog.boochtek.com/2013/02/22/my-thoughts-on-python-vs-ruby#respond" style="display:none;">Cancel reply</a></small></h3>
+									<form action="https://web.archive.org/web/20140131214026/http://blog.boochtek.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+																			<p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p>							<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" aria-required="true"/></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" aria-required="true"/></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30"/></p>
+												<p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>						<p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></p>						<p class="form-submit">
+							<input name="submit" type="submit" id="submit" value="Post Comment"/>
+							<input type="hidden" name="comment_post_ID" value="76" id="comment_post_ID"/>
+<input type="hidden" name="comment_parent" id="comment_parent" value="0"/>
+						</p>
+						<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="4b91bbae48"/></p>					</form>
+							</div><!-- #respond -->
+			
+</div><!-- #comments -->
+
+				
+			</div><!-- #content -->
+		</div><!-- #primary -->
+
+
+	</div><!-- #main -->
+
+	<footer id="colophon" role="contentinfo">
+
+			
+
+			<div id="site-generator">
+								<a href="https://web.archive.org/web/20140131214026/http://wordpress.org/" title="Semantic Personal Publishing Platform">Proudly powered by WordPress</a>
+			</div>
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+
+</body>
+</html><!--
+     FILE ARCHIVED ON 21:40:26 Jan 31, 2014 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 08:25:13 Feb 23, 2024.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  exclusion.robots: 0.203
+  exclusion.robots.policy: 0.184
+  cdx.remote: 0.167
+  esindex: 0.021
+  LoadShardBlock: 171.572 (6)
+  PetaboxLoader3.datanode: 156.521 (7)
+  load_resource: 64.943
+  PetaboxLoader3.resolve: 55.947
+-->

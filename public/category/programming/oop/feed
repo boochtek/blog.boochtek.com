@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>OOP &#8211; BoochTek, LLC</title>
+	<atom:link href="http://blog.boochtek.com/category/programming/oop/feed" rel="self" type="application/rss+xml" />
+	<link>http://blog.boochtek.com</link>
+	<description>Web Development, Ruby on Rails, Open Source</description>
+	<lastBuildDate>Thu, 07 Jul 2016 04:22:08 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.3</generator>
+	<item>
+		<title>Hexagonal Rails Controllers</title>
+		<link>http://blog.boochtek.com/2015/02/23/hexagonal-rails-controllers</link>
+		<comments>http://blog.boochtek.com/2015/02/23/hexagonal-rails-controllers#respond</comments>
+		<pubDate>Tue, 24 Feb 2015 05:50:28 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[OOP]]></category>
+		<category><![CDATA[Ruby]]></category>
+		<category><![CDATA[Ruby on Rails]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=202</guid>
+		<description><![CDATA[I&#8217;ve had a long love-hate relationship with Rails. I love the MVC framework and how it&#8217;s improved our speed of writing web apps. But I&#8217;ve never really been completely happy with it. I don&#8217;t generally agree with most of its opinions. I prefer models that follow the Data Mapper pattern, not the Active Record pattern. This includes separating the persistence &#8230; <a href="http://blog.boochtek.com/2015/02/23/hexagonal-rails-controllers" class="more-link">Continue reading<span class="screen-reader-text"> "Hexagonal Rails Controllers"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;ve had a long love-hate relationship with Rails. I love the MVC framework and how it&#8217;s improved our speed of writing web apps. But I&#8217;ve never really been completely happy with it. I don&#8217;t generally agree with most of its opinions. I prefer models that follow the Data Mapper pattern, not the Active Record pattern. This includes separating the persistence layer from the models&#8217; business logic. I prefer Slim or HAML to ERB. I prefer RSpec to Test::Unit or MiniTest. When Merb hit the scene, I was ready to make the jump, until Merb merged with Rails.</p>
+<p>So inspired by <a href="https://blog.engineyard.com/2015/life-beyond-rails-brief-look-alternate-web-frameworks-ruby">PJ Hagerty&#8217;s recent article on alternative Ruby web frameworks</a>, I started thinking about how I&#8217;d write a replacement for Rails. I&#8217;d definitely keep the basic MVC framework. But I&#8217;d also want to implement a more <a href="http://alistair.cockburn.us/Hexagonal+architecture">hexagonal architecture</a>.</p>
+<p>I started sketching out what this would look like, but I ended up starting with a Rails controller and finding the simplest way to make it hexagonal. I really don&#8217;t like callbacks, because they make tracing program execution difficult. But I didn&#8217;t see any other alternative. I found a simple pub/sub Ruby library called Wisper. It literally has only <code>publish</code>, <code>subscribe</code>, and <code>on</code> methods. (You use <code>on</code> to register single callbacks via blocks, and <code>subscribe</code> to register an object with method names corresponding to the callback names.)</p>
+<p>The trick was figuring out how to break the controller into 2 pieces. What finally helped me was to find the single responsibilities of the 2 pieces. The Rails controller would remain in charge of managing the web interface, but would delegate to the other piece to handle any application-specific business logic. I decided to re-watch <a href="http://confreaks.tv/videos/rubymidwest2011-keynote-architecture-the-lost-years">Uncle Bob Martin&#8217;s &#8220;Architecture The Lost Years&#8221; talk</a>, which was the first time I was introduced to the ideas of Hexagonal Architecture. (He doesn&#8217;t name the architecture in the talk, but later calls it Clean Architecture.) He does a decent job of explaining how to break these 2 pieces apart. He used the term &#8220;interactor&#8221; in that talk, so I decided to go with that. He said that Jacobsen calls it a Control Object in <a href="http://www.amazon.com/Object-Oriented-Software-Engineering-Approach/dp/0201544350">Object Oriented Software Engineering</a>, but that&#8217;s too close to Rails&#8217;s &#8220;controller&#8221;.</p>
+<p>So here&#8217;s an example of what I ended up with:</p>
+<pre>class OrderController &lt; ApplicationController
+  def index
+    interactor.on(:display) { |orders| render orders }
+    interactor.list
+  end
+
+  def show
+    interactor.on(:display) { |order| render order }
+    interactor.on(:not_found) { |order_id| render status: 404 }
+    interactor.get(params[:id])
+  end
+
+private
+
+  def interactor
+    @interactor ||= OrderInteractor.new
+  end
+end</pre>
+<pre>require "wisper"
+require "order"
+
+class OrderInteractor
+  include Wisper.publisher
+
+  def list
+    orders = Order.all
+    publish(:display, orders)
+  end
+
+  def get(id)
+    order = Order.find(id)
+    publish(:display, order)
+  rescue ActiveRecord::RecordNotFound
+    publish(:not_found, id)
+  end
+end</pre>
+<p>I do have a few problems with this solution though. I&#8217;m not a fan of the name &#8220;interactor&#8221; for the business logic. I thought about calling it <code>OrderOperator</code>, or maybe <code>OrderOperations</code>, because it&#8217;s really a collection of operations. Perhaps it would be better to separate each operation into a separate class. <a href="https://github.com/apotonick/trailblazer">Trailblazer</a> does it that way. And for more complicated business logic, I would do that too, using the Method Object pattern. But like a Rails controller, there&#8217;s a lot in common among all the operations. I feel like a separate class for each operation for each would create too many coupled classes.</p>
+<p>I&#8217;m also uncomfortable with the fact that the controller is delegating almost everything to the interactor. I guess this is OK, but it feels like there&#8217;s too little left when every line starts with <code>interactor</code>. I suppose extracting things some more would help mitigate this concern I&#8217;ll likely write a small gem to perform that extraction. I expect that that will allow a typical controller to be written in only a few lines. And maybe the same for the interactor side.</p>
+<p>With the business logic extracted out of the controller, it was really easy for me to write a command-line version of the app. As Uncle Bob says, &#8220;the web is not particularly important to your application.&#8221;</p>
+<p>I&#8217;ve put the code for this example on GitHub: <a href="https://github.com/boochtek/hexagonal-rails">https://github.com/boochtek/hexagonal-rails</a>. I&#8217;ll likely experiment with it some more over the next few weeks and months.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2015/02/23/hexagonal-rails-controllers/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Includable ActiveRecord</title>
+		<link>http://blog.boochtek.com/2014/02/10/includable-activerecord</link>
+		<comments>http://blog.boochtek.com/2014/02/10/includable-activerecord#respond</comments>
+		<pubDate>Mon, 10 Feb 2014 18:09:53 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[OOP]]></category>
+		<category><![CDATA[Ruby]]></category>
+		<category><![CDATA[Ruby on Rails]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=104</guid>
+		<description><![CDATA[I created a Ruby gem recently, called includable-activerecord. It&#8217;s pretty small, but I thought I might explain why I created it, and discuss its implementation. Classical Inheritance When you use ActiveRecord, you normally include it in your model like this: class User &#60; ActiveRecord::Base # ... end Your User class is inheriting from the ActiveRecord::Base &#8230; <a href="http://blog.boochtek.com/2014/02/10/includable-activerecord" class="more-link">Continue reading<span class="screen-reader-text"> "Includable ActiveRecord"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I created a Ruby gem recently, called <a href="https://github.com/boochtek/includable-activerecord">includable-activerecord</a>. It&#8217;s pretty small, but I thought I might explain why I created it, and discuss its implementation.</p>
+<h1>Classical Inheritance</h1>
+<p>When you use ActiveRecord, you normally include it in your model like this:</p>
+<pre>class User &lt; ActiveRecord::Base
+  # ...
+end</pre>
+<p>Your <code>User</code> class is inheriting from the <code>ActiveRecord::Base</code> class. This is class-based inheritance, also called &#8220;classical&#8221; inheritance. (That&#8217;s &#8220;classical&#8221; as in &#8220;class&#8221;, not as a synonym for &#8220;traditional&#8221;.) Class-based inheritance represents an &#8220;is-a&#8221; relationship. So we&#8217;re saying that a user is an ActiveRecord base. Another way to say this is that <code>User</code> is a subclass of <code>ActiveRecord::Base.<br />
+</code><br />
+There are a few problems with this. First, what is a &#8220;base&#8221;? The name was chosen because it&#8217;s a base class. But just like we don&#8217;t give factory classes names like <code>UserFactory</code> (at least not in Ruby), we shouldn&#8217;t name base classes <code>Base</code>.</p>
+<p>I suppose that we&#8217;re trying to say that this is an ActiveRecord model. That sounds fine at first glance &#8212; this is our model for users. But what if we also want to say that a user is a person? Ruby doesn&#8217;t allow inheriting from multiple classes. Now we have to choose whether to inherit from <code>ActiveRecord::Base</code> or <code>Person</code>. <code>Person</code> makes more sense, because it fills the &#8220;is-a&#8221; rule better. Class inheritance is intended for a hierarchical &#8220;is-a&#8221; relationship, such as &#8220;a user is a person&#8221;, or &#8220;a circle is a shape&#8221;. But since <code>ActiveRecord::Base</code> is a base class, we <strong>have</strong> to use it as our base class.</p>
+<p>We could work around this problem by subclassing <code>Person</code> from <code>ActiveRecord::Base</code> and then subclassing <code>User</code> from <code>Person</code>. That&#8217;s fine if <code>Person</code> is also a model that we store in the database. But if that&#8217;s not the case, then we have a problem.</p>
+<p><span style="color: #000000; font-weight: bold;">Mixins</span></p>
+<p>Ruby provides another way of implementing inheritance &#8212; mixins. We often don&#8217;t think of this as an inheritance model, but it really is. When we include a module, that module gets added to the class&#8217;s ancestor chain. We can mix in as many modules as we want.</p>
+<p>Mixins indicate more of an &#8220;acts like&#8221; relationship than an &#8220;is-a&#8221; relationship. It&#8217;s for shared behavior between classes that don&#8217;t have a hierarchical relationship. For example, when we mix in the <code>Enumerable</code> module, we&#8217;re saying that we want our class to act like other classes that include <code>Enumerable</code>. That sounds more like what we want ActiveRecord to be. We want our user model to behave like other ActiveRecord models, in the way that they can persist to a database.</p>
+<p>But ActiveRecord doesn&#8217;t support that. Almost all the other Ruby ORMs do; as we&#8217;ve shown above, this is for good reasons.</p>
+<h1>Implementation</h1>
+<p>So I decided to see if I could implement the equivalent of the <code>ActiveRecord::Base</code> class as a module that could be mixed into model classes. I decided to call my mixin module <code>ActiveRecord::Model</code>, because classes that mix it in will behave as ActiveRecord models.</p>
+<p>It turns out that <code>ActiveRecord::Base</code> is a pretty complex class. It includes and extends a lot of other modules. Luckily, as of ActiveRecord 4.0, that&#8217;s <strong>all</strong> the code it includes.</p>
+<p>The module only defines a single class method, <a href="http://www.ruby-doc.org/core-2.0.0/Module.html#method-i-included"><code>included</code></a>. This is one of <a href="http://stackoverflow.com/questions/5127819/is-this-a-comprehensive-list-of-ruby-hook-methods">Ruby&#8217;s many hook methods</a>. It gets called when the module in question gets included in another module, and receives that other model as its argument. All we need to have this method do is to <code style="font-style: inherit;">include</code> everything that <code style="font-style: inherit;">ActiveRecord::Base</code> includes, and <code style="font-style: inherit;">extend</code> everything that <code style="font-style: inherit;">ActiveRecord::Base</code> extends. Ruby provides a method that&#8217;s defined on all classes, called <code style="font-style: inherit;">included_modules</code>, which we can use to get the list of everything that&#8217;s included in <code style="font-style: inherit;">ActiveRecord::Base</code>. Unfortunately, there&#8217;s no equivalent list of <code style="font-style: inherit;">extended_modules</code>. But a quick search on Stack Overflow found <a href="http://stackoverflow.com/a/5197277">an implementation of <code>extended_modules</code></a> that we could use.</p>
+<p>So with a bit of magic (i.e. hooks and meta-programming), we can get the lists of constituent modules from the <code>ActiveRecord::Base</code> class, and include them in our <code>ActiveRecord::Model</code> module.</p>
+<p>So with all that, we can now include the <a href="https://github.com/boochtek/includable-activerecord">includable-activerecord</a> gem and mix it in, with all the advantages that provides:</p>
+<pre>class User
+  include ActiveRecord::Model
+  # ...
+end</pre>
+<p>It was exciting to be able to make this work. Since I wrote it as a proof of concept, I haven&#8217;t written any tests yet. But it seems to be working just fine. The main thing I really need to look into is making sure that plugins that extend <code>ActiveRecord::Base</code> from their own code will still work. I&#8217;m pretty sure this will work out of the box, because the <code>ActiveRecord::Model.included</code> doesn&#8217;t run until the model class is loaded, and that happens after those plugins have initialized themselves.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2014/02/10/includable-activerecord/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Testing Rails Validators</title>
+		<link>http://blog.boochtek.com/2014/01/26/testing-rails-validators</link>
+		<comments>http://blog.boochtek.com/2014/01/26/testing-rails-validators#respond</comments>
+		<pubDate>Mon, 27 Jan 2014 05:27:07 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[OOP]]></category>
+		<category><![CDATA[Ruby on Rails]]></category>
+		<category><![CDATA[TDD]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=93</guid>
+		<description><![CDATA[It&#8217;s challenging to test Rails custom validators. I recently had to write a validator to require that an entered date is before or after a specified date. It didn&#8217;t seem like writing the validator would be too difficult &#8211; I&#8217;ve written custom validators before, and date comparisons aren&#8217;t all that tricky. But when it came time to &#8230; <a href="http://blog.boochtek.com/2014/01/26/testing-rails-validators" class="more-link">Continue reading<span class="screen-reader-text"> "Testing Rails Validators"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>It&#8217;s challenging to test Rails custom validators.</p>
+<p>I recently had to write a validator to require that an entered date is before or after a specified date.</p>
+<p>It didn&#8217;t seem like writing the validator would be too difficult &#8211; I&#8217;ve written custom validators before, and date comparisons aren&#8217;t all that tricky. But when it came time to write the tests, I ran into several issues. And since I always try to follow TDD / test-first, I was blocked before I even began.</p>
+<p>The biggest issue was the <code>ActiveModel::EachValidator#validates_each</code> API. It&#8217;s definitely not a well-designed API. You write your validator as a subclass, overriding <code>validates_each</code>. The method takes a model object, the name of the attribute of the model being tested, and the value of that attribute. You can also get the options passed to the custom validator via the <code>options</code> method. To perform a validation, you have to update the model&#8217;s <code>errors</code> hash.</p>
+<p>The big flaw in the API is that instead of returning a result, you have to update the model. This needlessly couples the model and the validator. And it violates the Single Responsibility Principle &#8212; it has to determine validity of the field, and it has to update the <code>errors</code> hash of the model. This is not conducive to testing. Testing this method requires testing that the side-effect has taken place in the collaborator (model), which means it&#8217;s not really a unit test any more.</p>
+<p>So to make it easier to unit test the validator, I broke the coupling by breaking it into 2 pieces, one for each responsibility. I moved the responsibility for determining validity to a separate method, which I called <code>errors_for</code>. It returns a hash of the errors found. This simplified the <code>validates_each</code> method to simply take the result of <code>errors_for</code> and update the <code>errors</code> hash of the model:</p>
+<pre>def validate_each(record, attribute_name, attribute_value)
+  record.errors[attribute_name].concat(errors_for(attribute_value, options))
+end</pre>
+<p>This made it much easier to unit test the <code>errors_for</code> method. This method doesn&#8217;t even need to know about the model &#8212; only about the value of the attribute we&#8217;re trying to validate. We simply pass in the attribute&#8217;s value and the options.</p>
+<p>So we could write the tests without even pulling in ActiveRecord or any models:</p>
+<pre>describe DateValidator do
+  let(:validator) { DateValidator.new(attributes: :attribute_name) }
+  let(:errors) { validator.errors_for(attribute_value, validation_options) }
+
+  describe 'when attribute value is NOT a valid date' do
+    let(:attribute_value) { 'not a valid date' }
+    it { errors.must_include 'is not a valid date' }
+  end
+
+  describe 'when attribute value IS a valid date' do
+    let(:attribute_value) { Date.parse('2013-12-11') }
+    it { errors.must_be :empty? }
+  end
+end</pre>
+<p>And the <code>errors_for</code> method looked something like this:</p>
+<pre>def errors_for(attribute_value, options)
+  unless attribute_value.is_a?(Date)
+    return [options.fetch(:message, "is not a valid date")]
+  end
+  []
+end</pre>
+<p>Integration testing can also be a bit of a challenge. I recommend following the example from <a href="http://stackoverflow.com/a/17739176">this Stack Overflow answer</a>. Basically, create a minimal model object that contains the field and the validation. Then test that the model behaves like you expect with different values and validations.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2014/01/26/testing-rails-validators/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Ruby Pattern: Parameterized Module Inclusion</title>
+	<atom:link href="http://blog.boochtek.com/2014/04/14/ruby-parameterized-module-inclusion/feed" rel="self" type="application/rss+xml" />
+	<link>http://blog.boochtek.com/2014/04/14/ruby-parameterized-module-inclusion</link>
+	<description>Web Development, Ruby on Rails, Open Source</description>
+	<lastBuildDate>Wed, 13 May 2015 03:10:44 +0000</lastBuildDate>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.8.1</generator>
+	<item>
+		<title>By: Craig Buchek</title>
+		<link>http://blog.boochtek.com/2014/04/14/ruby-parameterized-module-inclusion/comment-page-1#comment-2730</link>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+		<pubDate>Sat, 31 May 2014 15:49:14 +0000</pubDate>
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=184#comment-2730</guid>
+		<description><![CDATA[I seem to have forgotten to mention that this is related to the Factory pattern. In fact, I think it&#039;s a special case of the Factory pattern.
+
+I thought I was using this pattern on the following code, but realized that it&#039;s just the Factory pattern:
+
+&lt;code&gt;&lt;pre&gt;
+module Preserves
+  def self.repository(*options, &amp;block)
+    repository = Repository.new(*options)
+    repository.instance_eval(&amp;block)
+    repository
+  end
+end
+
+UserRepository = Preserves.repository(model: User) do
+end
+&lt;/pre&gt;&lt;/code&gt;]]></description>
+		<content:encoded><![CDATA[<p>I seem to have forgotten to mention that this is related to the Factory pattern. In fact, I think it&#8217;s a special case of the Factory pattern.</p>
+<p>I thought I was using this pattern on the following code, but realized that it&#8217;s just the Factory pattern:</p>
+<p><code>
+<pre>
+module Preserves
+  def self.repository(*options, &#038;block)
+    repository = Repository.new(*options)
+    repository.instance_eval(&#038;block)
+    repository
+  end
+end
+
+UserRepository = Preserves.repository(model: User) do
+end
+</pre>
+<p></code></p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Amos King</title>
+		<link>http://blog.boochtek.com/2014/04/14/ruby-parameterized-module-inclusion/comment-page-1#comment-2718</link>
+		<dc:creator><![CDATA[Amos King]]></dc:creator>
+		<pubDate>Wed, 28 May 2014 03:48:51 +0000</pubDate>
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=184#comment-2718</guid>
+		<description><![CDATA[I think it would be interesting to try using a block as the config to your include. Make a capitalized method that returns a module. Then you could pass a block with curly braces to that method.
+
+&lt;code&gt;&lt;pre&gt;class User
+  include MyORM::Model {
+    table &quot;people&quot;
+  }
+end&lt;/pre&gt;&lt;/code&gt;]]></description>
+		<content:encoded><![CDATA[<p>I think it would be interesting to try using a block as the config to your include. Make a capitalized method that returns a module. Then you could pass a block with curly braces to that method.</p>
+<p><code>
+<pre>class User
+  include MyORM::Model {
+    table "people"
+  }
+end</pre>
+<p></code></p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

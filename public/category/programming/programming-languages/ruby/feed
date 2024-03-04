@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Ruby &#8211; BoochTek, LLC</title>
+	<atom:link href="http://blog.boochtek.com/category/programming/programming-languages/ruby/feed" rel="self" type="application/rss+xml" />
+	<link>http://blog.boochtek.com</link>
+	<description>Web Development, Ruby on Rails, Open Source</description>
+	<lastBuildDate>Thu, 07 Jul 2016 04:22:08 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.3</generator>
+	<item>
+		<title>Not Quite Callbacks</title>
+		<link>http://blog.boochtek.com/2015/06/22/not-quite-callbacks</link>
+		<comments>http://blog.boochtek.com/2015/06/22/not-quite-callbacks#respond</comments>
+		<pubDate>Tue, 23 Jun 2015 04:55:17 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Architecture]]></category>
+		<category><![CDATA[Ruby]]></category>
+		<category><![CDATA[Ruby on Rails]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=245</guid>
+		<description><![CDATA[I&#8217;ve been working on application architectures based on Uncle Bob&#8217;s Ruby Midwest talk, following the hexagonal architectural pattern. I posted an article a couple months ago showing a way that works fairly well in Rails, and some accompanying Rails example code. But there was one thing I wasn&#8217;t quite happy with. The problem is that we used callbacks (actually, &#8230; <a href="http://blog.boochtek.com/2015/06/22/not-quite-callbacks" class="more-link">Continue reading<span class="screen-reader-text"> "Not Quite Callbacks"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;ve been working on application architectures based on <a href="http://confreaks.tv/videos/rubymidwest2011-keynote-architecture-the-lost-years">Uncle Bob&#8217;s Ruby Midwest talk</a>, following the <a href="http://alistair.cockburn.us/Hexagonal+architecture">hexagonal architectural pattern</a>. I posted <a href="http://blog.boochtek.com/2015/02/23/hexagonal-rails-controllers">an article a couple months ago showing a way that works fairly well in Rails</a>, and some <a href="https://github.com/boochtek/hexagonal-rails">accompanying Rails example code</a>. But there was one thing I wasn&#8217;t quite happy with.</p>
+<p>The problem is that we used callbacks (actually, a publish/subscribe mechanism) in a situation where they don&#8217;t seem to quite fit:</p>
+<pre>  def show
+    interactor.on(:display) { |order| render order }
+    interactor.on(:not_found) { |order_id| render status: 404 }
+    interactor.get(params[:id])
+  end</pre>
+<p>What we really want is to respond in different ways, depending on the result of the call to <code>interactor.get()</code>. There&#8217;s no good reason to define the responses before the call. It makes a lot more sense to define the responses after the call, because they&#8217;ll <strong>happen</strong> after the call. I&#8217;d much prefer that the code be written in the order that it will be run.</p>
+<p>I discussed this problem with my friend and colleague, <a href="http://dirtyinformation.com/">Amos King</a>. We came up with a better solution, which puts things back in the right order:</p>
+<pre>  def show
+    interactor.get(params[:id]) do |on|
+      on.display { |order| render order }
+      on.not_found { |order_id| render status: 404 }
+    end
+  end</pre>
+<p>He even wrote a small library to do this, which he called <a href="https://github.com/BinaryNoggin/riposte">Riposte</a>. I&#8217;m not sure what to call this pattern, but it seems to work pretty well in this situation. I suppose that they&#8217;re still technically callbacks, because they&#8217;re passed in in the block that&#8217;s passed in to the call to <code>interactor.get()</code>. But due to the magic of Ruby blocks, we get to put them in the order they should be.</p>
+<p>Riposte also gives you the option of using the response object directly, instead of passing a block:</p>
+<pre>  def show
+    on = interactor.get(params[:id])
+    on.display { |order| render order }
+    on.not_found { |order_id| render status: 404 }
+  end</pre>
+<p>This shows that it&#8217;s just returning an object, with the twist that the response object has methods that take blocks. The nested blocks variant is really the same thing, except that it&#8217;s yielding to the response object instead of returning it.</p>
+<p>I&#8217;ve decide that is the pattern I&#8217;d like to use for interactions and their callers within Ruby hexagonal architecture.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2015/06/22/not-quite-callbacks/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Architectural Thoughts</title>
+		<link>http://blog.boochtek.com/2015/06/01/architectural-thoughts</link>
+		<comments>http://blog.boochtek.com/2015/06/01/architectural-thoughts#respond</comments>
+		<pubDate>Tue, 02 Jun 2015 04:51:59 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Architecture]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[Ruby]]></category>
+		<category><![CDATA[Web Development]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=240</guid>
+		<description><![CDATA[I&#8217;ve started working on my own framework in Ruby in the past couple days. It&#8217;s built upon my recent work at understanding Uncle Bob&#8217;s Ruby Midwest 2011 talk, and his article on Clean Architecture, and the resulting hexagonal architecture (AKA ports and adapters). Somehow my research in that vein led me to Gary Bernhardt&#8217;s Boundaries talk. I&#8217;ve read &#8230; <a href="http://blog.boochtek.com/2015/06/01/architectural-thoughts" class="more-link">Continue reading<span class="screen-reader-text"> "Architectural Thoughts"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;ve started working on my own framework in Ruby in the past couple days. It&#8217;s built upon my recent work at understanding <a href="http://confreaks.tv/videos/rubymidwest2011-keynote-architecture-the-lost-years">Uncle Bob&#8217;s Ruby Midwest 2011 talk</a>, and his article on <a href="http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html">Clean Architecture</a>, and the resulting hexagonal architecture (AKA ports and adapters).</p>
+<p>Somehow my research in that vein led me to <a href="https://www.destroyallsoftware.com/talks/boundaries">Gary Bernhardt&#8217;s Boundaries talk</a>. I&#8217;ve read a lot about the talk, and knew about the idea of &#8220;functional core / imperative shell&#8221;. And I&#8217;ve worked with a lot of similar ideas lately. But I believe this is the first time that I actually watched the whole video.</p>
+<p>Even after having read a lot about similar ideas, it was pretty mind-expanding. Gary&#8217;s really good at presenting these kinds of ideas in a simple way.</p>
+<p>OOP as usually taught includes encapsulation of data together with behavior, with mutable objects. Functional programming separates data and behavior, with mostly immutable data. From experience, encapsulating data and behavior together seems helpful. But experience also shows that immutability is useful. So it would be good to have both of those together. This is something I&#8217;ve been thinking for a few years &#8212; how best do we get both?</p>
+<p>Gary calls the combination &#8220;FauxO&#8221;. Logic and data are still combined, but there&#8217;s no mutation. Anywhere OOP would normally have mutation would just generate a new object. There&#8217;s no language restriction involved in enforcing immutability &#8212; just discipline.</p>
+<p>But without mutability, it&#8217;s hard to do IO and maintain state. So Gary&#8217;s solution is to encapsulate as much as possible into an immutable (functional or FauxO) core, and around that, use an imperative (traditional OOP) shell. The functional core contains the bulk of the logic, and the imperative shell is a glue layer that handles the real world, including disk, network, and other I/O.</p>
+<p>The result of this is that the shell has fewer paths, but more dependencies. The core contains no dependencies, but encapsulates the different logic paths. So we&#8217;re encapsulating dependencies on one side, and business logic on the other side. Or put another way, the way to figure out the separation is by doing as much as you can without mutation, and then encapsulating the mutation separately.</p>
+<p>I love how this naturally breaks things up, so that the core is all testable with unit tests, and the imperative shell is tested with integration tests. And since the shell has few or no logic paths, you get the <a href="http://www.shawnewallace.com/blog/Dealing-With-A-Large-Test-Suite/">testing pyramid</a>, with more unit tests and fewer integration tests. The whole thing ends up being quite beautiful. Tests end up being very fast without any extra effort &#8212; not even stubbing or mocking. This tells us that things have been decomposed very well &#8212; an elegant design.</p>
+<p>Gary makes the case that immutable objects can be treated as values, and passed across boundaries. Even process boundaries. This is something I&#8217;ve noticed as I&#8217;ve been working on my own Uncle Bob style hexagonal framework, but nobody in that camp ever mentioned that &#8212; they prefer DTOs or something more like hashes. I&#8217;m completely against hashes, because of the &#8220;stringly-typed&#8221; problem. And I don&#8217;t see much advantage in a DTO if I&#8217;ve got an immutable object; I&#8217;d be basically copying the object to an almost identical object. And I&#8217;d be losing any laziness possible for derived values within the original immutable object.</p>
+<p>It&#8217;s striking to me how Gary&#8217;s image of an imperative shell around a functional core, plus Net, Disk, and State outside of the shell mirror&#8217;s Uncle Bob&#8217;s concentric circles. Uncle Bob has entities in the middle, surrounded by use cases, surrounded by Web, DB, and UI.</p>
+<p>Another advantage that Gary shows is that breaking things up this way allows easy concurrency. In his example, he shows using the actor model &#8212; either just using threads and queues, or an actor library (or language feature).</p>
+<p>After several years of thinking about the architectural issues seen in most large Rails apps, I&#8217;m starting to come to an understanding of how to combine all these ideas and come up with an architecture that will work better.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2015/06/01/architectural-thoughts/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Hexagonal Rails Controllers</title>
+		<link>http://blog.boochtek.com/2015/02/23/hexagonal-rails-controllers</link>
+		<comments>http://blog.boochtek.com/2015/02/23/hexagonal-rails-controllers#respond</comments>
+		<pubDate>Tue, 24 Feb 2015 05:50:28 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[OOP]]></category>
+		<category><![CDATA[Ruby]]></category>
+		<category><![CDATA[Ruby on Rails]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=202</guid>
+		<description><![CDATA[I&#8217;ve had a long love-hate relationship with Rails. I love the MVC framework and how it&#8217;s improved our speed of writing web apps. But I&#8217;ve never really been completely happy with it. I don&#8217;t generally agree with most of its opinions. I prefer models that follow the Data Mapper pattern, not the Active Record pattern. This includes separating the persistence &#8230; <a href="http://blog.boochtek.com/2015/02/23/hexagonal-rails-controllers" class="more-link">Continue reading<span class="screen-reader-text"> "Hexagonal Rails Controllers"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;ve had a long love-hate relationship with Rails. I love the MVC framework and how it&#8217;s improved our speed of writing web apps. But I&#8217;ve never really been completely happy with it. I don&#8217;t generally agree with most of its opinions. I prefer models that follow the Data Mapper pattern, not the Active Record pattern. This includes separating the persistence layer from the models&#8217; business logic. I prefer Slim or HAML to ERB. I prefer RSpec to Test::Unit or MiniTest. When Merb hit the scene, I was ready to make the jump, until Merb merged with Rails.</p>
+<p>So inspired by <a href="https://blog.engineyard.com/2015/life-beyond-rails-brief-look-alternate-web-frameworks-ruby">PJ Hagerty&#8217;s recent article on alternative Ruby web frameworks</a>, I started thinking about how I&#8217;d write a replacement for Rails. I&#8217;d definitely keep the basic MVC framework. But I&#8217;d also want to implement a more <a href="http://alistair.cockburn.us/Hexagonal+architecture">hexagonal architecture</a>.</p>
+<p>I started sketching out what this would look like, but I ended up starting with a Rails controller and finding the simplest way to make it hexagonal. I really don&#8217;t like callbacks, because they make tracing program execution difficult. But I didn&#8217;t see any other alternative. I found a simple pub/sub Ruby library called Wisper. It literally has only <code>publish</code>, <code>subscribe</code>, and <code>on</code> methods. (You use <code>on</code> to register single callbacks via blocks, and <code>subscribe</code> to register an object with method names corresponding to the callback names.)</p>
+<p>The trick was figuring out how to break the controller into 2 pieces. What finally helped me was to find the single responsibilities of the 2 pieces. The Rails controller would remain in charge of managing the web interface, but would delegate to the other piece to handle any application-specific business logic. I decided to re-watch <a href="http://confreaks.tv/videos/rubymidwest2011-keynote-architecture-the-lost-years">Uncle Bob Martin&#8217;s &#8220;Architecture The Lost Years&#8221; talk</a>, which was the first time I was introduced to the ideas of Hexagonal Architecture. (He doesn&#8217;t name the architecture in the talk, but later calls it Clean Architecture.) He does a decent job of explaining how to break these 2 pieces apart. He used the term &#8220;interactor&#8221; in that talk, so I decided to go with that. He said that Jacobsen calls it a Control Object in <a href="http://www.amazon.com/Object-Oriented-Software-Engineering-Approach/dp/0201544350">Object Oriented Software Engineering</a>, but that&#8217;s too close to Rails&#8217;s &#8220;controller&#8221;.</p>
+<p>So here&#8217;s an example of what I ended up with:</p>
+<pre>class OrderController &lt; ApplicationController
+  def index
+    interactor.on(:display) { |orders| render orders }
+    interactor.list
+  end
+
+  def show
+    interactor.on(:display) { |order| render order }
+    interactor.on(:not_found) { |order_id| render status: 404 }
+    interactor.get(params[:id])
+  end
+
+private
+
+  def interactor
+    @interactor ||= OrderInteractor.new
+  end
+end</pre>
+<pre>require "wisper"
+require "order"
+
+class OrderInteractor
+  include Wisper.publisher
+
+  def list
+    orders = Order.all
+    publish(:display, orders)
+  end
+
+  def get(id)
+    order = Order.find(id)
+    publish(:display, order)
+  rescue ActiveRecord::RecordNotFound
+    publish(:not_found, id)
+  end
+end</pre>
+<p>I do have a few problems with this solution though. I&#8217;m not a fan of the name &#8220;interactor&#8221; for the business logic. I thought about calling it <code>OrderOperator</code>, or maybe <code>OrderOperations</code>, because it&#8217;s really a collection of operations. Perhaps it would be better to separate each operation into a separate class. <a href="https://github.com/apotonick/trailblazer">Trailblazer</a> does it that way. And for more complicated business logic, I would do that too, using the Method Object pattern. But like a Rails controller, there&#8217;s a lot in common among all the operations. I feel like a separate class for each operation for each would create too many coupled classes.</p>
+<p>I&#8217;m also uncomfortable with the fact that the controller is delegating almost everything to the interactor. I guess this is OK, but it feels like there&#8217;s too little left when every line starts with <code>interactor</code>. I suppose extracting things some more would help mitigate this concern I&#8217;ll likely write a small gem to perform that extraction. I expect that that will allow a typical controller to be written in only a few lines. And maybe the same for the interactor side.</p>
+<p>With the business logic extracted out of the controller, it was really easy for me to write a command-line version of the app. As Uncle Bob says, &#8220;the web is not particularly important to your application.&#8221;</p>
+<p>I&#8217;ve put the code for this example on GitHub: <a href="https://github.com/boochtek/hexagonal-rails">https://github.com/boochtek/hexagonal-rails</a>. I&#8217;ll likely experiment with it some more over the next few weeks and months.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2015/02/23/hexagonal-rails-controllers/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Ruby Pattern: Parameterized Module Inclusion</title>
+		<link>http://blog.boochtek.com/2014/04/14/ruby-parameterized-module-inclusion</link>
+		<comments>http://blog.boochtek.com/2014/04/14/ruby-parameterized-module-inclusion#comments</comments>
+		<pubDate>Tue, 15 Apr 2014 04:57:29 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Ruby]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=184</guid>
+		<description><![CDATA[I&#8217;ve run across a pattern in Ruby lately that I really like. It solves some problems that I&#8217;ve struggled with for several years. Let me start with the problems. Let&#8217;s say you want to include an ORM in a model class, and want to tell it what database table to use. Typically, you&#8217;d do this: class User include &#8230; <a href="http://blog.boochtek.com/2014/04/14/ruby-parameterized-module-inclusion" class="more-link">Continue reading<span class="screen-reader-text"> "Ruby Pattern: Parameterized Module Inclusion"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;ve run across a pattern in Ruby lately that I really like. It solves some problems that I&#8217;ve struggled with for several years. Let me start with the problems.</p>
+<p>Let&#8217;s say you want to include an ORM in a model class, and want to tell it what database table to use. Typically, you&#8217;d do this:</p>
+<pre>class User
+  include MyORM::Model
+  table 'people'
+end</pre>
+<p>But that <code>table</code> call is more like an option to the module inclusion than anything else. So what we&#8217;d really like is something like this:</p>
+<pre>class User
+  include MyORM::Model, table: 'people'
+end</pre>
+<p>But that&#8217;s not valid Ruby; <code>include</code> doesn&#8217;t let you pass anything other than a module.</p>
+<p>So when I was learning about <a href="https://github.com/solnic/virtus">Virtus</a>, I noticed that its example of how to include it is a bit different than the standard Ruby idiomatic <code>include</code>:</p>
+<pre>class User
+  include Virtus.model
+end</pre>
+<p>At first glance, it reads like the first example. But on closer inspection and consideration, it&#8217;s quite a bit different. Where <code>MyORM::Model</code> is a constant that refers to a module, <code>Virtus.model</code> is a method call. So there&#8217;s a method named <code>model</code> in the <code>Virtus</code> module. That method returns another module &#8212; which is exactly what&#8217;s needed in order to include it into our model class.</p>
+<p>The easiest way to implement <code style="font-style: inherit;">Virtus.model</code> would be this:</p>
+<pre>module Virtus
+  def model
+    ::Virtus::Model
+  end
+end
+
+module Virtus::Model
+  # ...
+end</pre>
+<p>If <code>Virtus.model</code> doesn&#8217;t need to take any arguments, that&#8217;s perfectly fine. In fact, I&#8217;ve started to use this implementation of the pattern for modules that don&#8217;t need parameters.</p>
+<p>Because <code>Virtus.model</code> is a method, we can also call it with options:</p>
+<pre>class User
+  include Virtus.model(constructor: false, mass_assignment: false)
+end</pre>
+<p>We could even pass a block. But how do we process those options? There are a few different ways. However we do it, we have to be sure to return a module. And we can create modules in a few different ways.</p>
+<p>Virtus uses the builder pattern. It takes the parameters passed in and builds a module dynamically. By that, I mean that it calls <code>Module.new</code> and then adds methods to that module. It does this by mixing in other modules, but it could do it by dynamically defining methods as well.</p>
+<p>I&#8217;ve never seen this pattern in any other language. It&#8217;s obviously only possible because we can dynamically create modules.</p>
+<p>The use of this idiom seems to be catching on a bit in the Ruby community. I&#8217;ve started using it myself, and will be adding it to my <a href="https://github.com/boochtek/includable-activerecord">Includable::ActiveRecord</a> gem soon.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2014/04/14/ruby-parameterized-module-inclusion/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Includable ActiveRecord</title>
+		<link>http://blog.boochtek.com/2014/02/10/includable-activerecord</link>
+		<comments>http://blog.boochtek.com/2014/02/10/includable-activerecord#respond</comments>
+		<pubDate>Mon, 10 Feb 2014 18:09:53 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[OOP]]></category>
+		<category><![CDATA[Ruby]]></category>
+		<category><![CDATA[Ruby on Rails]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=104</guid>
+		<description><![CDATA[I created a Ruby gem recently, called includable-activerecord. It&#8217;s pretty small, but I thought I might explain why I created it, and discuss its implementation. Classical Inheritance When you use ActiveRecord, you normally include it in your model like this: class User &#60; ActiveRecord::Base # ... end Your User class is inheriting from the ActiveRecord::Base &#8230; <a href="http://blog.boochtek.com/2014/02/10/includable-activerecord" class="more-link">Continue reading<span class="screen-reader-text"> "Includable ActiveRecord"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I created a Ruby gem recently, called <a href="https://github.com/boochtek/includable-activerecord">includable-activerecord</a>. It&#8217;s pretty small, but I thought I might explain why I created it, and discuss its implementation.</p>
+<h1>Classical Inheritance</h1>
+<p>When you use ActiveRecord, you normally include it in your model like this:</p>
+<pre>class User &lt; ActiveRecord::Base
+  # ...
+end</pre>
+<p>Your <code>User</code> class is inheriting from the <code>ActiveRecord::Base</code> class. This is class-based inheritance, also called &#8220;classical&#8221; inheritance. (That&#8217;s &#8220;classical&#8221; as in &#8220;class&#8221;, not as a synonym for &#8220;traditional&#8221;.) Class-based inheritance represents an &#8220;is-a&#8221; relationship. So we&#8217;re saying that a user is an ActiveRecord base. Another way to say this is that <code>User</code> is a subclass of <code>ActiveRecord::Base.<br />
+</code><br />
+There are a few problems with this. First, what is a &#8220;base&#8221;? The name was chosen because it&#8217;s a base class. But just like we don&#8217;t give factory classes names like <code>UserFactory</code> (at least not in Ruby), we shouldn&#8217;t name base classes <code>Base</code>.</p>
+<p>I suppose that we&#8217;re trying to say that this is an ActiveRecord model. That sounds fine at first glance &#8212; this is our model for users. But what if we also want to say that a user is a person? Ruby doesn&#8217;t allow inheriting from multiple classes. Now we have to choose whether to inherit from <code>ActiveRecord::Base</code> or <code>Person</code>. <code>Person</code> makes more sense, because it fills the &#8220;is-a&#8221; rule better. Class inheritance is intended for a hierarchical &#8220;is-a&#8221; relationship, such as &#8220;a user is a person&#8221;, or &#8220;a circle is a shape&#8221;. But since <code>ActiveRecord::Base</code> is a base class, we <strong>have</strong> to use it as our base class.</p>
+<p>We could work around this problem by subclassing <code>Person</code> from <code>ActiveRecord::Base</code> and then subclassing <code>User</code> from <code>Person</code>. That&#8217;s fine if <code>Person</code> is also a model that we store in the database. But if that&#8217;s not the case, then we have a problem.</p>
+<p><span style="color: #000000; font-weight: bold;">Mixins</span></p>
+<p>Ruby provides another way of implementing inheritance &#8212; mixins. We often don&#8217;t think of this as an inheritance model, but it really is. When we include a module, that module gets added to the class&#8217;s ancestor chain. We can mix in as many modules as we want.</p>
+<p>Mixins indicate more of an &#8220;acts like&#8221; relationship than an &#8220;is-a&#8221; relationship. It&#8217;s for shared behavior between classes that don&#8217;t have a hierarchical relationship. For example, when we mix in the <code>Enumerable</code> module, we&#8217;re saying that we want our class to act like other classes that include <code>Enumerable</code>. That sounds more like what we want ActiveRecord to be. We want our user model to behave like other ActiveRecord models, in the way that they can persist to a database.</p>
+<p>But ActiveRecord doesn&#8217;t support that. Almost all the other Ruby ORMs do; as we&#8217;ve shown above, this is for good reasons.</p>
+<h1>Implementation</h1>
+<p>So I decided to see if I could implement the equivalent of the <code>ActiveRecord::Base</code> class as a module that could be mixed into model classes. I decided to call my mixin module <code>ActiveRecord::Model</code>, because classes that mix it in will behave as ActiveRecord models.</p>
+<p>It turns out that <code>ActiveRecord::Base</code> is a pretty complex class. It includes and extends a lot of other modules. Luckily, as of ActiveRecord 4.0, that&#8217;s <strong>all</strong> the code it includes.</p>
+<p>The module only defines a single class method, <a href="http://www.ruby-doc.org/core-2.0.0/Module.html#method-i-included"><code>included</code></a>. This is one of <a href="http://stackoverflow.com/questions/5127819/is-this-a-comprehensive-list-of-ruby-hook-methods">Ruby&#8217;s many hook methods</a>. It gets called when the module in question gets included in another module, and receives that other model as its argument. All we need to have this method do is to <code style="font-style: inherit;">include</code> everything that <code style="font-style: inherit;">ActiveRecord::Base</code> includes, and <code style="font-style: inherit;">extend</code> everything that <code style="font-style: inherit;">ActiveRecord::Base</code> extends. Ruby provides a method that&#8217;s defined on all classes, called <code style="font-style: inherit;">included_modules</code>, which we can use to get the list of everything that&#8217;s included in <code style="font-style: inherit;">ActiveRecord::Base</code>. Unfortunately, there&#8217;s no equivalent list of <code style="font-style: inherit;">extended_modules</code>. But a quick search on Stack Overflow found <a href="http://stackoverflow.com/a/5197277">an implementation of <code>extended_modules</code></a> that we could use.</p>
+<p>So with a bit of magic (i.e. hooks and meta-programming), we can get the lists of constituent modules from the <code>ActiveRecord::Base</code> class, and include them in our <code>ActiveRecord::Model</code> module.</p>
+<p>So with all that, we can now include the <a href="https://github.com/boochtek/includable-activerecord">includable-activerecord</a> gem and mix it in, with all the advantages that provides:</p>
+<pre>class User
+  include ActiveRecord::Model
+  # ...
+end</pre>
+<p>It was exciting to be able to make this work. Since I wrote it as a proof of concept, I haven&#8217;t written any tests yet. But it seems to be working just fine. The main thing I really need to look into is making sure that plugins that extend <code>ActiveRecord::Base</code> from their own code will still work. I&#8217;m pretty sure this will work out of the box, because the <code>ActiveRecord::Model.included</code> doesn&#8217;t run until the model class is loaded, and that happens after those plugins have initialized themselves.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2014/02/10/includable-activerecord/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>My Thoughts on Python vs. Ruby</title>
+		<link>http://blog.boochtek.com/2013/02/22/my-thoughts-on-python-vs-ruby</link>
+		<comments>http://blog.boochtek.com/2013/02/22/my-thoughts-on-python-vs-ruby#comments</comments>
+		<pubDate>Fri, 22 Feb 2013 17:03:06 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Programming]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Ruby]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=76</guid>
+		<description><![CDATA[I&#8217;ve been using Python at work for the past few months.  I learned Python back in the early 2000s, but never used it for any large projects.  I learned Ruby in late 2005, and it quickly became my language of choice for most cases. So while I still prefer Ruby, and will likely use Ruby &#8230; <a href="http://blog.boochtek.com/2013/02/22/my-thoughts-on-python-vs-ruby" class="more-link">Continue reading<span class="screen-reader-text"> "My Thoughts on Python vs. Ruby"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;ve been using Python at work for the past few months.  I learned Python back in the early 2000s, but never used it for any large projects.  I learned Ruby in late 2005, and it quickly became my language of choice for most cases.</p>
+<p>So while I still prefer Ruby, and will likely use Ruby more in the future than Python, I wanted to assess the strengths and weaknesses of Python in relation to Ruby.  Perhaps some of the lessons could be applied when writing Ruby, and it could help to decide when to use each.  Also, I&#8217;m interested in programming language design, and wanted to document pros and cons in that light.</p>
+<p><span style="color: #000000; font-weight: bold;">Where Python Sucks (As Compared to Ruby)</span></p>
+<ul>
+<li>Have to explicitly include <strong>self</strong> in <strong>EVERY</strong> method declaration.
+<ul>
+<li>Including <strong>@classmethod</strong> declarations (although people usually use the name <strong>cls</strong> instead of <strong>self</strong> there).</li>
+<li>Except <strong>@staticmethod</strong> declarations.</li>
+</ul>
+</li>
+<li>Have to use <strong>self</strong> everywhere to reference an object’s own attributes.</li>
+<li>Inconsistency of things like the <strong>len()</strong> function, when everything else is a method.</li>
+<li>Inconsistency of having some built-in classes with lower-case names.
+<ul>
+<li>And they’re not whole words, so you have to memorize them: <strong>list</strong>, <strong>dict</strong>, <strong>str</strong>, <strong>int</strong>.</li>
+<li>Even more bizarre is <strong>dict</strong> vs. <strong>OrderedDict</strong>.</li>
+</ul>
+</li>
+<li>I’m not a fan of <strong>True</strong> and <strong>False</strong> being uppercase.
+<ul>
+<li>I’m a bit less concerned about <strong>None</strong>, for some reason.</li>
+<li>If they’re going to be uppercase, they might as well be all caps, in my opinion.</li>
+</ul>
+</li>
+<li>Inconsistency of camelCase versus snake_case in some modules.</li>
+<li>Claims to prefer explicit over implicit, yet does not use <strong>new</strong> to create an object.
+<ul>
+<li>It is nicely concise, but makes it look too much like a regular function call.</li>
+</ul>
+</li>
+<li>The implementation of lambdas is too limited.
+<ul>
+<li>Makes using <strong>map</strong> function not very useful.</li>
+</ul>
+</li>
+<li>Class methods are less than ideal to implement.
+<ul>
+<li>Probably better to use functions within a module instead, in many cases.</li>
+</ul>
+</li>
+<li>Lack of good functional programming tools makes it harder to manipulate lists.
+<ul>
+<li>Have to often resort to creating an initial list and adding to it in a <strong>for</strong> loop.</li>
+</ul>
+</li>
+<li>I don’t understand why r&#8217;regex_string&#8217; doesn’t just create an actual regular expression object.</li>
+<li>I miss Ruby’s method-call-or-property-getter syntax.
+<ul>
+<li>Nice that I can get it by adding <strong>@property</strong> to method definitions, but that’s a bit messy.</li>
+</ul>
+</li>
+<li>I don’t understand why lists don’t have a <strong>join()</strong> method; it seems backwards to call <strong>join</strong> on the string used to connect the list elements.</li>
+<li>I miss <strong>unless</strong>; seems like with all the keywords, Python would have added that.</li>
+<li>I really miss <strong>||=</strong> to memoize.
+<ul>
+<li>The distinction between unset variables and variables set to <strong>None</strong> makes it hard.</li>
+<li>I also miss <strong>+=</strong>.</li>
+</ul>
+</li>
+<li>I really miss statement modifiers (<strong>if</strong> or <strong>unless</strong> at the end of the statement/expression instead of the beginning).</li>
+<li>I miss being able to assign to a compound statement (<strong>x = if True: 1; else: 2</strong>).
+<ul>
+<li>While Python does allow this simple case, it does not allow more complex cases.</li>
+</ul>
+</li>
+<li>The way modules, files, and classes work, I either have a lot of classes in one file, or have to come up with more module names in order to split classes into different files.</li>
+<li>The preference for bare functions within modules over class methods often leads to functions outside of classes, when they’d make more sense more closely associated with the class.</li>
+<li>I don’t quite understand the necessity for <strong>pass</strong>.
+<ul>
+<li>Seems like allowing 0 lines of indented code would suffice instead.</li>
+</ul>
+</li>
+<li>I miss implicit <strong>return</strong>.
+<ul>
+<li>Explicit <strong>return</strong> looks a bit nicer, but is less concise, and I&#8217;ve gotten out of the habit.</li>
+</ul>
+</li>
+<li>Mixins turn out to be more useful than multiple inheritance.</li>
+<li>I miss string interpolation.</li>
+<li>I really miss <strong>Array#first</strong> and <strong>Array#last</strong>.</li>
+<li>I really don’t like that 0 is falsey.
+<ul>
+<li>I could live with empty lists and dicts being false, but not 0.0 and 0.</li>
+</ul>
+</li>
+<li>Comparing a string to a regular expression seems harder than it should be.</li>
+<li>Converting to a Boolean is not as easy a Ruby’s <strong>!!</strong> syntax.
+<ul>
+<li>OK, <strong>bool(expression)</strong> isn&#8217;t so bad, I guess.</li>
+</ul>
+</li>
+</ul>
+<h1>Where Python Rocks</h1>
+<ul>
+<li>Indentation removes the need for <strong>end</strong> everywhere.</li>
+<li>Import statements are nice.
+<ul>
+<li>Can import everything, or just a few things.</li>
+</ul>
+</li>
+<li>Annotations are nice for aspect-oriented modification of methods.
+<ul>
+<li>Does it make it hard to debug though, like <strong>alias_method_chain</strong> in Ruby?</li>
+<li>It’s kind of tricky to write them though, due to doubly-nested function definitions.</li>
+</ul>
+</li>
+<li>List comprehensions are more powerful than <strong>map</strong>.
+<ul>
+<li>But <strong>map</strong> can be more concise for the most common cases.</li>
+</ul>
+</li>
+<li>Can add arbitrary attributes to any object, class, or module.</li>
+<li>The object creation syntax is nicely concise.</li>
+<li>Sometimes the ability to add a bare function within a module is nice.</li>
+<li>Keyword arguments are nicely done.
+<ul>
+<li>Ruby’s emulation via hashes without braces is OK, but the corner cases are problematic.</li>
+</ul>
+</li>
+<li>Docstrings as part of the language is nice.</li>
+<li>The new <strong>with</strong> keyword looks like a halfway-decent replacement for blocks.
+<ul>
+<li>Seems like a lot more work that using blocks and <strong>yield</strong> though.</li>
+</ul>
+</li>
+<li>Python 3 drops support for octal literals starting with a 0.
+<ul>
+<li>Still allows it via a 0o prefix.</li>
+</ul>
+</li>
+<li>No support for all the crazy Perl-inspired globals.</li>
+<li>The names <strong>list</strong> and <strong>dictionary</strong> are better than <strong>array</strong> and <strong>hash</strong>.
+<ul>
+<li>The Ruby names are more about the implementation, especially <strong>hash</strong>.</li>
+<li>I’d much prefer the name <strong>map</strong> over <strong>hash</strong>, or even <strong>dictionary</strong>.</li>
+<li>The name <strong>list</strong> is only slightly better than <strong>array</strong>.</li>
+</ul>
+</li>
+<li>List and string slicing is quite nice.
+<ul>
+<li>I do wish that the syntax was “..” instead of “:” though.</li>
+<li>Slice assignment is even cooler.</li>
+</ul>
+</li>
+<li>I prefer the Python <strong>dict</strong> syntax over the Ruby <strong>hash</strong> syntax (“:” vs. “=&gt;”).
+<ul>
+<li>The Ruby 1.9 symbol hash syntax is an improvement, but not quite as good.</li>
+</ul>
+</li>
+<li>Checking for string containment is nice: <strong>if substring in string</strong>.</li>
+</ul>
+<h1>Where Ruby Rocks</h1>
+<ul>
+<li>Consistency.</li>
+<li>Blocks.</li>
+<li>Excellent functional tools to deal with Enumerable.</li>
+<li>Meta-programming.</li>
+<li>Optional parentheses.</li>
+<li>Modules and classes are also objects.</li>
+</ul>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2013/02/22/my-thoughts-on-python-vs-ruby/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>Debugging Pattern &#8211; Grenade</title>
+		<link>http://blog.boochtek.com/2012/01/11/grenade-debugging-pattern</link>
+		<comments>http://blog.boochtek.com/2012/01/11/grenade-debugging-pattern#respond</comments>
+		<pubDate>Thu, 12 Jan 2012 00:59:59 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Programming]]></category>
+		<category><![CDATA[Ruby]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=67</guid>
+		<description><![CDATA[I&#8217;ve been more interested in programming patterns lately, partly due to the Ruby community&#8217;s recent interest &#8212; especially the Ruby Rogue podcast&#8217;s love affair with &#8220;Smalltalk Best Practice Patterns&#8221;. I consider most of the patterns in &#8220;Smalltalk Best Practice Patterns&#8221; to be patterns &#8220;in the small&#8221; &#8212; things that are typically employed on a single line or method. &#8230; <a href="http://blog.boochtek.com/2012/01/11/grenade-debugging-pattern" class="more-link">Continue reading<span class="screen-reader-text"> "Debugging Pattern &#8211; Grenade"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;ve been more interested in programming patterns lately, partly due to the Ruby community&#8217;s recent interest &#8212; especially the Ruby Rogue podcast&#8217;s love affair with &#8220;Smalltalk Best Practice Patterns&#8221;.</p>
+<p>I consider most of the patterns in &#8220;Smalltalk Best Practice Patterns&#8221; to be patterns &#8220;in the small&#8221; &#8212; things that are typically employed on a single line or method. The Gang Of Four patterns are more medium sized, dealing with methods and classes. The PEAA book covers architectural-scale patterns. I suppose &#8220;The Pragmatic Programmer&#8221; and similar books could (should!) be considered to be very general patterns, mostly about the practice of programming.</p>
+<p>One type of pattern that I have not seen discussed much is debugging patterns. I&#8217;m not exactly sure why that is; probably just our general concentration on designing the program code itself. There are definitely testing patterns. But I can&#8217;t think of anything that I&#8217;ve seen that covers debugging patterns. A quick search on the Internet doesn&#8217;t turn up too much.</p>
+<p>Anyway, a co-worker (Helena) and I were debugging recently, and were having trouble figuring out where a certain method on a certain object was being called. We came up with a really cool solution. We immediately called it a grenade, because its entire purpose is to blow up (raise an exception) and display a backtrace to show us the caller of the method that we&#8217;re looking for.</p>
+<p>Here&#8217;s our implementation in Ruby:</p>
+<pre><code class="ruby">
+module Grenade
+  def method_under_investigation(*)
+    raise "method_under_investigation called"
+  end
+end
+
+class Xyz
+  ...
+  def xyz
+    object_under_investigation.extend(Grenade)
+  end
+  ...
+end</code></pre>
+<p>I&#8217;m sure we could wrap that in some more semantic sugar, even going as far as making it look something like this:</p>
+<pre><code class="ruby">
+class Xyz
+  ...
+  def xyz
+    object_under_investigation.blow_up_when_method_called(:method_under_investigation)
+  end
+  ...
+end
+</code></pre>
+<p>I&#8217;m not sure that would really be worth it though, unless we were to add it to some sort of library.</p>
+<p>So that&#8217;s our contribution to the (small) list of debugging patterns.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2012/01/11/grenade-debugging-pattern/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Brilliant &#8211; BoochTek, LLC</title>
+	<atom:link href="http://blog.boochtek.com/category/programming/programming-languages/brilliant/feed" rel="self" type="application/rss+xml" />
+	<link>http://blog.boochtek.com</link>
+	<description>Web Development, Ruby on Rails, Open Source</description>
+	<lastBuildDate>Thu, 07 Jul 2016 04:22:08 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.3</generator>
+	<item>
+		<title>2015 Year in Review</title>
+		<link>http://blog.boochtek.com/2015/12/28/year-in-review-2015</link>
+		<comments>http://blog.boochtek.com/2015/12/28/year-in-review-2015#respond</comments>
+		<pubDate>Tue, 29 Dec 2015 05:28:38 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Blogging]]></category>
+		<category><![CDATA[Brilliant]]></category>
+		<category><![CDATA[Languages]]></category>
+		<category><![CDATA[Resolutions]]></category>
+		<category><![CDATA[Retrospectives]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=287</guid>
+		<description><![CDATA[It&#8217;s that time of year again — time for a retrospective on how I did on my goals for the year. I had 5 main goals for 2015: Job Hunting Conferences Blogging Programming Language Design Writing an Agile Book Job Hunting I got pretty lucky on this one. My main contract with Mercy got extended several times. Amos and &#8230; <a href="http://blog.boochtek.com/2015/12/28/year-in-review-2015" class="more-link">Continue reading<span class="screen-reader-text"> "2015 Year in Review"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>It&#8217;s that time of year again — time for a retrospective on how I did on <a href="http://blog.boochtek.com/2015/02/02/resolutions">my goals</a> for the year. I had 5 main goals for 2015:</p>
+<ul>
+<li>Job Hunting</li>
+<li>Conferences</li>
+<li>Blogging</li>
+<li>Programming Language Design</li>
+<li>Writing an Agile Book</li>
+</ul>
+<h2>Job Hunting</h2>
+<p>I got pretty lucky on this one. My main contract with <a href="https://www.mercy.net/">Mercy</a> got extended several times. <a href="https://twitter.com/adkron">Amos</a> and I must have been doing a good job of keeping the customer happy. We even made it through a couple rounds of layoffs. I&#8217;m wrapping up the gig at Mercy now. I&#8217;m working one day a week there, as the project winds down.</p>
+<p>I also started a new gig this month at <a href="https://www.ctl.io/">CenturyLink</a>. I&#8217;m working on a cloud development team. Our current project involves selling <a href="https://www.ctl.io/wordpress/">WordPress as a service</a>. The manager had been courting me for most of the year. I&#8217;m excited about my new role; I&#8217;ll be writing about it in a blog post soon.</p>
+<h2>Conferences</h2>
+<p>I set a goal in 2014 to give my first conference talk. I accomplished that, giving <a href="http://confreaks.tv/videos/rubyconf2014-ruby-idioms-you-re-not-using-yet">an ambitious talk</a> at <a href="http://confreaks.tv/events/rubyconf2014">RubyConf</a>. I enjoyed having done that, and vowed to do more conference speaking.</p>
+<p>I gave 3 conference talks in 2015. I gave a <a href="https://www.youtube.com/watch?v=kmfUfjpDpz0">workshop</a> on <a href="https://rawgit.com/booch/presentations/master/HTTP_Exploration/slides.html#1">HTTP</a> at RailsConf. I <a href="http://tinyurl.com/madruby-ii">talked</a> about <a href="https://www.youtube.com/watch?v=F6MZi9OlW1Q">immutable infrastructure</a> at Madison+ Ruby. At RubyConf, I gave a talk <a href="https://www.youtube.com/watch?v=MZVSK4cjeF4">on a micro-ORM</a> <a href="https://github.com/boochtek/ruby_preserves">I wrote</a>. I also gave a <a href="https://rawgit.com/booch/presentations/master/No_Estimates/slides.html#1">lightning talk</a> about Agile estimation (#noestimates).</p>
+<p>I was an alternate speaker at Windy City Rails, but did not give my talk on <a href="https://rawgit.com/booch/presentations/master/Alternatives_to_ActiveRecord/slides.html#1">Alternatives to ActiveRecord</a>. I also went to Strange Loop, mainly to see several friends and acquaintances speak.</p>
+<h2>Blogging</h2>
+<p>I wrote 24 blog articles this year. That&#8217;s about one every other week. What really kept me going was participating in a <a href="https://github.com/booch/pact#readme">writing pact</a>. When the pact was going, I had a 75% blogging rate. That&#8217;s pretty good.</p>
+<p>I&#8217;m not so sure about the quality of my blog writing though. I know that practicing writing is supposed to make you better. I know I wrote some really good articles over the past year, but I think I also wrote some articles that weren&#8217;t very good. I think sometimes the deadline has caused more harm than good. I&#8217;m not really sure what to do about that; perhaps just pushing on is the right answer.</p>
+<h2>Programming Language Design</h2>
+<p>I&#8217;ve taken a lot of notes on the design of my programming language. Any time I learn something interesting about another language, or come up with another idea, I write it down.</p>
+<p>But I haven&#8217;t worked on the implementation. (I last worked on the implementation in 2014.) I should be experimenting with some ideas, implementing them to see how they work out. I&#8217;ve even kicked around the idea of starting with a Forth variant, just to get something working quickly.</p>
+<p>I haven&#8217;t written any articles on my ideas this year either. My notes are pretty extensive, and it would be good to write some articles to help get my thoughts straight.</p>
+<h2>Writing an Agile Book</h2>
+<p>I&#8217;ve got some things to say about Agile, and want to write a book to express those ideas. I&#8217;ve made a start — I&#8217;ve got the chapters outlines, and have started on a few chapters. But I haven&#8217;t made as much progress as I&#8217;d like to. I shared what I&#8217;ve got with Amos, and he showed some interest in pairing with me on the writing. Hopefully we&#8217;ll work on it together in 2016 and publish it.</p>
+<h2>Other</h2>
+<p>There were a few other accomplishments that weren&#8217;t explicitly on my list, but I&#8217;d like to call attention to.</p>
+<p>I&#8217;ve continued participating on the <a href="http://www.thisagilelife.com/">This Agile Life</a> podcast. I was in 12 of the 33 episodes that were recorded in 2015. I hope to participate in more in 2016. We&#8217;re considering scheduling a standard recording night each week, which might help us record more regularly.</p>
+<p>I recently took over as maintainer of <a href="https://github.com/solnic/virtus#readme">Virtus</a>, a library to declare attributes for Ruby model classes. I haven&#8217;t done a lot yet, since I&#8217;ve been busy with travel, vacation, and holidays. But I hope to catch up with all the pending pull requests and issues in the next month or so.</p>
+<p>The accomplishment I&#8217;m most proud of is mentoring for the <a href="http://royclaysr.com/">Roy Clay Sr. Tech Impact</a> program. This is a program begun as a result of the Ferguson protest movement. We&#8217;re helping teach kids (from 14 to 25) web design and development. My personal goal was to give these kids an opportunity that they would not have otherwise had. But it turned out that some of them have actually started a business building web sites for small companies. I&#8217;m so proud of the progress they&#8217;ve made in such a short time; it&#8217;s a challenging program.</p>
+<h2>Conclusion</h2>
+<p>I&#8217;m pretty happy with my accomplishments this year. I made at least some progress on each of the goals I set. I&#8217;ve been thinking about my goals for next year; I&#8217;ll write that as a separate blog article next week.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2015/12/28/year-in-review-2015/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Resolutions</title>
+		<link>http://blog.boochtek.com/2015/02/02/resolutions</link>
+		<comments>http://blog.boochtek.com/2015/02/02/resolutions#respond</comments>
+		<pubDate>Tue, 03 Feb 2015 05:42:13 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Agile]]></category>
+		<category><![CDATA[Blogging]]></category>
+		<category><![CDATA[Brilliant]]></category>
+		<category><![CDATA[Resolutions]]></category>
+		<category><![CDATA[Security]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=198</guid>
+		<description><![CDATA[January kept me pretty busy, so I&#8217;m a little late to this. But better late than never. And as an Agile practitioner, I don&#8217;t think personal retrospectives should be limited to one time of year. Review of 2014 Last year I wrote a blog entry listing my goals for 2014. As far as New Year&#8217;s resolutions go, I &#8230; <a href="http://blog.boochtek.com/2015/02/02/resolutions" class="more-link">Continue reading<span class="screen-reader-text"> "Resolutions"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>January kept me pretty busy, so I&#8217;m a little late to this. But better late than never. And as an Agile practitioner, I don&#8217;t think personal retrospectives should be limited to one time of year.</p>
+<h1>Review of 2014</h1>
+<p>Last year I wrote a blog entry listing <a href="http://blog.boochtek.com/2014/01/04/open-source-resolutions">my goals for 2014</a>. As far as New Year&#8217;s resolutions go, I was relatively successful &#8212; about 50% of my goals accomplished. Unfortunately, my Open Source contributions weren&#8217;t as strong as I had hoped; while I released some of my own work, I didn&#8217;t do much else. I did increase my blogging; getting in on a weekly blogging pact helped immensely. I also increased my participation on the <a href="http://thisagilelife.com/">This Agile Life podcast</a> to a level that I&#8217;m happy with. But the accomplishment I&#8217;m most proud of was giving a <a href="https://www.youtube.com/watch?v=hc_wtllfKtQ">presentation at RubyConf</a>.</p>
+<h1>Plans for 2015</h1>
+<p>I&#8217;d like to keep things rolling from last year, but crank up a few things. My plans are quite ambitious, so I don&#8217;t expect to get everything done by any means. But I think by setting the bar high, I&#8217;ll end up with a lot I can be proud of.</p>
+<h2>Job Hunting</h2>
+<p>Late last year, I took the jump into independent consulting. So far, I&#8217;ve really enjoyed it, and I&#8217;m booked up through April. My wife graduates in May, so we&#8217;ve got the possibility of moving if that makes sense. So I&#8217;ll be looking for consulting projects in town, but I&#8217;ll also be looking at jobs in San Francisco and Chicago. The possibilities are exciting, and I&#8217;ll be taking my time to find something just right.</p>
+<h2>Conferences</h2>
+<p>I was incredibly nervous leading up to my RubyConf presentation. Part of that was just the common fear of public speaking. For me, that only kicks in at around 100 people, and this audience was around 250. I think another reason was that I chose a really ambitious topic, and I kept finding more that I wanted to talk about, but wasn&#8217;t prepared for. But I think I did a pretty good job presenting an advanced topic. And I was so pumped by the sense of accomplishment as soon as I finished. So I&#8217;m hoping to do it more. I&#8217;ve already submitted a couple proposals, and plan to submit several more.</p>
+<h2>Blogging</h2>
+<p>I believe that blogging is important for me to get my thoughts down &#8212; for myself and to share with others. I was really successful last year when I had a partner to keep me honest, via a pact. So I&#8217;ve started up <a href="https://github.com/booch/pact">another pact</a> this year, which will hopefully ensure I&#8217;ll keep things going. I&#8217;ve got a really long backlog of topics, so as long as I keep at it, I&#8217;ll have plenty to write about.</p>
+<p>I also want to move away from WordPress to a static system &#8212; probably <a href="https://middlemanapp.com/">Middleman</a>. I&#8217;ve got 2 major problems with WordPress. First, I no longer trust its security, nor the security of any application written in PHP. Second, it generates HTML every time someone requests a page, instead of when the content is updated. I find that to be a waste of resources, and problematic from a security standpoint. The main problem with moving to a static blogging system is that I really want to allow comments, pingbacks, and tweetbacks. So I&#8217;ll have to find a way to integrate those.</p>
+<h2>Programming Language Design</h2>
+<p>Last year I started thinking about programming language design, and started implementing a language tentatively called <a href="http://blog.boochtek.com/2014/03/30/brilliant-my-own-programming-language">Brilliant</a>. I&#8217;ve done a lot more thinking on the topic, and have a lot of notes. But I haven&#8217;t implemented much more yet. This year, I&#8217;d like to get my thoughts more organized, and write a series of blog posts on various aspects of language design. The most interesting part seems to be the trade-offs involved in the ways that various language features interact. So I&#8217;d like to make some progress on the language implementation, but more importantly, I&#8217;d like to get a lot of my design ideas written down.</p>
+<p>I&#8217;m also going to spend a lot of time learning a bunch more programming languages, so I have a better understanding of possible features, combinations of features, and their interactions. I&#8217;ve already start with Elixir, Clojure, and Racket. I&#8217;m hoping to also look at OCaml, Factor, and Haskell. I&#8217;ll probably also take a look at the 2 &#8220;Seven Languages in Seven Weeks&#8221; books.</p>
+<h2>Agile Book</h2>
+<p>I think people often have trouble getting started with Agile. I started on a book last year, and got down quite a lot of good ideas. But I realized that I&#8217;m going to have a hard time organizing all those ideas into something coherent. Still, I&#8217;d like to try to get something out there that lets people get started with Agile. My idea is to present a toolbox of practices to get started with and build on that foundation over time with additional practices. Sort of a playbook on how to get started over the first 6 to 12 months and be successful. I want to make some progress on the book, at least enough to decide whether it&#8217;s worth the effort to finish it and self-publish it.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2015/02/02/resolutions/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Brilliant &#8211; My Very Own Programming Language</title>
+		<link>http://blog.boochtek.com/2014/03/30/brilliant-my-own-programming-language</link>
+		<comments>http://blog.boochtek.com/2014/03/30/brilliant-my-own-programming-language#comments</comments>
+		<pubDate>Mon, 31 Mar 2014 04:25:38 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Brilliant]]></category>
+		<category><![CDATA[Languages]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=172</guid>
+		<description><![CDATA[I&#8217;ve decided to design and implement my own programming language, and call it Brilliant. I&#8217;ve been interested in programming languages and linguistics almost as long as I&#8217;ve been using computers. I&#8217;ve long thought that if I ever go back to college, it&#8217;s likely that I&#8217;ll concentrate on programming languages as a specialty. My recent discovery and &#8230; <a href="http://blog.boochtek.com/2014/03/30/brilliant-my-own-programming-language" class="more-link">Continue reading<span class="screen-reader-text"> "Brilliant &#8211; My Very Own Programming Language"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;ve decided to design and implement my own programming language, and call it <a href="https://github.com/BoochTek/brilliant">Brilliant</a>.</p>
+<p>I&#8217;ve been interested in programming languages and linguistics almost as long as I&#8217;ve been using computers. I&#8217;ve long thought that if I ever go back to college, it&#8217;s likely that I&#8217;ll concentrate on programming languages as a specialty.</p>
+<p>My recent discovery and involvement with the <a href="http://crystal-lang.org/">Crystal</a> programming language has gotten me excited about new language ideas. It&#8217;s also helped me realize that implementing a language myself is feasible, and that there&#8217;s no better time to start than now.</p>
+<h1>Implementation</h1>
+<p>For now, the Brilliant implementation doesn&#8217;t let you do much more than &#8220;Hello World&#8221;. But you gotta start somewhere. So this article isn&#8217;t really &#8220;Introducing Brilliant&#8221; so much as the start of a series of articles on its design and implementation.</p>
+<p>I wanted to use a PEG (parsing expression grammar) parser for several reasons. For one, they seem to have gained a lot of popularity in the past few years. Also, PEGs cannot be ambiguous, which can solve a few difficult problems, such as the &#8220;dangling <code>else</code>&#8220;. Perhaps my favorite feature of PEG grammars is that you don&#8217;t need a separate tokenizer (lexer). This provides a nice advantage in that we can use keywords like &#8220;<code>class</code>&#8221; as variables, as long as they&#8217;re not used in a place where the keyword would make sense.</p>
+<p>So knowing that I wanted to use a PEG, I had to find a PEG parser. I kind of wanted to use <a href="http://www.antlr.org/">ANTLR</a>, which has been a leading parser for many years. But the PEG seems to be new to version 4, and I couldn&#8217;t find any Ruby bindings for version 4. <a href="http://treetop.rubyforge.org/">Treetop</a> seems to be the most popular parser for Ruby, but I found the EBNF format that <a href="https://github.com/jarhart/rattler">Rattler</a> uses to be more to my taste. I think the fact that it&#8217;s newer also gives it a few advantages, having had a chance to learn some lessons from Treetop.</p>
+<p>I thought about using the Rubinius VM, but decided to go with <a href="http://llvm.org/">LLVM</a>, mainly since it has slightly better docs for Ruby, and because it&#8217;s what Crystal uses. Also, it&#8217;s pretty easy to get it to compile to a binary executable or run in a JIT. In the future, I might consider switching to the Rubinius VM, the Erlang VM, or the Perl 6 VM (<a href="http://www.parrot.org/">Parrot</a>). But for now, I like the idea of being able to compile to a binary and easily interface with C, just like Crystal.</p>
+<h1>Goals</h1>
+<p>My main goal is to have fun playing around with language ideas.</p>
+<p>I&#8217;ve found a really great language in Ruby, so I&#8217;ll be using it as a starting point. But Ruby does have its faults. In some ways, I want to answer the question &#8220;what would Ruby look like if we designed it today?&#8221;.</p>
+<p>But I also want to explore other ideas. What if objects defaulted to immutable? What if functions and methods were assumed to be pure by default? Might it be possible to infer the purity of a function or method? (If so, we could automatically memoize them.) Can we make creating an actor as easy as creating an object?</p>
+<p>I&#8217;ll also be looking at ideas from other programming languages. Could we get some of the benefits of Haskell&#8217;s purity without having to do somersaults to do IO? Could we mix Python&#8217;s indentation style scoping with brace style or <code>begin</code>/<code>end</code> style? Could we integrate Icon&#8217;s ideas about success and failure (goal-directed execution)? What interesting features can we pull from Ada, Io, CoffeeScript, Crystal, Rubinius, Perl 6, etc.?<i><br />
+</i></p>
+<p>I&#8217;m not so much as interested in cutting-edge features, as in features that can be easily used by the average programmer. More importantly, I&#8217;m interested in how features interact with each other, so they fit well together to create a whole that&#8217;s greater than the sum of the parts.</p>
+<h1>Naming</h1>
+<p>I wanted to name my programming language &#8220;Fermat&#8221;. I&#8217;ve long been intrigued by <a href="http://en.wikipedia.org/wiki/Fermat's_Last_Theorem">Fermat&#8217;s Last Theorem</a>, and <a href="http://en.wikipedia.org/wiki/Fermat%27s_little_theorem">Fermat&#8217;s Little Theorem</a> is important in number theory. Unfortunately, there&#8217;s already a computer algebra system with that name.</p>
+<p>So I decided to find a name in the same vein as &#8220;Ruby&#8221; and &#8220;Crystal&#8221;. I looked at the Wikipedia page for &#8220;gemstones&#8221; for some inspiration. A lot of the names of gemstones are already taken. I considered some obscure gemstones, but saw the word &#8220;brilliant&#8221; and thought it was decent. It&#8217;s not the name of another gemstone, but still evokes some similarity to Ruby and Crystal.</p>
+<p>So that&#8217;s the name for now. Perhaps I&#8217;ll decide to change it at some point in the future, but I needed a name for the project, as well as a file extension for source code files. I chose &#8220;<code>bril</code>&#8221; for that. I suppose &#8220;<code>br</code>&#8221; would be a better choice. Perhaps I&#8217;ll change that before the next article in this series.</p>
+<h1>Future</h1>
+<p>I hope to work on Brilliant every once in a while. I expect it&#8217;ll take a couple years before it&#8217;s really very useful.</p>
+<p>When I do add a major feature, I&#8217;ll be certain to blog about it. I&#8217;ve got tons of ideas strewn about in various files. It would be great to get them organized and published —and even better to get them implemented.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2014/03/30/brilliant-my-own-programming-language/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+	</channel>
+</rss>

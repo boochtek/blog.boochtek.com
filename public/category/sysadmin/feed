@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>System Admin &#8211; BoochTek, LLC</title>
+	<atom:link href="http://blog.boochtek.com/category/sysadmin/feed" rel="self" type="application/rss+xml" />
+	<link>http://blog.boochtek.com</link>
+	<description>Web Development, Ruby on Rails, Open Source</description>
+	<lastBuildDate>Thu, 07 Jul 2016 04:22:08 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.3</generator>
+	<item>
+		<title>Burying the Lede</title>
+		<link>http://blog.boochtek.com/2014/03/11/readable-shell-scripts</link>
+		<comments>http://blog.boochtek.com/2014/03/11/readable-shell-scripts#respond</comments>
+		<pubDate>Wed, 12 Mar 2014 04:28:22 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[GNU/Linux]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[System Admin]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=110</guid>
+		<description><![CDATA[Most of us don&#8217;t write very readable shell scripts. There are plenty of things we could do better, but today I want to talk about one in particular — burying the lede. The term &#8220;burying the lede&#8221; comes from the field of journalism. Here&#8217;s the Wiktionary definition: To begin a story with details of secondary importance to the reader &#8230; <a href="http://blog.boochtek.com/2014/03/11/readable-shell-scripts" class="more-link">Continue reading<span class="screen-reader-text"> "Burying the Lede"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Most of us don&#8217;t write very readable shell scripts. There are plenty of things we could do better, but today I want to talk about one in particular — burying the lede.</p>
+<p>The term &#8220;burying the lede&#8221; comes from the field of journalism. Here&#8217;s the <a href="http://en.wiktionary.org/wiki/bury_the_lede">Wiktionary definition</a>:</p>
+<blockquote><p>To begin a story with details of secondary importance to the reader while postponing more essential points or facts.</p></blockquote>
+<p>Like a good news article, code should tell a story. And the story should start with what&#8217;s most important. In the case of code, the most important information is the high-level functionality — a succinct summary of what the program does. In other words, write (and organize) the code top-down, as opposed to bottom-up.</p>
+<p>Unfortunately, shell script doesn&#8217;t make this easy. Due to the way shell scripts are interpreted, you can&#8217;t call a function until after you&#8217;ve defined it. This leads to most of us structuring our code like this:</p>
+<pre>function do_something { ... }
+function do_something_else { ... }
+
+do_something
+do_something_else</pre>
+<p>The problem with this is that the function definitions will likely take quite a few lines, and we won&#8217;t see what the top-level functionality is until we reach the end of the script.</p>
+<p>I&#8217;d like to propose a standard way to structure shell scripts to mitigate this issue. (I&#8217;m really only talking about shell scripts that have function definitions within them.) I&#8217;m sure I&#8217;ve seen a few scripts do this, but it&#8217;s not very common at all.</p>
+<p>My proposal is simple:</p>
+<pre>function main {
+  do_something
+  do_something_else
+}
+function do_something { ... }
+function do_something_else { ... }
+
+main</pre>
+<p>This structure lets us start with the lede. We describe the top-level functionality right away. Only then do we get to the secondary details. The name <code>main</code> makes it pretty clear that it contains the top-level functionality.</p>
+<p>I&#8217;ve recently started writing my shell code like this, and I&#8217;m happy with the results. I&#8217;ve also started to use some other programming techniques in my shell scripts to improve readability: better naming, extracting more methods, and moving helper methods into separate files. It feels good to treat shell scripts like real code instead of just some stuff I&#8217;ve hacked together.</p>
+<p>PS. The WordPress theme I&#8217;m currently using (Twenty Eleven) also buries the lede — I can barely even see the title of the blog post on my screen without scrolling. I&#8217;m going to have to change that soon.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2014/03/11/readable-shell-scripts/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Yak Shaving #1: Cursor Keys</title>
+		<link>http://blog.boochtek.com/2014/03/03/yak-shaving-cursor-keys</link>
+		<comments>http://blog.boochtek.com/2014/03/03/yak-shaving-cursor-keys#respond</comments>
+		<pubDate>Tue, 04 Mar 2014 04:02:59 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Shell]]></category>
+		<category><![CDATA[System Admin]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=129</guid>
+		<description><![CDATA[I recently decided to start using Emacs again. I used it extensively from the early 1990s until the early 2000s. I pretty much stopped using it when I had a sysadmin job with no Emacs on the servers, and no ability to install it. With the rising popularity of tmux and tmate for remote pairing, and my dislike &#8230; <a href="http://blog.boochtek.com/2014/03/03/yak-shaving-cursor-keys" class="more-link">Continue reading<span class="screen-reader-text"> "Yak Shaving #1: Cursor Keys"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I recently decided to start using Emacs again. I used it extensively from the early 1990s until the early 2000s. I pretty much stopped using it when I had a sysadmin job with no Emacs on the servers, and no ability to install it. With the rising popularity of tmux and tmate for remote pairing, and my dislike for vim&#8217;s modes, I decided to try going back to Emacs in the terminal.</p>
+<p>One thing I <strong>really</strong> want in a text editor is good cursor key support. Shifted cursor keys<br />
+should select text, and Control+left and right should move by words. (<a href="https://developer.apple.com/library/mac/documentation/UserExperience/Conceptual/AppleHIGuidelines/KeyboardShortcuts/KeyboardShortcuts.html">Apple HIG</a> says to use Option+left and right to move by words; most apps on Mac OS X seem to support both.) Things have worked this way on almost every text editor on every OS I&#8217;ve used &#8212; Amiga, DOS, Windows, NeXT, Mac, Motif, Gnome, KDE. It&#8217;s a part of the <a href="https://en.wikipedia.org/wiki/Common_User_Access">CUA</a> standard that&#8217;s been in common usage on everything since the mid-1980s.</p>
+<p>Enabling cursor keys in Emacs was pretty easy. I&#8217;ve decided to use <a href="https://github.com/bbatsov/prelude#readme">Prelude</a> to make getting started with Emacs easy. Emacs comes with the cursor keys enabled, but Prelude disables them. Undoing Prelude&#8217;s change is pretty easy:</p>
+<pre>(setq prelude-guru nil)</pre>
+<p>Trying to make shifted cursor keys work is where the trouble began. They work in the GUI version of Emacs, but not from the terminal. It turns out that the Mac Terminal doesn&#8217;t distinguish between cursor keys and shifted cursor keys in its default configuration. So I had to figure out how to configure key bindings in Terminal.</p>
+<p>That&#8217;s easy enough &#8212; they&#8217;re in the preferences. But what should I set them to? This took a lot of research. Terminal emulation and ANSI code sequences are obscure, complex, and inconsistent. I eventually found the info I needed. For starters, Shift+Right, Shift+Left, Shift+Home, and Shift+End are defined in the terminfo. The rest I was able to piece together from various sources around the Internet.</p>
+<p>I&#8217;m also trying to <a href="https://github.com/boochtek/mac_config">script my Mac configuration</a>. So instead of manually adding all the keybindings in the Terminal preferences pane, I decided to write a script. Mac OS X does a decent job of allowing you to change preferences from the command line. For example, to always show the tab bar:</p>
+<pre>defaults write -app Terminal ShowTabBar 1</pre>
+<p>Easy enough, except for a couple problems. First, I had to figure out the obscure syntax used in the preferences for key codes. I was able to piece these together with some more Internet research. But the really big problem is that the keyboard bindings are 2 levels deep within a &#8220;dictionary&#8221; (hash map). And the <code>defaults</code> command doesn&#8217;t handle that. There are some obscure utilities that handle nested preferences, but <a href="https://groups.google.com/forum/#!topic/macenterprise/YgJnfqpyKNs">they don&#8217;t work well with the preferences caching in Mac OS X 10.9</a> &#8212; a problem I ran into while testing.</p>
+<p>So now I&#8217;m writing a utility in Python that does what the <code>defaults</code> command does, but that will handle nested dictionaries.</p>
+<p>There&#8217;s a term for this process of having to solve one issue before you can solve another, and the issues get several layers deep. It&#8217;s called <em>yak shaving</em>.</p>
+<p>Here&#8217;s another good example:</p>
+<figure id="attachment_143" style="width: 480px" class="wp-caption alignnone"><a href="http://blog.boochtek.com/wp-content/uploads/2014/03/ibaDjk7AeIcvxv.gif"><img class="size-full wp-image-143" alt="Father from Malcolm in the middle having to fix one thing before fixing another, ad infinitum." src="http://blog.boochtek.com/wp-content/uploads/2014/03/ibaDjk7AeIcvxv.gif" width="480" height="360" /></a><figcaption class="wp-caption-text">Yak shaving &#8211; home repairs</figcaption></figure>
+<p>I&#8217;m sure this will be the first of many posts about me yak shaving.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2014/03/03/yak-shaving-cursor-keys/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>What I Want in a Blog Engine</title>
+		<link>http://blog.boochtek.com/2014/02/02/blogging-software</link>
+		<comments>http://blog.boochtek.com/2014/02/02/blogging-software#respond</comments>
+		<pubDate>Mon, 03 Feb 2014 04:50:43 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Blogging]]></category>
+		<category><![CDATA[Security]]></category>
+		<category><![CDATA[System Admin]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=100</guid>
+		<description><![CDATA[I&#8217;m considering moving away from WordPress, for a couple reasons: Security. There have been several vulnerabilities over the past few years, and I&#8217;ve never really had a high level of confidence that it&#8217;s secure. In addition, I now find the whole PHP model &#8212; every web app running as a single user, instead of leveraging UNIX &#8230; <a href="http://blog.boochtek.com/2014/02/02/blogging-software" class="more-link">Continue reading<span class="screen-reader-text"> "What I Want in a Blog Engine"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;m considering moving away from <a href="http://wordpress.org">WordPress</a>, for a couple reasons:</p>
+<ul>
+<li>Security. There have been several vulnerabilities over the past few years, and I&#8217;ve never really had a high level of confidence that it&#8217;s secure. In addition, I now find the whole PHP model &#8212; every web app running as a single user, instead of leveraging UNIX permissions &#8212; to be broken.</li>
+<li>Speed. I started to realize a couple years ago that a blog engine should generate static pages. The static pages should be updated whenever new content is added. There&#8217;s really no reason to re-generate the page every time someone wants to read it. At the very least, Server-Side Includes (<a href="https://en.wikipedia.org/wiki/Server_Side_Includes">SSI</a>) or Edge-Side Includes (<a href="https://en.wikipedia.org/wiki/Edge_Side_Includes">ESI</a>) should be used.</li>
+</ul>
+<p>Now that I&#8217;m starting to actually blog consistently, it makes sense to change. But before I move to something different, I want to be sure that I find all the features that I need. This post is my thought process about what I want.</p>
+<h2>Requirements</h2>
+<ul>
+<li>Self hosted. I like to run my own servers. Partly so I can keep full control, and partly because I enjoy doing some system admin stuff (as long as it doesn&#8217;t take too much time).</li>
+<li>Generation of static pages. Almost everything should be a static page by the time a user requests a page. Obviously, submitting comments would hit a dynamic page, and comment approval would likely be done through a dynamic part of the site. But <em>publishing</em> a blog post or comments should generate static files to be served by Apache or nginx.</li>
+<li>Categories (or maybe tags). I want readers to be able to find other things that I&#8217;ve written that might interest them. A list of categories in a sidebar would help them find what interests them.</li>
+<li>Site map. Especially an <a href="http://www.sitemaps.org/protocol.html">XML sitemap</a>, so Google can index better. I also like the idea of readers being able to see everything in one place.</li>
+<li>Archives. This is another way of letting readers see everything I&#8217;ve written, organized by publication date.</li>
+<li>RSS and/or Atom. I want readers to be able to subscribe to my blog.</li>
+<li>Media. I don&#8217;t think I necessarily need a media manager, just a simple way to add pictures to blog posts.</li>
+<li>Comments. I want to allow comments, but I don&#8217;t want to use anything like <a href="http://disqus.com/">Disqus</a>. I want the comments to be in my own database, so they won&#8217;t disappear. I also dislike requiring JavaScript just to see comments. And I&#8217;ve worked at places where Disqus wouldn&#8217;t work, due to web proxy servers. Comments should be moderated by the site admin, editor, or author. Readers should not have to log in to post a comment, but it would be nice to <em>allow</em> users to log into Twitter or some other social network to provide their info.</li>
+<li>Pingbacks and Tweetbacks. I&#8217;d like to be able to see who&#8217;s referring to my articles.</li>
+</ul>
+<h2><b>Nice to Have</b></h2>
+<ul>
+<li>Free. I almost consider this to be a requirement, but I&#8217;d be willing to entertain a 1-time payment for something that meets my needs really well. I need to try to counteract my DIY-at-all-non-monetary-costs mentality.</li>
+<li>Open Source. I think Open Source is likely to provide a more useful product, especially in this space. An Open Source option is more likely to improve over time.</li>
+<li>Not PHP. I&#8217;ve got several problems with PHP. First, the whole PHP model of running in the same context as Apache (or nginx) breaks UNIX conventions. A security issue in a PHP program exposes more than just the program itself &#8212; it exposes Apache and every other PHP program. Under the UNIX model, each program runs in a different user context, isolating bugs to that program only. PHP is also a &#8220;hacky&#8221; language. PHP programmers tend to not be as rigorous (in many ways), leading to more vulnerabilities. Finally, the PHP language itself has had several misfeatures that have lead to security issues &#8212; much more than Ruby or Java.</li>
+<li>Not MySQL. I&#8217;d like to be able to remove MySQL from my servers. PostgreSQL would be much preferred. Storing everything in git would be fine too &#8212; maybe even preferred. I&#8217;d even be fine with MongoDB or some other simple NoSQL database.</li>
+<li>Admin console. I can&#8217;t imagine approving comments without this, but I&#8217;m not closed to that possibility.</li>
+<li>Edit history. I want to be able to update posts, but see what the previous versions looked like. (Not sure if I care whether the public can or cannot see the various revisions.)</li>
+<li>WYSIWYG. I&#8217;d be willing to settle for Markdown. In fact, I&#8217;d prefer (extended) Markdown as the canonical form behind the WYSIWYG.</li>
+<li>Code highlighting. A lot of my blog posts (will) include code in various languages. I&#8217;d like the blogging software to be able to handle that well. Syntax highlighting would be great. Any other related features would also be nice.</li>
+<li>Through-the-web editing. I&#8217;d like to be able to edit a page from any device from anywhere that has Internet access.</li>
+<li>Reader-submitted edits. This is probably going to be the hardest thing to find, but I&#8217;d like a <em>really</em> easy way for readers to let me know of typos and such by simply submitting a fix for them. The author or editor of the post would have to approve the edits, obviously.</li>
+<li>Import from WordPress. I don&#8217;t have a ton of content in WordPress, or else this would probably be a more firm requirement.</li>
+<li>Community. Community helps software thrive, adding improvements and ensuring security.</li>
+<li>Plugins. It would be nice for the blog engine to be extensible.</li>
+<li>Unpublished drafts and previews. I&#8217;d really like to be able to see by blog posts before I release them to the world.</li>
+<li>CMS abilities. I&#8217;d really like the ability to edit non-blog web pages the same way as blog entries.</li>
+<li>Themes. It would be nice to have decently looking themes, so I could have other people help me make the site look nice.</li>
+<li>Posting my tweets in a sidebar area. I&#8217;d be OK with this being done in client-side JavaScript. I&#8217;d also be OK with periodic polling of my Twitter feed, and updating the static content when appropriate.</li>
+</ul>
+<h2>Candidates</h2>
+<p>I&#8217;ve been playing with <a href="http://jekyllrb.com/">Jekyll</a> lately, using it to generate a simple static site that can be updated easily. It&#8217;s pretty nice, and pretty easy to use. Something based on Jekyll would work well. The trickiest part will be figuring out how to manage comments. Or maybe I&#8217;ll just have to learn to live more minimally.</p>
+<p><a href="http://octopress.org/">Octopress</a> is the obvious candidate. It fits most of my needs and wants. Most likely I&#8217;ll write my own commenting engine and add it to my Octopress template.</p>
+<p>The only other candidate that I&#8217;ve found is <a href="https://ghost.org/">Ghost</a>. It&#8217;s written in JavaScript and runs on Node. I don&#8217;t find Node to be that compelling, but the templates look great, and it&#8217;s designed for coding blogs.</p>
+<p>I&#8217;ll probably take a quick look at <a href="http://dropplets.com/">Droplets</a>, too. It&#8217;s written in PHP, but seems to fit my other requirements.</p>
+<p>Unfortunately, that seems to be all there is in this space. Maybe I need to investigate more. Or maybe Octopress just has the static blog generation marked cornered. Either way, I&#8217;ll probably change my blogging software in the next month or two. Wish me luck!</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2014/02/02/blogging-software/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Bulk Rename in Bash</title>
+		<link>http://blog.boochtek.com/2011/08/26/bulk-rename-in-bash</link>
+		<comments>http://blog.boochtek.com/2011/08/26/bulk-rename-in-bash#respond</comments>
+		<pubDate>Sat, 27 Aug 2011 03:53:58 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[GNU/Linux]]></category>
+		<category><![CDATA[System Admin]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=46</guid>
+		<description><![CDATA[Here&#8217;s a relatively simple way to rename a bunch of files from the command line. It uses sed within a command substitution to compute the new names from the old names. In this example, we&#8217;re renaming files that start with &#8220;ABC&#8221; to start with &#8220;XYZ&#8221; instead: for i in ABC*; do mv $i $(echo $i &#8230; <a href="http://blog.boochtek.com/2011/08/26/bulk-rename-in-bash" class="more-link">Continue reading<span class="screen-reader-text"> "Bulk Rename in Bash"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Here&#8217;s a relatively simple way to rename a bunch of files from the command line. It uses <code>sed</code> within a command substitution to compute the new names from the old names.</p>
+<p>In this example, we&#8217;re renaming files that start with &#8220;ABC&#8221; to start with &#8220;XYZ&#8221; instead:</p>
+<pre class="bash code">  <code class="bash">for i in ABC*; do mv $i $(echo $i | sed -e s/^ABC/XYZ/); done</code></pre>
+<p>You&#8217;ll have to use shell globbing (wildcards) in the first part, to determine which files will be the source of the renaming, and regular expressions in the second part to translate the old names into the new names.</p>
+<p>It&#8217;s a good idea to use <code>echo</code> in place of <code>mv</code> before running this, to see what the results will be, so you don&#8217;t make a mistake.</p>
+<p>Depending on the situation, you may need to adapt this for your particular needs. For example, if you have too many files to rename, you would need to use <code>xargs</code>. Or <code>sed</code> might not be up for the task of transforming the names that you want. Or you might need to use <code>find</code> to find files within a hierarchy. As with any UNIX idiom, there are hundreds of variations on the theme.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2011/08/26/bulk-rename-in-bash/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

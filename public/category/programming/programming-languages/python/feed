@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Python &#8211; BoochTek, LLC</title>
+	<atom:link href="http://blog.boochtek.com/category/programming/programming-languages/python/feed" rel="self" type="application/rss+xml" />
+	<link>http://blog.boochtek.com</link>
+	<description>Web Development, Ruby on Rails, Open Source</description>
+	<lastBuildDate>Thu, 07 Jul 2016 04:22:08 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.3</generator>
+	<item>
+		<title>My Thoughts on Python vs. Ruby</title>
+		<link>http://blog.boochtek.com/2013/02/22/my-thoughts-on-python-vs-ruby</link>
+		<comments>http://blog.boochtek.com/2013/02/22/my-thoughts-on-python-vs-ruby#comments</comments>
+		<pubDate>Fri, 22 Feb 2013 17:03:06 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Programming]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Ruby]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=76</guid>
+		<description><![CDATA[I&#8217;ve been using Python at work for the past few months.  I learned Python back in the early 2000s, but never used it for any large projects.  I learned Ruby in late 2005, and it quickly became my language of choice for most cases. So while I still prefer Ruby, and will likely use Ruby &#8230; <a href="http://blog.boochtek.com/2013/02/22/my-thoughts-on-python-vs-ruby" class="more-link">Continue reading<span class="screen-reader-text"> "My Thoughts on Python vs. Ruby"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;ve been using Python at work for the past few months.  I learned Python back in the early 2000s, but never used it for any large projects.  I learned Ruby in late 2005, and it quickly became my language of choice for most cases.</p>
+<p>So while I still prefer Ruby, and will likely use Ruby more in the future than Python, I wanted to assess the strengths and weaknesses of Python in relation to Ruby.  Perhaps some of the lessons could be applied when writing Ruby, and it could help to decide when to use each.  Also, I&#8217;m interested in programming language design, and wanted to document pros and cons in that light.</p>
+<p><span style="color: #000000; font-weight: bold;">Where Python Sucks (As Compared to Ruby)</span></p>
+<ul>
+<li>Have to explicitly include <strong>self</strong> in <strong>EVERY</strong> method declaration.
+<ul>
+<li>Including <strong>@classmethod</strong> declarations (although people usually use the name <strong>cls</strong> instead of <strong>self</strong> there).</li>
+<li>Except <strong>@staticmethod</strong> declarations.</li>
+</ul>
+</li>
+<li>Have to use <strong>self</strong> everywhere to reference an object’s own attributes.</li>
+<li>Inconsistency of things like the <strong>len()</strong> function, when everything else is a method.</li>
+<li>Inconsistency of having some built-in classes with lower-case names.
+<ul>
+<li>And they’re not whole words, so you have to memorize them: <strong>list</strong>, <strong>dict</strong>, <strong>str</strong>, <strong>int</strong>.</li>
+<li>Even more bizarre is <strong>dict</strong> vs. <strong>OrderedDict</strong>.</li>
+</ul>
+</li>
+<li>I’m not a fan of <strong>True</strong> and <strong>False</strong> being uppercase.
+<ul>
+<li>I’m a bit less concerned about <strong>None</strong>, for some reason.</li>
+<li>If they’re going to be uppercase, they might as well be all caps, in my opinion.</li>
+</ul>
+</li>
+<li>Inconsistency of camelCase versus snake_case in some modules.</li>
+<li>Claims to prefer explicit over implicit, yet does not use <strong>new</strong> to create an object.
+<ul>
+<li>It is nicely concise, but makes it look too much like a regular function call.</li>
+</ul>
+</li>
+<li>The implementation of lambdas is too limited.
+<ul>
+<li>Makes using <strong>map</strong> function not very useful.</li>
+</ul>
+</li>
+<li>Class methods are less than ideal to implement.
+<ul>
+<li>Probably better to use functions within a module instead, in many cases.</li>
+</ul>
+</li>
+<li>Lack of good functional programming tools makes it harder to manipulate lists.
+<ul>
+<li>Have to often resort to creating an initial list and adding to it in a <strong>for</strong> loop.</li>
+</ul>
+</li>
+<li>I don’t understand why r&#8217;regex_string&#8217; doesn’t just create an actual regular expression object.</li>
+<li>I miss Ruby’s method-call-or-property-getter syntax.
+<ul>
+<li>Nice that I can get it by adding <strong>@property</strong> to method definitions, but that’s a bit messy.</li>
+</ul>
+</li>
+<li>I don’t understand why lists don’t have a <strong>join()</strong> method; it seems backwards to call <strong>join</strong> on the string used to connect the list elements.</li>
+<li>I miss <strong>unless</strong>; seems like with all the keywords, Python would have added that.</li>
+<li>I really miss <strong>||=</strong> to memoize.
+<ul>
+<li>The distinction between unset variables and variables set to <strong>None</strong> makes it hard.</li>
+<li>I also miss <strong>+=</strong>.</li>
+</ul>
+</li>
+<li>I really miss statement modifiers (<strong>if</strong> or <strong>unless</strong> at the end of the statement/expression instead of the beginning).</li>
+<li>I miss being able to assign to a compound statement (<strong>x = if True: 1; else: 2</strong>).
+<ul>
+<li>While Python does allow this simple case, it does not allow more complex cases.</li>
+</ul>
+</li>
+<li>The way modules, files, and classes work, I either have a lot of classes in one file, or have to come up with more module names in order to split classes into different files.</li>
+<li>The preference for bare functions within modules over class methods often leads to functions outside of classes, when they’d make more sense more closely associated with the class.</li>
+<li>I don’t quite understand the necessity for <strong>pass</strong>.
+<ul>
+<li>Seems like allowing 0 lines of indented code would suffice instead.</li>
+</ul>
+</li>
+<li>I miss implicit <strong>return</strong>.
+<ul>
+<li>Explicit <strong>return</strong> looks a bit nicer, but is less concise, and I&#8217;ve gotten out of the habit.</li>
+</ul>
+</li>
+<li>Mixins turn out to be more useful than multiple inheritance.</li>
+<li>I miss string interpolation.</li>
+<li>I really miss <strong>Array#first</strong> and <strong>Array#last</strong>.</li>
+<li>I really don’t like that 0 is falsey.
+<ul>
+<li>I could live with empty lists and dicts being false, but not 0.0 and 0.</li>
+</ul>
+</li>
+<li>Comparing a string to a regular expression seems harder than it should be.</li>
+<li>Converting to a Boolean is not as easy a Ruby’s <strong>!!</strong> syntax.
+<ul>
+<li>OK, <strong>bool(expression)</strong> isn&#8217;t so bad, I guess.</li>
+</ul>
+</li>
+</ul>
+<h1>Where Python Rocks</h1>
+<ul>
+<li>Indentation removes the need for <strong>end</strong> everywhere.</li>
+<li>Import statements are nice.
+<ul>
+<li>Can import everything, or just a few things.</li>
+</ul>
+</li>
+<li>Annotations are nice for aspect-oriented modification of methods.
+<ul>
+<li>Does it make it hard to debug though, like <strong>alias_method_chain</strong> in Ruby?</li>
+<li>It’s kind of tricky to write them though, due to doubly-nested function definitions.</li>
+</ul>
+</li>
+<li>List comprehensions are more powerful than <strong>map</strong>.
+<ul>
+<li>But <strong>map</strong> can be more concise for the most common cases.</li>
+</ul>
+</li>
+<li>Can add arbitrary attributes to any object, class, or module.</li>
+<li>The object creation syntax is nicely concise.</li>
+<li>Sometimes the ability to add a bare function within a module is nice.</li>
+<li>Keyword arguments are nicely done.
+<ul>
+<li>Ruby’s emulation via hashes without braces is OK, but the corner cases are problematic.</li>
+</ul>
+</li>
+<li>Docstrings as part of the language is nice.</li>
+<li>The new <strong>with</strong> keyword looks like a halfway-decent replacement for blocks.
+<ul>
+<li>Seems like a lot more work that using blocks and <strong>yield</strong> though.</li>
+</ul>
+</li>
+<li>Python 3 drops support for octal literals starting with a 0.
+<ul>
+<li>Still allows it via a 0o prefix.</li>
+</ul>
+</li>
+<li>No support for all the crazy Perl-inspired globals.</li>
+<li>The names <strong>list</strong> and <strong>dictionary</strong> are better than <strong>array</strong> and <strong>hash</strong>.
+<ul>
+<li>The Ruby names are more about the implementation, especially <strong>hash</strong>.</li>
+<li>I’d much prefer the name <strong>map</strong> over <strong>hash</strong>, or even <strong>dictionary</strong>.</li>
+<li>The name <strong>list</strong> is only slightly better than <strong>array</strong>.</li>
+</ul>
+</li>
+<li>List and string slicing is quite nice.
+<ul>
+<li>I do wish that the syntax was “..” instead of “:” though.</li>
+<li>Slice assignment is even cooler.</li>
+</ul>
+</li>
+<li>I prefer the Python <strong>dict</strong> syntax over the Ruby <strong>hash</strong> syntax (“:” vs. “=&gt;”).
+<ul>
+<li>The Ruby 1.9 symbol hash syntax is an improvement, but not quite as good.</li>
+</ul>
+</li>
+<li>Checking for string containment is nice: <strong>if substring in string</strong>.</li>
+</ul>
+<h1>Where Ruby Rocks</h1>
+<ul>
+<li>Consistency.</li>
+<li>Blocks.</li>
+<li>Excellent functional tools to deal with Enumerable.</li>
+<li>Meta-programming.</li>
+<li>Optional parentheses.</li>
+<li>Modules and classes are also objects.</li>
+</ul>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2013/02/22/my-thoughts-on-python-vs-ruby/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+	</channel>
+</rss>

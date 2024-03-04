@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Architecture &#8211; BoochTek, LLC</title>
+	<atom:link href="http://blog.boochtek.com/category/programming/architecture/feed" rel="self" type="application/rss+xml" />
+	<link>http://blog.boochtek.com</link>
+	<description>Web Development, Ruby on Rails, Open Source</description>
+	<lastBuildDate>Thu, 07 Jul 2016 04:22:08 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.3</generator>
+	<item>
+		<title>Not Quite Callbacks</title>
+		<link>http://blog.boochtek.com/2015/06/22/not-quite-callbacks</link>
+		<comments>http://blog.boochtek.com/2015/06/22/not-quite-callbacks#respond</comments>
+		<pubDate>Tue, 23 Jun 2015 04:55:17 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Architecture]]></category>
+		<category><![CDATA[Ruby]]></category>
+		<category><![CDATA[Ruby on Rails]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=245</guid>
+		<description><![CDATA[I&#8217;ve been working on application architectures based on Uncle Bob&#8217;s Ruby Midwest talk, following the hexagonal architectural pattern. I posted an article a couple months ago showing a way that works fairly well in Rails, and some accompanying Rails example code. But there was one thing I wasn&#8217;t quite happy with. The problem is that we used callbacks (actually, &#8230; <a href="http://blog.boochtek.com/2015/06/22/not-quite-callbacks" class="more-link">Continue reading<span class="screen-reader-text"> "Not Quite Callbacks"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;ve been working on application architectures based on <a href="http://confreaks.tv/videos/rubymidwest2011-keynote-architecture-the-lost-years">Uncle Bob&#8217;s Ruby Midwest talk</a>, following the <a href="http://alistair.cockburn.us/Hexagonal+architecture">hexagonal architectural pattern</a>. I posted <a href="http://blog.boochtek.com/2015/02/23/hexagonal-rails-controllers">an article a couple months ago showing a way that works fairly well in Rails</a>, and some <a href="https://github.com/boochtek/hexagonal-rails">accompanying Rails example code</a>. But there was one thing I wasn&#8217;t quite happy with.</p>
+<p>The problem is that we used callbacks (actually, a publish/subscribe mechanism) in a situation where they don&#8217;t seem to quite fit:</p>
+<pre>  def show
+    interactor.on(:display) { |order| render order }
+    interactor.on(:not_found) { |order_id| render status: 404 }
+    interactor.get(params[:id])
+  end</pre>
+<p>What we really want is to respond in different ways, depending on the result of the call to <code>interactor.get()</code>. There&#8217;s no good reason to define the responses before the call. It makes a lot more sense to define the responses after the call, because they&#8217;ll <strong>happen</strong> after the call. I&#8217;d much prefer that the code be written in the order that it will be run.</p>
+<p>I discussed this problem with my friend and colleague, <a href="http://dirtyinformation.com/">Amos King</a>. We came up with a better solution, which puts things back in the right order:</p>
+<pre>  def show
+    interactor.get(params[:id]) do |on|
+      on.display { |order| render order }
+      on.not_found { |order_id| render status: 404 }
+    end
+  end</pre>
+<p>He even wrote a small library to do this, which he called <a href="https://github.com/BinaryNoggin/riposte">Riposte</a>. I&#8217;m not sure what to call this pattern, but it seems to work pretty well in this situation. I suppose that they&#8217;re still technically callbacks, because they&#8217;re passed in in the block that&#8217;s passed in to the call to <code>interactor.get()</code>. But due to the magic of Ruby blocks, we get to put them in the order they should be.</p>
+<p>Riposte also gives you the option of using the response object directly, instead of passing a block:</p>
+<pre>  def show
+    on = interactor.get(params[:id])
+    on.display { |order| render order }
+    on.not_found { |order_id| render status: 404 }
+  end</pre>
+<p>This shows that it&#8217;s just returning an object, with the twist that the response object has methods that take blocks. The nested blocks variant is really the same thing, except that it&#8217;s yielding to the response object instead of returning it.</p>
+<p>I&#8217;ve decide that is the pattern I&#8217;d like to use for interactions and their callers within Ruby hexagonal architecture.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2015/06/22/not-quite-callbacks/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Architectural Thoughts</title>
+		<link>http://blog.boochtek.com/2015/06/01/architectural-thoughts</link>
+		<comments>http://blog.boochtek.com/2015/06/01/architectural-thoughts#respond</comments>
+		<pubDate>Tue, 02 Jun 2015 04:51:59 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Architecture]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[Ruby]]></category>
+		<category><![CDATA[Web Development]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=240</guid>
+		<description><![CDATA[I&#8217;ve started working on my own framework in Ruby in the past couple days. It&#8217;s built upon my recent work at understanding Uncle Bob&#8217;s Ruby Midwest 2011 talk, and his article on Clean Architecture, and the resulting hexagonal architecture (AKA ports and adapters). Somehow my research in that vein led me to Gary Bernhardt&#8217;s Boundaries talk. I&#8217;ve read &#8230; <a href="http://blog.boochtek.com/2015/06/01/architectural-thoughts" class="more-link">Continue reading<span class="screen-reader-text"> "Architectural Thoughts"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;ve started working on my own framework in Ruby in the past couple days. It&#8217;s built upon my recent work at understanding <a href="http://confreaks.tv/videos/rubymidwest2011-keynote-architecture-the-lost-years">Uncle Bob&#8217;s Ruby Midwest 2011 talk</a>, and his article on <a href="http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html">Clean Architecture</a>, and the resulting hexagonal architecture (AKA ports and adapters).</p>
+<p>Somehow my research in that vein led me to <a href="https://www.destroyallsoftware.com/talks/boundaries">Gary Bernhardt&#8217;s Boundaries talk</a>. I&#8217;ve read a lot about the talk, and knew about the idea of &#8220;functional core / imperative shell&#8221;. And I&#8217;ve worked with a lot of similar ideas lately. But I believe this is the first time that I actually watched the whole video.</p>
+<p>Even after having read a lot about similar ideas, it was pretty mind-expanding. Gary&#8217;s really good at presenting these kinds of ideas in a simple way.</p>
+<p>OOP as usually taught includes encapsulation of data together with behavior, with mutable objects. Functional programming separates data and behavior, with mostly immutable data. From experience, encapsulating data and behavior together seems helpful. But experience also shows that immutability is useful. So it would be good to have both of those together. This is something I&#8217;ve been thinking for a few years &#8212; how best do we get both?</p>
+<p>Gary calls the combination &#8220;FauxO&#8221;. Logic and data are still combined, but there&#8217;s no mutation. Anywhere OOP would normally have mutation would just generate a new object. There&#8217;s no language restriction involved in enforcing immutability &#8212; just discipline.</p>
+<p>But without mutability, it&#8217;s hard to do IO and maintain state. So Gary&#8217;s solution is to encapsulate as much as possible into an immutable (functional or FauxO) core, and around that, use an imperative (traditional OOP) shell. The functional core contains the bulk of the logic, and the imperative shell is a glue layer that handles the real world, including disk, network, and other I/O.</p>
+<p>The result of this is that the shell has fewer paths, but more dependencies. The core contains no dependencies, but encapsulates the different logic paths. So we&#8217;re encapsulating dependencies on one side, and business logic on the other side. Or put another way, the way to figure out the separation is by doing as much as you can without mutation, and then encapsulating the mutation separately.</p>
+<p>I love how this naturally breaks things up, so that the core is all testable with unit tests, and the imperative shell is tested with integration tests. And since the shell has few or no logic paths, you get the <a href="http://www.shawnewallace.com/blog/Dealing-With-A-Large-Test-Suite/">testing pyramid</a>, with more unit tests and fewer integration tests. The whole thing ends up being quite beautiful. Tests end up being very fast without any extra effort &#8212; not even stubbing or mocking. This tells us that things have been decomposed very well &#8212; an elegant design.</p>
+<p>Gary makes the case that immutable objects can be treated as values, and passed across boundaries. Even process boundaries. This is something I&#8217;ve noticed as I&#8217;ve been working on my own Uncle Bob style hexagonal framework, but nobody in that camp ever mentioned that &#8212; they prefer DTOs or something more like hashes. I&#8217;m completely against hashes, because of the &#8220;stringly-typed&#8221; problem. And I don&#8217;t see much advantage in a DTO if I&#8217;ve got an immutable object; I&#8217;d be basically copying the object to an almost identical object. And I&#8217;d be losing any laziness possible for derived values within the original immutable object.</p>
+<p>It&#8217;s striking to me how Gary&#8217;s image of an imperative shell around a functional core, plus Net, Disk, and State outside of the shell mirror&#8217;s Uncle Bob&#8217;s concentric circles. Uncle Bob has entities in the middle, surrounded by use cases, surrounded by Web, DB, and UI.</p>
+<p>Another advantage that Gary shows is that breaking things up this way allows easy concurrency. In his example, he shows using the actor model &#8212; either just using threads and queues, or an actor library (or language feature).</p>
+<p>After several years of thinking about the architectural issues seen in most large Rails apps, I&#8217;m starting to come to an understanding of how to combine all these ideas and come up with an architecture that will work better.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2015/06/01/architectural-thoughts/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

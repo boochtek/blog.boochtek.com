@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Gadgets &#8211; BoochTek, LLC</title>
+	<atom:link href="http://blog.boochtek.com/category/gadgets/feed" rel="self" type="application/rss+xml" />
+	<link>http://blog.boochtek.com</link>
+	<description>Web Development, Ruby on Rails, Open Source</description>
+	<lastBuildDate>Thu, 07 Jul 2016 04:22:08 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.3</generator>
+	<item>
+		<title>Chording Keyers</title>
+		<link>http://blog.boochtek.com/2014/02/23/chording-keyers</link>
+		<comments>http://blog.boochtek.com/2014/02/23/chording-keyers#comments</comments>
+		<pubDate>Mon, 24 Feb 2014 05:56:37 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Gadgets]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=124</guid>
+		<description><![CDATA[I&#8217;m considering buying a chording keyer. A keyer is a 1-handed text input device. Chording means that you can hit more than 1 key at a time. I&#8217;ve been interested in these for a long time actually. They&#8217;ve been popular in the wearable computing (&#8220;cyborg&#8221;) field, but never caught on anywhere else. I&#8217;ve always thought that &#8230; <a href="http://blog.boochtek.com/2014/02/23/chording-keyers" class="more-link">Continue reading<span class="screen-reader-text"> "Chording Keyers"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;m considering buying a chording keyer. A keyer is a 1-handed text input device. Chording means that you can hit more than 1 key at a time. I&#8217;ve been interested in these for a long time actually. They&#8217;ve been popular in the wearable computing (&#8220;cyborg&#8221;) field, but never caught on anywhere else. I&#8217;ve always thought that 1-handed chording keyer would be a great input device to use with a cell phone. It&#8217;d be even better with a heads-up display like the Google Glass.</p>
+<p>There are quite a few chording keyers available. It doesn&#8217;t appear that any will meet exactly what I&#8217;m really looking for, but I might take the leap anyway. It should be a hand-held device. I really want a Bluetooth device, so I can use it with a computer, phone, or tablet. Below are the ones I&#8217;m considering.</p>
+<h1>Twiddler</h1>
+<p>The Twiddler has been around quite a while, as probably the main commercially available keyer for wearable computing. There was a time that it was unavailable, but there&#8217;s a new version available from <a href="http://www.handykey.com/">HandyKey</a> now. It&#8217;s $200 ($220 Canadian), and comes in only USB.</p>
+<p>The Twiddler looks like a small TV remote. The current version (2.1) has 4 thumb keys, a thumb joystick (for mouse), and 12 small finger keys. It has good community support, including an alternate chord layout.</p>
+<h1>In10did Decatxt</h1>
+<p>In10did has been trying to bring out a few variations of their devices. The <a href="http://in10did.com/decatxt.html">Decatxt</a> looks like a pack of cigarettes, with 8 keys on the front and 2 thumb keys. It can be used with 1 or 2 hands. All letters can be typed with 1 finger or 1 thumb and 1 finger.</p>
+<p>The Decatxt has USB and Bluetooth models, but I&#8217;m unable to find pricing or a way to buy one. It looks like there have been no updates for over a year, so I&#8217;m concerned that this is going to be vaporware.</p>
+<h1>CyKey</h1>
+<p>The <a href="http://www.cykey.co.uk/">CyKey</a> is based on the Microwriter, which goes back to the early 1980s. The Microwriter was a desktop-based device, but it looks like the CyKey might be able to be used as a hand-held device. It has 9 buttons on the face, arranged in 3 groups of 3 buttons.</p>
+<p>The CyKey is $125 (£75) and works over InfraRed connected to USB. A Bluetooth model is supposedly in the works.</p>
+<h1>EkaPad</h1>
+<p>The <a href="http://ekatetra.enetpress.com/products/ekapad.html">EkaPad</a> is like a cross between the Decatxt and the Twiddler. It has 12 buttons on the face, but no thumb keys. It&#8217;s got a nice well-thought-out design that looks quite ergonomic.</p>
+<p>The EkaPad is $150, available in USB only. A desktop holder is available to hold it upright, or it can be used hand-held.</p>
+<h1>FrogPad</h1>
+<p>The <a href="https://en.wikipedia.org/wiki/FrogPad">FrogPad</a> is meant to be used on a flat surface only. It looks kind of like a third of a laptop keyboard. It&#8217;s got 15 regular keys and 5 modifier keys. Only 1 key and 1 modifier can be chorded. Right-handed and left-handed models are available, with USB connectivity.</p>
+<p>The <a href="http://www.frogpad2.com/">FrogPad2</a> was recently announced, replacing the original FrogPad. It switches to standard desktop-style keys, and adds some more keys along the top. It supports USB On-the-Go and Bluetooth. I&#8217;m not really interested in this model with its regular keys, but it doesn&#8217;t appear that the original version is being made any longer. The new models are priced at $200. I believe the old models were $150.</p>
+<h1>Chordite</h1>
+<p>The <a href="http://chordite.com/">Chordite</a> looks the most promising, but it&#8217;s only a concept with some DIY prototypes. It&#8217;s a hand-held device, with 2 buttons on each of the 4 fingers &#8212; one activated by the distal phalanx and the other by the middle phalanx. This initially sounds like it would be difficult to press 2 different buttons with 1 finger, but I think the way they&#8217;re positioned would make it actually work really well.</p>
+<h1>Septambic Keyer</h1>
+<p>The <a href="http://wearcam.org/septambic/">septambic keyer</a> is another DIY concept, hand-built and used by wearable computing folks. It&#8217;s fitted to your palm, and you squeeze your fingers toward a fist to activate the buttons. There&#8217;s one button for each of the 4 fingers, and 3 for the thumb.</p>
+<h1>Clove 2</h1>
+<p>The <a href="http://www.cemetech.net/projects/item.php?id=16">Clove 2</a> is a Bluetooth-enabled glove with 5 buttons &#8212; 1 for each finger. It&#8217;s another do-it-yourself project.</p>
+<h1>Software Options</h1>
+<p>I found an interesting project called <a href="http://asetniop.com/">ASETNIOP</a> that allows chording on a standard Qwerty keyboard. (Assuming the keyboard supports multi-key roll-over well enough. Most keyboards should work.) It&#8217;s got a really nice online interactive tutorial. You basically chord with the 8 home-row keys, plus the spacebar.</p>
+<p>For Android, a program called <a href="http://gkos.com/gkos/android/">GKOS for Android</a> uses multi-touch with 1 or 2 button presses. The buttons are different sizes, depending on their frequency. I like this concept, but I don&#8217;t think the implementation is quite ready for production.</p>
+<p>I also found an app for iOS called <a href="https://itunes.apple.com/us/app/nintype/id796959534?mt=8">Nintype</a> that is a combination between Swype and a chording keyer.</p>
+<h1>Conclusion</h1>
+<p>I think I&#8217;m going to try the Twiddler. If I find the concept to be a good one, hopefully I&#8217;ll build myself a Chordite (or have someone build one for me).</p>
+<p>I&#8217;m also going to play with implementing some of the ideas from ASETNIOP, using <a href="https://pqrs.org/macosx/keyremap4macbook/">KeyRemap4MacBook</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2014/02/23/chording-keyers/feed</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+	</channel>
+</rss>

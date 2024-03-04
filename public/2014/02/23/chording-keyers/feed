@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Chording Keyers</title>
+	<atom:link href="http://blog.boochtek.com/2014/02/23/chording-keyers/feed" rel="self" type="application/rss+xml" />
+	<link>http://blog.boochtek.com/2014/02/23/chording-keyers</link>
+	<description>Web Development, Ruby on Rails, Open Source</description>
+	<lastBuildDate>Wed, 21 Jun 2017 01:27:18 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.7.2</generator>
+	<item>
+		<title>By: Wayne Rasanen</title>
+		<link>http://blog.boochtek.com/2014/02/23/chording-keyers/comment-page-1#comment-61468</link>
+		<dc:creator><![CDATA[Wayne Rasanen]]></dc:creator>
+		<pubDate>Wed, 21 Jun 2017 01:27:18 +0000</pubDate>
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=124#comment-61468</guid>
+		<description><![CDATA[I&#039;m glad you were able to get the DecaTxt connected and working.  We are planning for a second version with micro USB rather than mini and a few software changes like being able to shut off the Bluetooth antenna. I&#039;d love to get your feedback if you would email me and offer suggestions.
+Thanks,
+Wayne]]></description>
+		<content:encoded><![CDATA[<p>I&#8217;m glad you were able to get the DecaTxt connected and working.  We are planning for a second version with micro USB rather than mini and a few software changes like being able to shut off the Bluetooth antenna. I&#8217;d love to get your feedback if you would email me and offer suggestions.<br />
+Thanks,<br />
+Wayne</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Oisín</title>
+		<link>http://blog.boochtek.com/2014/02/23/chording-keyers/comment-page-1#comment-60320</link>
+		<dc:creator><![CDATA[Oisín]]></dc:creator>
+		<pubDate>Tue, 28 Jun 2016 22:02:28 +0000</pubDate>
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=124#comment-60320</guid>
+		<description><![CDATA[Update: It works just fine! Actually the problem was that my laptop only supports Bluetooth 3.0, but at least 4.0 is needed. It also wasn&#039;t discoverable by my phone because Android 4.3 or newer is needed. Tested it on a newer phone and on my work PC and it connected straight away. Looking forward to trying it on an Android tablet and measuring my speed over a few weeks.]]></description>
+		<content:encoded><![CDATA[<p>Update: It works just fine! Actually the problem was that my laptop only supports Bluetooth 3.0, but at least 4.0 is needed. It also wasn&#8217;t discoverable by my phone because Android 4.3 or newer is needed. Tested it on a newer phone and on my work PC and it connected straight away. Looking forward to trying it on an Android tablet and measuring my speed over a few weeks.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Oisín</title>
+		<link>http://blog.boochtek.com/2014/02/23/chording-keyers/comment-page-1#comment-60319</link>
+		<dc:creator><![CDATA[Oisín]]></dc:creator>
+		<pubDate>Mon, 27 Jun 2016 23:15:39 +0000</pubDate>
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=124#comment-60319</guid>
+		<description><![CDATA[The In10did DecaTxt is available on eBay and Amazon now. I ordered one recently and had it shipped over from the USA, which was a bit expensive when customs fees are added. It arrived yesterday morning and I plugged it in after arriving home from work. Sadly, it appears to do nothing whatsoever. Not sure if this model is DOA (but surely they test them?), or what. If I can get it to work, or get a replacement shipped, I&#039;ll try to record my WPM with the device every day for a couple of weeks, to see where the improvement curve starts to taper off.]]></description>
+		<content:encoded><![CDATA[<p>The In10did DecaTxt is available on eBay and Amazon now. I ordered one recently and had it shipped over from the USA, which was a bit expensive when customs fees are added. It arrived yesterday morning and I plugged it in after arriving home from work. Sadly, it appears to do nothing whatsoever. Not sure if this model is DOA (but surely they test them?), or what. If I can get it to work, or get a replacement shipped, I&#8217;ll try to record my WPM with the device every day for a couple of weeks, to see where the improvement curve starts to taper off.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Matthias</title>
+		<link>http://blog.boochtek.com/2014/02/23/chording-keyers/comment-page-1#comment-20675</link>
+		<dc:creator><![CDATA[Matthias]]></dc:creator>
+		<pubDate>Sat, 15 Nov 2014 14:48:17 +0000</pubDate>
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=124#comment-20675</guid>
+		<description><![CDATA[Frogpad2 failed recently (see https://www.facebook.com/profile.php?id=105714169451329), but there is another possibility using freeware: http://www.autohotkey.com/ and scripts (easy adaptable!?):
+half querty: www.autohotkey.com/board/topic/1257-half-qwerty-one-handed-typing/
+frogpad: https://github.com/clarkm/dupepad/blob/master/frogpad.ahk
+Will be trying soon...]]></description>
+		<content:encoded><![CDATA[<p>Frogpad2 failed recently (see <a href="https://www.facebook.com/profile.php?id=105714169451329" rel="nofollow">https://www.facebook.com/profile.php?id=105714169451329</a>), but there is another possibility using freeware: <a href="http://www.autohotkey.com/" rel="nofollow">http://www.autohotkey.com/</a> and scripts (easy adaptable!?):<br />
+half querty: <a href="http://www.autohotkey.com/board/topic/1257-half-qwerty-one-handed-typing/" rel="nofollow">http://www.autohotkey.com/board/topic/1257-half-qwerty-one-handed-typing/</a><br />
+frogpad: <a href="https://github.com/clarkm/dupepad/blob/master/frogpad.ahk" rel="nofollow">https://github.com/clarkm/dupepad/blob/master/frogpad.ahk</a><br />
+Will be trying soon&#8230;</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

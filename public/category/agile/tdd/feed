@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>TDD &#8211; BoochTek, LLC</title>
+	<atom:link href="http://blog.boochtek.com/category/agile/tdd/feed" rel="self" type="application/rss+xml" />
+	<link>http://blog.boochtek.com</link>
+	<description>Web Development, Ruby on Rails, Open Source</description>
+	<lastBuildDate>Thu, 07 Jul 2016 04:22:08 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.3</generator>
+	<item>
+		<title>When Should We Do TDD?</title>
+		<link>http://blog.boochtek.com/2015/05/11/when-tdd</link>
+		<comments>http://blog.boochtek.com/2015/05/11/when-tdd#comments</comments>
+		<pubDate>Tue, 12 May 2015 04:43:05 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Agile]]></category>
+		<category><![CDATA[TDD]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=225</guid>
+		<description><![CDATA[On a recent episode (78) of This Agile Life, my fellow hosts talked about when to do Test-Driven Development (TDD). They all said that you should always do TDD &#8212; at least for anything that will go into production; there&#8217;s an exception for experimenting or &#8220;spiking&#8221;. I wasn&#8217;t on that episode, but later commented on the &#8230; <a href="http://blog.boochtek.com/2015/05/11/when-tdd" class="more-link">Continue reading<span class="screen-reader-text"> "When Should We Do TDD?"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>On a recent episode (<a href="http://www.thisagilelife.com/78/">78</a>) of <a href="http://www.thisagilelife.com">This Agile Life</a>, my fellow hosts talked about when to do Test-Driven Development (TDD). They all said that you should always do TDD &#8212; at least for anything that will go into production; there&#8217;s an exception for experimenting or &#8220;spiking&#8221;.</p>
+<p>I wasn&#8217;t on that episode, but later commented on the topic. (Episode 83 &#8212; which wasn&#8217;t really all that great.) My take was slightly different. I said that you should do TDD only when the benefits outweigh the costs. Unfortunately, we usually greatly underestimate the benefits. And the costs often seem high at first, because it takes some time to get good at writing automated tests. Not to mention that both the costs and the benefits are usually hard to measure.</p>
+<p>What is the cost of writing automated tests? I&#8217;ve asked this question before and recorded the answers (inasmuch as we have them) in a <a href="http://blog.boochtek.com/2014/05/05/tdd-is-alive-and-well">previous blog entry</a>. TDD costs us about 10-30% in short-term productivity. The benefit that they found was a reduction in bugs by 30-90%, and a decrease in code complexity by about 30%.</p>
+<p>But what about when the costs are higher than the normal 10 to 30 percent? One good example of this is when there’s no test framework for the situation you’re testing. This might be a new language or framework that you’re working with. More likely it’s a complex API that you have to mock out. So that could increase the cost of automated testing so as to outweigh the benefits &#8212; especially on a short project. I could imagine situations where the cost of writing the mocks could eat up more than the project itself.</p>
+<p>Another case where we might consider skipping testing is when we’re more concerned about time to market than quality. This is almost always a mistake. Your code will almost always last longer than you expect. (Remember Y2K?) And if the code lasts longer than you expect, that means you&#8217;ll have to deal with bugs that whole time. But we have to work with the information we have at the time we make our decisions. And sometimes that might tell us that time to market is more important than anything.</p>
+<p>One final case I can imagine is when a true expert is coding something that they&#8217;re very familiar with. I could picture someone like Uncle Bob writing code (in a language that he&#8217;s familiar with) without tests just as effectively as I could write code with tests.</p>
+<p>But these situations should not be common; they’re edge cases. In almost all real-world cases, TDD is the right thing to do. Don&#8217;t forget, TDD is also a design discipline &#8212; it helps you design a better API. So keep doing TDD. But as with any practice, don&#8217;t do it blindly without considering why we&#8217;re doing it. Make sure you understand the costs, and whether the benefits outweigh the costs.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2015/05/11/when-tdd/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>TDD Is Alive And Well</title>
+		<link>http://blog.boochtek.com/2014/05/05/tdd-is-alive-and-well</link>
+		<comments>http://blog.boochtek.com/2014/05/05/tdd-is-alive-and-well#comments</comments>
+		<pubDate>Tue, 06 May 2014 04:50:07 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Agile]]></category>
+		<category><![CDATA[Ruby on Rails]]></category>
+		<category><![CDATA[TDD]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=191</guid>
+		<description><![CDATA[I went to RailsConf this year, and the very first talk was a keynote by David Heinemeier Hansson (DHH), the creator of Ruby on Rails. The TL;DR of his talk was &#8220;TDD rarely has value&#8221;. He followed up with a blog post the next day, titled &#8220;TDD is dead. Long live testing.&#8220;, and 2 more posts. I think this line &#8230; <a href="http://blog.boochtek.com/2014/05/05/tdd-is-alive-and-well" class="more-link">Continue reading<span class="screen-reader-text"> "TDD Is Alive And Well"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I went to RailsConf this year, and the very first talk was a <a href="http://www.confreaks.com/videos/3315-railsconf-keynote-writing-software">keynote by</a> <a href="http://www.confreaks.com/videos/3315-railsconf-keynote-writing-software">David Heinemeier Hansson (DHH)</a>, the creator of Ruby on Rails. The TL;DR of his talk was &#8220;TDD rarely has value&#8221;. He followed up with a blog post the next day, titled &#8220;<a href="http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html">TDD is dead. Long live testing.</a>&#8220;, and <a href="http://david.heinemeierhansson.com/2014/test-induced-design-damage.html">2 more</a> <a href="http://david.heinemeierhansson.com/2014/slow-database-test-fallacy.html">posts</a>. I think this line of thought is terribly misguided, and causing more harm than good. This article is my response.</p>
+<p>First, I would like to address the good points of the talk. He said that programming is pseudoscience, and that people want to tell us that there&#8217;s a secret to being a better programmer. But what it really takes is working hard &#8212; reading a lot of code, writing a lot of code, and rewriting a lot of code. He&#8217;s right. And I also agree with him that you should forget about patterns for a while when learning to code. Beginners try to throw patterns at a problem instead of letting the patterns emerge where they&#8217;re supposed to.</p>
+<p>I don&#8217;t completely agree that programming is a pseudoscience. In some ways it is, but I think it&#8217;s more of a craft. It&#8217;s a craft, because there&#8217;s a lot of science involved, but there&#8217;s also an art to doing it well. And like any craft, you&#8217;re always working to get better. So to respond to DHH&#8217;s stance that &#8220;software is more like poetry than physics&#8221;, I think it falls<br />
+somewhere in between.</p>
+<p>With regard to the software engineering practices we use, there really isn&#8217;t much science available, mostly because it&#8217;s a soft science. That is, it&#8217;s really hard to isolate a single variable when comparing code between projects. And nobody has the time or money to write the same code so many times that the differences would be statistically significant.</p>
+<p>So we don&#8217;t have much science on TDD. But we do have some. Here&#8217;s a collection of several: <a href="http://biblio.gdinwiddie.com/biblio/StudiesOfTestDrivenDevelopment">StudiesOfTestDrivenDevelopment</a>. And here&#8217;s one that explicitly looks are the difference between test-first and test-last: <a href="http://digitalcommons.calpoly.edu/cgi/viewcontent.cgi?article=1027&amp;context=csse_fac">Does Test-Driven Development Really Improve Software Design Quality?</a> What do these tell us? They tell us that TDD costs us about 10-30% in short-term productivity; reduces bugs by 30-90%, and decreases code complexity by about 30%. As <a href="http://www.cc2e.com/Default.aspx">Code Complete</a> tells us (in section 20.5, with studies to back it up), improving quality reduces development costs. So, like most Agile practices, this is a case where spending a bit more time in the short term leads to time savings in the long term.</p>
+<p>The more important lesson in the talk was that you have to do what works best for you and your situation. If TDD doesn&#8217;t give better results, then either find out how to make it give better results, or stop using it. As we often say in the Agile world, Agile doesn&#8217;t mean that you can stop using your brain. While I think TDD is appropriate in most situations, there are cases where it&#8217;s not worth the additional up-front cost. If the most important thing for your project is time-to-market, then not testing might be the right decision for you.</p>
+<p>To me, TDD provides a bunch of benefits. First and foremost, TDD is a design discipline. It ensures that I think about how my code will be used before I think about how to implement it. This is very powerful in ensuring that the code is well-written from the perspective of other code using it.</p>
+<p>Tested code provides confidence to be able to make changes without breaking things. If we write tests after the code, we&#8217;re less likely to write them. Tests written after the code also tend to test the implementation instead of the desired functionality. What we really want is tests written as a specification. With tests as a specification, we can come back later and understand why code was written. Without tests, or with poor tests, we can&#8217;t understand why the code is there; if we want to rewrite it, we don&#8217;t have the confidence that we&#8217;re not missing something. Writing tests first also ensures that we only write the code that is needed to implement the required functionality.</p>
+<p>I&#8217;m not sure why DHH hasn&#8217;t &#8220;gotten&#8221; TDD. I&#8217;m not sure if it&#8217;s because he&#8217;s  a better coder than average, or if he just thinks in a different way than most of us. I think it&#8217;s partly because he doesn&#8217;t understand TDD, which he admitted might be the case. And I think he&#8217;s conflating TDD and unit testing.</p>
+<p>DHH is influential in the developer community, especially those newer to Ruby and Rails. People listen to what he has to say. I was happy to see almost every other speaker made fun of DHH&#8217;s ideas, and most of the crowd knew better. But there will be a lot of others who will hear DHH, respect his opinions, and not give TDD the try that it deserves. And that&#8217;s sad, because it will lead to an overall reduction in code quality in the world.</p>
+<p>Here are some other people&#8217;s thoughts on the matter:</p>
+<ul>
+<li><a href="http://blog.8thlight.com/uncle-bob/2014/04/25/MonogamousTDD.html">Monogamous TDD</a> by Uncle Bob Martin</li>
+<li><a href="http://blog.8thlight.com/uncle-bob/2014/04/30/When-tdd-does-not-work.html">When TDD doesn&#8217;t work</a> by Uncle Bob Martin</li>
+<li><a href="https://www.facebook.com/notes/kent-beck/rip-tdd/750840194948847">RIP TDD</a> by Kent Beck</li>
+<li><a href="http://codon.com/how-testability-can-help">How testability can help</a> by Tom Stuart</li>
+<li><a href="http://www.thisagilelife.com/47/">This Agile Life Episode 47</a> (including myself)</li>
+</ul>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2014/05/05/tdd-is-alive-and-well/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Testing Rails Validators</title>
+		<link>http://blog.boochtek.com/2014/01/26/testing-rails-validators</link>
+		<comments>http://blog.boochtek.com/2014/01/26/testing-rails-validators#respond</comments>
+		<pubDate>Mon, 27 Jan 2014 05:27:07 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[OOP]]></category>
+		<category><![CDATA[Ruby on Rails]]></category>
+		<category><![CDATA[TDD]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=93</guid>
+		<description><![CDATA[It&#8217;s challenging to test Rails custom validators. I recently had to write a validator to require that an entered date is before or after a specified date. It didn&#8217;t seem like writing the validator would be too difficult &#8211; I&#8217;ve written custom validators before, and date comparisons aren&#8217;t all that tricky. But when it came time to &#8230; <a href="http://blog.boochtek.com/2014/01/26/testing-rails-validators" class="more-link">Continue reading<span class="screen-reader-text"> "Testing Rails Validators"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>It&#8217;s challenging to test Rails custom validators.</p>
+<p>I recently had to write a validator to require that an entered date is before or after a specified date.</p>
+<p>It didn&#8217;t seem like writing the validator would be too difficult &#8211; I&#8217;ve written custom validators before, and date comparisons aren&#8217;t all that tricky. But when it came time to write the tests, I ran into several issues. And since I always try to follow TDD / test-first, I was blocked before I even began.</p>
+<p>The biggest issue was the <code>ActiveModel::EachValidator#validates_each</code> API. It&#8217;s definitely not a well-designed API. You write your validator as a subclass, overriding <code>validates_each</code>. The method takes a model object, the name of the attribute of the model being tested, and the value of that attribute. You can also get the options passed to the custom validator via the <code>options</code> method. To perform a validation, you have to update the model&#8217;s <code>errors</code> hash.</p>
+<p>The big flaw in the API is that instead of returning a result, you have to update the model. This needlessly couples the model and the validator. And it violates the Single Responsibility Principle &#8212; it has to determine validity of the field, and it has to update the <code>errors</code> hash of the model. This is not conducive to testing. Testing this method requires testing that the side-effect has taken place in the collaborator (model), which means it&#8217;s not really a unit test any more.</p>
+<p>So to make it easier to unit test the validator, I broke the coupling by breaking it into 2 pieces, one for each responsibility. I moved the responsibility for determining validity to a separate method, which I called <code>errors_for</code>. It returns a hash of the errors found. This simplified the <code>validates_each</code> method to simply take the result of <code>errors_for</code> and update the <code>errors</code> hash of the model:</p>
+<pre>def validate_each(record, attribute_name, attribute_value)
+  record.errors[attribute_name].concat(errors_for(attribute_value, options))
+end</pre>
+<p>This made it much easier to unit test the <code>errors_for</code> method. This method doesn&#8217;t even need to know about the model &#8212; only about the value of the attribute we&#8217;re trying to validate. We simply pass in the attribute&#8217;s value and the options.</p>
+<p>So we could write the tests without even pulling in ActiveRecord or any models:</p>
+<pre>describe DateValidator do
+  let(:validator) { DateValidator.new(attributes: :attribute_name) }
+  let(:errors) { validator.errors_for(attribute_value, validation_options) }
+
+  describe 'when attribute value is NOT a valid date' do
+    let(:attribute_value) { 'not a valid date' }
+    it { errors.must_include 'is not a valid date' }
+  end
+
+  describe 'when attribute value IS a valid date' do
+    let(:attribute_value) { Date.parse('2013-12-11') }
+    it { errors.must_be :empty? }
+  end
+end</pre>
+<p>And the <code>errors_for</code> method looked something like this:</p>
+<pre>def errors_for(attribute_value, options)
+  unless attribute_value.is_a?(Date)
+    return [options.fetch(:message, "is not a valid date")]
+  end
+  []
+end</pre>
+<p>Integration testing can also be a bit of a challenge. I recommend following the example from <a href="http://stackoverflow.com/a/17739176">this Stack Overflow answer</a>. Basically, create a minimal model object that contains the field and the validation. Then test that the model behaves like you expect with different values and validations.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2014/01/26/testing-rails-validators/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

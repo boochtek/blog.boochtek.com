@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+<head><script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=t1Bf4PY_" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden"};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://blog.boochtek.com/category/webdev","20210922164031","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1632328831");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+		<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+<title>Web Development &#8211; BoochTek, LLC</title>
+<link rel="dns-prefetch" href="//web.archive.org/web/20210922164031/http://fonts.googleapis.com/"/>
+<link rel="dns-prefetch" href="//web.archive.org/web/20210922164031/http://s.w.org/"/>
+<link rel="alternate" type="application/rss+xml" title="BoochTek, LLC » Feed" href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/feed"/>
+<link rel="alternate" type="application/rss+xml" title="BoochTek, LLC » Comments Feed" href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/comments/feed"/>
+<link rel="alternate" type="application/rss+xml" title="BoochTek, LLC » Web Development Category Feed" href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/webdev/feed"/>
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/web.archive.org\/web\/20210922164031\/https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/web.archive.org\/web\/20210922164031\/https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/web.archive.org\/web\/20210922164031\/http:\/\/blog.boochtek.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.2"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="twentysixteen-fonts-css" href="https://web.archive.org/web/20210922164031cs_/https://fonts.googleapis.com/css?family=Merriweather%3A400%2C700%2C900%2C400italic%2C700italic%2C900italic%7CMontserrat%3A400%2C700%7CInconsolata%3A400&amp;subset=latin%2Clatin-ext" type="text/css" media="all"/>
+<link rel="stylesheet" id="genericons-css" href="https://web.archive.org/web/20210922164031cs_/http://blog.boochtek.com/wp-content/themes/twentysixteen/genericons/genericons.css?ver=3.4.1" type="text/css" media="all"/>
+<link rel="stylesheet" id="twentysixteen-style-css" href="https://web.archive.org/web/20210922164031cs_/http://blog.boochtek.com/wp-content/themes/twentysixteen/style.css?ver=4.7.2" type="text/css" media="all"/>
+<!--[if lt IE 10]>
+<link rel='stylesheet' id='twentysixteen-ie-css'  href='http://blog.boochtek.com/wp-content/themes/twentysixteen/css/ie.css?ver=20150825' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentysixteen-ie8-css'  href='http://blog.boochtek.com/wp-content/themes/twentysixteen/css/ie8.css?ver=20150825' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='twentysixteen-ie7-css'  href='http://blog.boochtek.com/wp-content/themes/twentysixteen/css/ie7.css?ver=20150825' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 9]>
+<script type='text/javascript' src='http://blog.boochtek.com/wp-content/themes/twentysixteen/js/html5.js?ver=3.7.3'></script>
+<![endif]-->
+<script type="text/javascript" src="https://web.archive.org/web/20210922164031js_/http://blog.boochtek.com/wp-includes/js/jquery/jquery.js?ver=1.12.4"></script>
+<script type="text/javascript" src="https://web.archive.org/web/20210922164031js_/http://blog.boochtek.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1"></script>
+<link rel="https://api.w.org/" href="http://blog.boochtek.com/wp-json/"/>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.boochtek.com/xmlrpc.php?rsd"/>
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.boochtek.com/wp-includes/wlwmanifest.xml"/> 
+<meta name="generator" content="WordPress 4.7.2"/>
+</head>
+
+<body class="archive category category-webdev category-4 hfeed">
+<div id="page" class="site">
+	<div class="site-inner">
+		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+		<header id="masthead" class="site-header" role="banner">
+			<div class="site-header-main">
+				<div class="site-branding">
+											<p class="site-title"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/" rel="home">BoochTek, LLC</a></p>
+											<p class="site-description">Web Development, Ruby on Rails, Open Source</p>
+									</div><!-- .site-branding -->
+
+							</div><!-- .site-header-main -->
+
+					</header><!-- .site-header -->
+
+		<div id="content" class="site-content">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+			<header class="page-header">
+				<h1 class="page-title">Category: Web Development</h1>			</header><!-- .page-header -->
+
+			
+<article id="post-254" class="post-254 post type-post status-publish format-standard hentry category-webdev">
+	<header class="entry-header">
+		
+		<h2 class="entry-title"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2015/09/08/website-checklist-2" rel="bookmark">Website Checklist</a></h2>	</header><!-- .entry-header -->
+
+	
+	
+	<div class="entry-content">
+		<p>While creating a web page isn&#8217;t too difficult, there are a lot of moving parts involved in creating an effective website. We&#8217;ve written up this checklist as a guide for anyone who has decided that they need a website.</p>
+<p>This list is for a basic static website. A web application will require significantly more effort. We&#8217;re working on a separate checklist for web apps.</p>
+<h2>Overview</h2>
+<ul>
+<li>Determine your goals</li>
+<li>Develop a business plan</li>
+<li>Register a domain name</li>
+<li>Set up DNS hosting</li>
+<li>Set up web hosting</li>
+<li>Design and develop the site</li>
+<li>Deploy and test the site</li>
+<li>Market your site</li>
+<li>Set up additional services</li>
+<li>Maintenance</li>
+</ul>
+<h2>Goals</h2>
+<ul>
+<li>What do you want to achieve from having the site?</li>
+<li>What &#8220;call to action&#8221; do you want visitors to take?</li>
+<li>How will you measure success?</li>
+<li>What will be the focus of the site?
+<ul>
+<li>Info (&#8220;brochure&#8221;) for an existing business</li>
+<li>Blogging</li>
+<li>Sales</li>
+<li>Community</li>
+<li>Web app</li>
+<li>Mobile app</li>
+</ul>
+</li>
+</ul>
+<h2>Business Plan</h2>
+<ul>
+<li>Who is your target audience?</li>
+<li>Marketing
+<ul>
+<li>How will you get them to come to your site?</li>
+<li>How will you get them to buy something?</li>
+</ul>
+</li>
+<li>Who is your competition?
+<ul>
+<li>How do you compare to them?</li>
+<li>How do you differentiate from them?</li>
+<li>What is your niche?</li>
+<li>What makes your site better than theirs?</li>
+</ul>
+</li>
+<li>How will you make money?
+<ul>
+<li>Bringing people into brick and mortar business</li>
+<li>Advertising</li>
+<li>Periodic billing/subscriptions</li>
+<li>Selling goods/services</li>
+<li>Get bought out</li>
+</ul>
+</li>
+<li>Pricing
+<ul>
+<li>Aim high — it&#8217;s easier to lower prices than raise them</li>
+<li>Tiered pricing often makes sense; most people pick the middle tier</li>
+</ul>
+</li>
+<li>What will it take to have a positive ROI?</li>
+</ul>
+<h2>Domain Name</h2>
+<p>You&#8217;ll probably want your own domain name.</p>
+<ul>
+<li>Think of a name
+<ul>
+<li>Stick with a .com name if possible; don&#8217;t use .biz</li>
+<li>Some other top-level domains come into fashion on occasion
+<ul>
+<li>.io is pretty popular right now</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Check availability of the name</li>
+<li>Keep checking names, until you find a good name that is available</li>
+<li>Register the name with a respectable registrar
+<ul>
+<li>DNS Registrars run from $10-$35/yr</li>
+<li>DO NOT allow your web host provider to own/control your name</li>
+<li>You may want to grab the .net, .org, and other versions of the same name</li>
+<li>Multiple-year registration is cheaper, but it&#8217;s easier to forget how to renew it</li>
+</ul>
+</li>
+<li>Your registrar will likely point your domain to an &#8220;under construction&#8221; page initially</li>
+<li>DO NOT LOSE YOUR NAME!
+<ul>
+<li>Spammers and pornographers will take it over if your registration lapses</li>
+<li>Make sure your contact info (especially email address) is up-to-date</li>
+</ul>
+</li>
+<li>Beware scams (usually by US mail) trying to get you to renew with a different registrar</li>
+<li>Note that the email address you register with will get spammed
+<ul>
+<li>Some registrars provide some protection for a fee</li>
+</ul>
+</li>
+</ul>
+<h2>DNS Hosting</h2>
+<p>You&#8217;ll need to have someone take care of the servers that tell the world what server addresses your domain name corresponds to.</p>
+<ul>
+<li>Find a DNS hosting provider
+<ul>
+<li>We like DNSimple; they also do domain registration</li>
+</ul>
+</li>
+<li>Provide the name servers to your DNS registrar</li>
+</ul>
+<h2>Web Hosting</h2>
+<p>You&#8217;ll need servers to host your web site on. There are a lot of options available, from virtual hosts (a Linux server where you control everything) to application-specific services.</p>
+<ul>
+<li>Talk to your developer or designer first!
+<ul>
+<li>Web host can significantly restrain the development environment</li>
+</ul>
+</li>
+<li>Cost
+<ul>
+<li>$10 to $500 / month is typical</li>
+</ul>
+</li>
+<li>Bandwidth
+<ul>
+<li>Number of users × how often they use it × average &#8220;page&#8221; size</li>
+<li>What happens if you go over?</li>
+</ul>
+</li>
+<li>Up-time
+<ul>
+<li>What kind of down-time can the site sustain?</li>
+<li>Higher guaranteed uptime costs more</li>
+<li>What if the specified uptime is not met?</li>
+</ul>
+</li>
+<li>Development environment
+<ul>
+<li>What programming languages are installed?</li>
+<li>What databases are installed?</li>
+<li>What libraries are installed?</li>
+<li>What if other libraries are required?</li>
+</ul>
+</li>
+<li>Shared/dedicated/virtual hosting
+<ul>
+<li>Shared means others are using the same machine, with security implications</li>
+<li>Dedicated is expensive, but you &#8220;own&#8221; the whole machine</li>
+<li>Virtual is somewhere in between
+<ul>
+<li>You have a &#8220;slice&#8221; of a machine dedicated to your site</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>How responsive is the host to problems and requests?</li>
+<li>Backups
+<ul>
+<li>What do they back up?</li>
+<li>How often do they back up?</li>
+<li>How can files be restored?</li>
+</ul>
+</li>
+</ul>
+<h2>Design and Development</h2>
+<p>Designing and developing the site can vary from picking an existing template and adding content, to developing a full web application.</p>
+<ul>
+<li>Cost ($30 &#8211; $300 / hr)</li>
+<li>Project management
+<ul>
+<li>Story/task management</li>
+</ul>
+</li>
+<li>Revision control
+<ul>
+<li>Ensures changes can be rolled back quickly</li>
+</ul>
+</li>
+<li>Functionality
+<ul>
+<li>What does the site need to <em>do</em>?</li>
+</ul>
+</li>
+<li>Usability
+<ul>
+<li>How easy is it to use each page?</li>
+<li>Is it easy to navigate the site to find what you&#8217;re looking for?</li>
+<li>Check for broken links</li>
+<li>Check for ADA/508 compliance</li>
+<li>Spell checking and grammar checking</li>
+</ul>
+</li>
+</ul>
+<h2>Deploying and Testing</h2>
+<ul>
+<li>Can updates be deployed quickly?
+<ul>
+<li>Deploy early and often, so it&#8217;s not such a big deal, and it becomes routine</li>
+</ul>
+</li>
+<li>Consider a staging and/or beta site
+<ul>
+<li>Test everything thoroughly on staging site before deploying to production</li>
+<li>Staging site should (mostly) use the same code as production</li>
+<li>Staging/test site should not process credit cards, etc.</li>
+</ul>
+</li>
+<li>Automated testing
+<ul>
+<li>Prevents regressions</li>
+</ul>
+</li>
+<li>Exploratory testing
+<ul>
+<li>See how things work</li>
+<li>See if you can break things</li>
+</ul>
+</li>
+<li>Security testing
+<ul>
+<li>Penetration testing</li>
+</ul>
+</li>
+<li>Performance
+<ul>
+<li>Load testing</li>
+</ul>
+</li>
+<li>Beta testers</li>
+</ul>
+<h2>Marketing</h2>
+<ul>
+<li>Search engine &#8220;optimization&#8221; (SEO)
+<ul>
+<li>Good design, good URLs, and well-written HTML should cover most of this</li>
+<li>Submit site to search engines</li>
+<li>Use robots.txt and site maps</li>
+</ul>
+</li>
+<li>Directories</li>
+<li>PR sites</li>
+<li>Targeted groups</li>
+<li>DO NOT send out spam</li>
+</ul>
+<h2>Additional Services</h2>
+<p>What other services do you need, besides just the web site?</p>
+<ul>
+<li>Email</li>
+<li>Blog</li>
+<li>Wiki</li>
+<li>File storage</li>
+<li>Forums</li>
+<li>Authentication</li>
+<li>Customer interaction
+<ul>
+<li>CRM</li>
+<li>Feedback</li>
+<li>Bug tracking</li>
+<li>Customer Q&amp;A (StackExchange)</li>
+<li>Follow-up emails to customers to offer assistance</li>
+</ul>
+</li>
+</ul>
+<h2>Maintenance</h2>
+<p>Over the lifetime of the site, you&#8217;ll likely pay more in maintenance costs than the upfront costs.</p>
+<ul>
+<li>Responding to user emails</li>
+<li>Requests for info</li>
+<li>Feedback about the site</li>
+<li>Password resets?</li>
+<li>Tracking bug reports and feature requests</li>
+<li>Site improvements</li>
+<li>Additional content</li>
+<li>Moderation of user content
+<ul>
+<li>Spam removal</li>
+</ul>
+</li>
+<li>Log analysis
+<ul>
+<li>Google Analytics</li>
+</ul>
+</li>
+<li>Assessing advertising effectiveness</li>
+<li>Analysis of revenues/profitability</li>
+<li>Upgrades
+<ul>
+<li>New/improved functionality</li>
+<li>Bug fixes</li>
+<li>Upgraded infrastructure</li>
+</ul>
+</li>
+<li>Down-time
+<ul>
+<li>Web host</li>
+<li>Upgrades</li>
+<li>Accidents</li>
+<li>Bugs</li>
+</ul>
+</li>
+<li>Backups
+<ul>
+<li>Testing restoring from backups</li>
+</ul>
+</li>
+<li>Payments for services
+<ul>
+<li>Domain name registration &#8211; DO NOT LOSE YOUR NAME!</li>
+<li>Web hosting</li>
+<li>Marketing/advertising</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-footer">
+		<span class="byline"><span class="author vcard"><img alt="" src="https://web.archive.org/web/20210922164031im_/http://2.gravatar.com/avatar/52bfd7cb9ac37808464919f9685ca62f?s=49&amp;d=blank&amp;r=g" srcset="https://web.archive.org/web/20210922164031im_/http://2.gravatar.com/avatar/52bfd7cb9ac37808464919f9685ca62f?s=98&amp;d=blank&amp;r=g 2x" class="avatar avatar-49 photo" height="49" width="49"/><span class="screen-reader-text">Author </span> <a class="url fn n" href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/author/booch">Craig Buchek</a></span></span><span class="posted-on"><span class="screen-reader-text">Posted on </span><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2015/09/08/website-checklist-2" rel="bookmark"><time class="entry-date published" datetime="2015-09-08T22:38:02+00:00">September 8, 2015</time><time class="updated" datetime="2015-11-30T21:19:27+00:00">November 30, 2015</time></a></span><span class="cat-links"><span class="screen-reader-text">Categories </span><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/webdev" rel="category tag">Web Development</a></span><span class="comments-link"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2015/09/08/website-checklist-2#respond">Leave a comment<span class="screen-reader-text"> on Website Checklist</span></a></span>			</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+
+<article id="post-245" class="post-245 post type-post status-publish format-standard hentry category-architecture category-ruby category-rails">
+	<header class="entry-header">
+		
+		<h2 class="entry-title"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2015/06/22/not-quite-callbacks" rel="bookmark">Not Quite Callbacks</a></h2>	</header><!-- .entry-header -->
+
+	
+	
+	<div class="entry-content">
+		<p>I&#8217;ve been working on application architectures based on <a href="https://web.archive.org/web/20210922164031/http://confreaks.tv/videos/rubymidwest2011-keynote-architecture-the-lost-years">Uncle Bob&#8217;s Ruby Midwest talk</a>, following the <a href="https://web.archive.org/web/20210922164031/http://alistair.cockburn.us/Hexagonal+architecture">hexagonal architectural pattern</a>. I posted <a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2015/02/23/hexagonal-rails-controllers">an article a couple months ago showing a way that works fairly well in Rails</a>, and some <a href="https://web.archive.org/web/20210922164031/https://github.com/boochtek/hexagonal-rails">accompanying Rails example code</a>. But there was one thing I wasn&#8217;t quite happy with.</p>
+<p>The problem is that we used callbacks (actually, a publish/subscribe mechanism) in a situation where they don&#8217;t seem to quite fit:</p>
+<pre>  def show
+    interactor.on(:display) { |order| render order }
+    interactor.on(:not_found) { |order_id| render status: 404 }
+    interactor.get(params[:id])
+  end</pre>
+<p>What we really want is to respond in different ways, depending on the result of the call to <code>interactor.get()</code>. There&#8217;s no good reason to define the responses before the call. It makes a lot more sense to define the responses after the call, because they&#8217;ll <strong>happen</strong> after the call. I&#8217;d much prefer that the code be written in the order that it will be run.</p>
+<p>I discussed this problem with my friend and colleague, <a href="https://web.archive.org/web/20210922164031/http://dirtyinformation.com/">Amos King</a>. We came up with a better solution, which puts things back in the right order:</p>
+<pre>  def show
+    interactor.get(params[:id]) do |on|
+      on.display { |order| render order }
+      on.not_found { |order_id| render status: 404 }
+    end
+  end</pre>
+<p>He even wrote a small library to do this, which he called <a href="https://web.archive.org/web/20210922164031/https://github.com/BinaryNoggin/riposte">Riposte</a>. I&#8217;m not sure what to call this pattern, but it seems to work pretty well in this situation. I suppose that they&#8217;re still technically callbacks, because they&#8217;re passed in in the block that&#8217;s passed in to the call to <code>interactor.get()</code>. But due to the magic of Ruby blocks, we get to put them in the order they should be.</p>
+<p>Riposte also gives you the option of using the response object directly, instead of passing a block:</p>
+<pre>  def show
+    on = interactor.get(params[:id])
+    on.display { |order| render order }
+    on.not_found { |order_id| render status: 404 }
+  end</pre>
+<p>This shows that it&#8217;s just returning an object, with the twist that the response object has methods that take blocks. The nested blocks variant is really the same thing, except that it&#8217;s yielding to the response object instead of returning it.</p>
+<p>I&#8217;ve decide that is the pattern I&#8217;d like to use for interactions and their callers within Ruby hexagonal architecture.</p>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-footer">
+		<span class="byline"><span class="author vcard"><img alt="" src="https://web.archive.org/web/20210922164031im_/http://2.gravatar.com/avatar/52bfd7cb9ac37808464919f9685ca62f?s=49&amp;d=blank&amp;r=g" srcset="https://web.archive.org/web/20210922164031im_/http://2.gravatar.com/avatar/52bfd7cb9ac37808464919f9685ca62f?s=98&amp;d=blank&amp;r=g 2x" class="avatar avatar-49 photo" height="49" width="49"/><span class="screen-reader-text">Author </span> <a class="url fn n" href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/author/booch">Craig Buchek</a></span></span><span class="posted-on"><span class="screen-reader-text">Posted on </span><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2015/06/22/not-quite-callbacks" rel="bookmark"><time class="entry-date published updated" datetime="2015-06-22T23:55:17+00:00">June 22, 2015</time></a></span><span class="cat-links"><span class="screen-reader-text">Categories </span><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/programming/architecture" rel="category tag">Architecture</a>, <a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/programming/programming-languages/ruby" rel="category tag">Ruby</a>, <a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/webdev/rails" rel="category tag">Ruby on Rails</a></span><span class="comments-link"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2015/06/22/not-quite-callbacks#respond">Leave a comment<span class="screen-reader-text"> on Not Quite Callbacks</span></a></span>			</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+
+<article id="post-240" class="post-240 post type-post status-publish format-standard hentry category-architecture category-programming category-ruby category-webdev">
+	<header class="entry-header">
+		
+		<h2 class="entry-title"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2015/06/01/architectural-thoughts" rel="bookmark">Architectural Thoughts</a></h2>	</header><!-- .entry-header -->
+
+	
+	
+	<div class="entry-content">
+		<p>I&#8217;ve started working on my own framework in Ruby in the past couple days. It&#8217;s built upon my recent work at understanding <a href="https://web.archive.org/web/20210922164031/http://confreaks.tv/videos/rubymidwest2011-keynote-architecture-the-lost-years">Uncle Bob&#8217;s Ruby Midwest 2011 talk</a>, and his article on <a href="https://web.archive.org/web/20210922164031/http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html">Clean Architecture</a>, and the resulting hexagonal architecture (AKA ports and adapters).</p>
+<p>Somehow my research in that vein led me to <a href="https://web.archive.org/web/20210922164031/https://www.destroyallsoftware.com/talks/boundaries">Gary Bernhardt&#8217;s Boundaries talk</a>. I&#8217;ve read a lot about the talk, and knew about the idea of &#8220;functional core / imperative shell&#8221;. And I&#8217;ve worked with a lot of similar ideas lately. But I believe this is the first time that I actually watched the whole video.</p>
+<p>Even after having read a lot about similar ideas, it was pretty mind-expanding. Gary&#8217;s really good at presenting these kinds of ideas in a simple way.</p>
+<p>OOP as usually taught includes encapsulation of data together with behavior, with mutable objects. Functional programming separates data and behavior, with mostly immutable data. From experience, encapsulating data and behavior together seems helpful. But experience also shows that immutability is useful. So it would be good to have both of those together. This is something I&#8217;ve been thinking for a few years &#8212; how best do we get both?</p>
+<p>Gary calls the combination &#8220;FauxO&#8221;. Logic and data are still combined, but there&#8217;s no mutation. Anywhere OOP would normally have mutation would just generate a new object. There&#8217;s no language restriction involved in enforcing immutability &#8212; just discipline.</p>
+<p>But without mutability, it&#8217;s hard to do IO and maintain state. So Gary&#8217;s solution is to encapsulate as much as possible into an immutable (functional or FauxO) core, and around that, use an imperative (traditional OOP) shell. The functional core contains the bulk of the logic, and the imperative shell is a glue layer that handles the real world, including disk, network, and other I/O.</p>
+<p>The result of this is that the shell has fewer paths, but more dependencies. The core contains no dependencies, but encapsulates the different logic paths. So we&#8217;re encapsulating dependencies on one side, and business logic on the other side. Or put another way, the way to figure out the separation is by doing as much as you can without mutation, and then encapsulating the mutation separately.</p>
+<p>I love how this naturally breaks things up, so that the core is all testable with unit tests, and the imperative shell is tested with integration tests. And since the shell has few or no logic paths, you get the <a href="https://web.archive.org/web/20210922164031/http://www.shawnewallace.com/blog/Dealing-With-A-Large-Test-Suite/">testing pyramid</a>, with more unit tests and fewer integration tests. The whole thing ends up being quite beautiful. Tests end up being very fast without any extra effort &#8212; not even stubbing or mocking. This tells us that things have been decomposed very well &#8212; an elegant design.</p>
+<p>Gary makes the case that immutable objects can be treated as values, and passed across boundaries. Even process boundaries. This is something I&#8217;ve noticed as I&#8217;ve been working on my own Uncle Bob style hexagonal framework, but nobody in that camp ever mentioned that &#8212; they prefer DTOs or something more like hashes. I&#8217;m completely against hashes, because of the &#8220;stringly-typed&#8221; problem. And I don&#8217;t see much advantage in a DTO if I&#8217;ve got an immutable object; I&#8217;d be basically copying the object to an almost identical object. And I&#8217;d be losing any laziness possible for derived values within the original immutable object.</p>
+<p>It&#8217;s striking to me how Gary&#8217;s image of an imperative shell around a functional core, plus Net, Disk, and State outside of the shell mirror&#8217;s Uncle Bob&#8217;s concentric circles. Uncle Bob has entities in the middle, surrounded by use cases, surrounded by Web, DB, and UI.</p>
+<p>Another advantage that Gary shows is that breaking things up this way allows easy concurrency. In his example, he shows using the actor model &#8212; either just using threads and queues, or an actor library (or language feature).</p>
+<p>After several years of thinking about the architectural issues seen in most large Rails apps, I&#8217;m starting to come to an understanding of how to combine all these ideas and come up with an architecture that will work better.</p>
+<p>&nbsp;</p>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-footer">
+		<span class="byline"><span class="author vcard"><img alt="" src="https://web.archive.org/web/20210922164031im_/http://2.gravatar.com/avatar/52bfd7cb9ac37808464919f9685ca62f?s=49&amp;d=blank&amp;r=g" srcset="https://web.archive.org/web/20210922164031im_/http://2.gravatar.com/avatar/52bfd7cb9ac37808464919f9685ca62f?s=98&amp;d=blank&amp;r=g 2x" class="avatar avatar-49 photo" height="49" width="49"/><span class="screen-reader-text">Author </span> <a class="url fn n" href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/author/booch">Craig Buchek</a></span></span><span class="posted-on"><span class="screen-reader-text">Posted on </span><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2015/06/01/architectural-thoughts" rel="bookmark"><time class="entry-date published" datetime="2015-06-01T23:51:59+00:00">June 1, 2015</time><time class="updated" datetime="2015-06-01T23:56:56+00:00">June 1, 2015</time></a></span><span class="cat-links"><span class="screen-reader-text">Categories </span><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/programming/architecture" rel="category tag">Architecture</a>, <a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/programming" rel="category tag">Programming</a>, <a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/programming/programming-languages/ruby" rel="category tag">Ruby</a>, <a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/webdev" rel="category tag">Web Development</a></span><span class="comments-link"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2015/06/01/architectural-thoughts#respond">Leave a comment<span class="screen-reader-text"> on Architectural Thoughts</span></a></span>			</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+
+<article id="post-202" class="post-202 post type-post status-publish format-standard hentry category-oop category-ruby category-rails">
+	<header class="entry-header">
+		
+		<h2 class="entry-title"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2015/02/23/hexagonal-rails-controllers" rel="bookmark">Hexagonal Rails Controllers</a></h2>	</header><!-- .entry-header -->
+
+	
+	
+	<div class="entry-content">
+		<p>I&#8217;ve had a long love-hate relationship with Rails. I love the MVC framework and how it&#8217;s improved our speed of writing web apps. But I&#8217;ve never really been completely happy with it. I don&#8217;t generally agree with most of its opinions. I prefer models that follow the Data Mapper pattern, not the Active Record pattern. This includes separating the persistence layer from the models&#8217; business logic. I prefer Slim or HAML to ERB. I prefer RSpec to Test::Unit or MiniTest. When Merb hit the scene, I was ready to make the jump, until Merb merged with Rails.</p>
+<p>So inspired by <a href="https://web.archive.org/web/20210922164031/https://blog.engineyard.com/2015/life-beyond-rails-brief-look-alternate-web-frameworks-ruby">PJ Hagerty&#8217;s recent article on alternative Ruby web frameworks</a>, I started thinking about how I&#8217;d write a replacement for Rails. I&#8217;d definitely keep the basic MVC framework. But I&#8217;d also want to implement a more <a href="https://web.archive.org/web/20210922164031/http://alistair.cockburn.us/Hexagonal+architecture">hexagonal architecture</a>.</p>
+<p>I started sketching out what this would look like, but I ended up starting with a Rails controller and finding the simplest way to make it hexagonal. I really don&#8217;t like callbacks, because they make tracing program execution difficult. But I didn&#8217;t see any other alternative. I found a simple pub/sub Ruby library called Wisper. It literally has only <code>publish</code>, <code>subscribe</code>, and <code>on</code> methods. (You use <code>on</code> to register single callbacks via blocks, and <code>subscribe</code> to register an object with method names corresponding to the callback names.)</p>
+<p>The trick was figuring out how to break the controller into 2 pieces. What finally helped me was to find the single responsibilities of the 2 pieces. The Rails controller would remain in charge of managing the web interface, but would delegate to the other piece to handle any application-specific business logic. I decided to re-watch <a href="https://web.archive.org/web/20210922164031/http://confreaks.tv/videos/rubymidwest2011-keynote-architecture-the-lost-years">Uncle Bob Martin&#8217;s &#8220;Architecture The Lost Years&#8221; talk</a>, which was the first time I was introduced to the ideas of Hexagonal Architecture. (He doesn&#8217;t name the architecture in the talk, but later calls it Clean Architecture.) He does a decent job of explaining how to break these 2 pieces apart. He used the term &#8220;interactor&#8221; in that talk, so I decided to go with that. He said that Jacobsen calls it a Control Object in <a href="https://web.archive.org/web/20210922164031/http://www.amazon.com/Object-Oriented-Software-Engineering-Approach/dp/0201544350">Object Oriented Software Engineering</a>, but that&#8217;s too close to Rails&#8217;s &#8220;controller&#8221;.</p>
+<p>So here&#8217;s an example of what I ended up with:</p>
+<pre>class OrderController &lt; ApplicationController
+  def index
+    interactor.on(:display) { |orders| render orders }
+    interactor.list
+  end
+
+  def show
+    interactor.on(:display) { |order| render order }
+    interactor.on(:not_found) { |order_id| render status: 404 }
+    interactor.get(params[:id])
+  end
+
+private
+
+  def interactor
+    @interactor ||= OrderInteractor.new
+  end
+end</pre>
+<pre>require "wisper"
+require "order"
+
+class OrderInteractor
+  include Wisper.publisher
+
+  def list
+    orders = Order.all
+    publish(:display, orders)
+  end
+
+  def get(id)
+    order = Order.find(id)
+    publish(:display, order)
+  rescue ActiveRecord::RecordNotFound
+    publish(:not_found, id)
+  end
+end</pre>
+<p>I do have a few problems with this solution though. I&#8217;m not a fan of the name &#8220;interactor&#8221; for the business logic. I thought about calling it <code>OrderOperator</code>, or maybe <code>OrderOperations</code>, because it&#8217;s really a collection of operations. Perhaps it would be better to separate each operation into a separate class. <a href="https://web.archive.org/web/20210922164031/https://github.com/apotonick/trailblazer">Trailblazer</a> does it that way. And for more complicated business logic, I would do that too, using the Method Object pattern. But like a Rails controller, there&#8217;s a lot in common among all the operations. I feel like a separate class for each operation for each would create too many coupled classes.</p>
+<p>I&#8217;m also uncomfortable with the fact that the controller is delegating almost everything to the interactor. I guess this is OK, but it feels like there&#8217;s too little left when every line starts with <code>interactor</code>. I suppose extracting things some more would help mitigate this concern I&#8217;ll likely write a small gem to perform that extraction. I expect that that will allow a typical controller to be written in only a few lines. And maybe the same for the interactor side.</p>
+<p>With the business logic extracted out of the controller, it was really easy for me to write a command-line version of the app. As Uncle Bob says, &#8220;the web is not particularly important to your application.&#8221;</p>
+<p>I&#8217;ve put the code for this example on GitHub: <a href="https://web.archive.org/web/20210922164031/https://github.com/boochtek/hexagonal-rails">https://github.com/boochtek/hexagonal-rails</a>. I&#8217;ll likely experiment with it some more over the next few weeks and months.</p>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-footer">
+		<span class="byline"><span class="author vcard"><img alt="" src="https://web.archive.org/web/20210922164031im_/http://2.gravatar.com/avatar/52bfd7cb9ac37808464919f9685ca62f?s=49&amp;d=blank&amp;r=g" srcset="https://web.archive.org/web/20210922164031im_/http://2.gravatar.com/avatar/52bfd7cb9ac37808464919f9685ca62f?s=98&amp;d=blank&amp;r=g 2x" class="avatar avatar-49 photo" height="49" width="49"/><span class="screen-reader-text">Author </span> <a class="url fn n" href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/author/booch">Craig Buchek</a></span></span><span class="posted-on"><span class="screen-reader-text">Posted on </span><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2015/02/23/hexagonal-rails-controllers" rel="bookmark"><time class="entry-date published updated" datetime="2015-02-23T23:50:28+00:00">February 23, 2015</time></a></span><span class="cat-links"><span class="screen-reader-text">Categories </span><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/programming/oop" rel="category tag">OOP</a>, <a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/programming/programming-languages/ruby" rel="category tag">Ruby</a>, <a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/webdev/rails" rel="category tag">Ruby on Rails</a></span><span class="comments-link"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2015/02/23/hexagonal-rails-controllers#respond">Leave a comment<span class="screen-reader-text"> on Hexagonal Rails Controllers</span></a></span>			</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+
+<article id="post-191" class="post-191 post type-post status-publish format-standard hentry category-agile category-rails category-tdd">
+	<header class="entry-header">
+		
+		<h2 class="entry-title"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2014/05/05/tdd-is-alive-and-well" rel="bookmark">TDD Is Alive And Well</a></h2>	</header><!-- .entry-header -->
+
+	
+	
+	<div class="entry-content">
+		<p>I went to RailsConf this year, and the very first talk was a <a href="https://web.archive.org/web/20210922164031/http://www.confreaks.com/videos/3315-railsconf-keynote-writing-software">keynote by</a> <a href="https://web.archive.org/web/20210922164031/http://www.confreaks.com/videos/3315-railsconf-keynote-writing-software">David Heinemeier Hansson (DHH)</a>, the creator of Ruby on Rails. The TL;DR of his talk was &#8220;TDD rarely has value&#8221;. He followed up with a blog post the next day, titled &#8220;<a href="https://web.archive.org/web/20210922164031/http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html">TDD is dead. Long live testing.</a>&#8220;, and <a href="https://web.archive.org/web/20210922164031/http://david.heinemeierhansson.com/2014/test-induced-design-damage.html">2 more</a> <a href="https://web.archive.org/web/20210922164031/http://david.heinemeierhansson.com/2014/slow-database-test-fallacy.html">posts</a>. I think this line of thought is terribly misguided, and causing more harm than good. This article is my response.</p>
+<p>First, I would like to address the good points of the talk. He said that programming is pseudoscience, and that people want to tell us that there&#8217;s a secret to being a better programmer. But what it really takes is working hard &#8212; reading a lot of code, writing a lot of code, and rewriting a lot of code. He&#8217;s right. And I also agree with him that you should forget about patterns for a while when learning to code. Beginners try to throw patterns at a problem instead of letting the patterns emerge where they&#8217;re supposed to.</p>
+<p>I don&#8217;t completely agree that programming is a pseudoscience. In some ways it is, but I think it&#8217;s more of a craft. It&#8217;s a craft, because there&#8217;s a lot of science involved, but there&#8217;s also an art to doing it well. And like any craft, you&#8217;re always working to get better. So to respond to DHH&#8217;s stance that &#8220;software is more like poetry than physics&#8221;, I think it falls<br/>
+somewhere in between.</p>
+<p>With regard to the software engineering practices we use, there really isn&#8217;t much science available, mostly because it&#8217;s a soft science. That is, it&#8217;s really hard to isolate a single variable when comparing code between projects. And nobody has the time or money to write the same code so many times that the differences would be statistically significant.</p>
+<p>So we don&#8217;t have much science on TDD. But we do have some. Here&#8217;s a collection of several: <a href="https://web.archive.org/web/20210922164031/http://biblio.gdinwiddie.com/biblio/StudiesOfTestDrivenDevelopment">StudiesOfTestDrivenDevelopment</a>. And here&#8217;s one that explicitly looks are the difference between test-first and test-last: <a href="https://web.archive.org/web/20210922164031/http://digitalcommons.calpoly.edu/cgi/viewcontent.cgi?article=1027&amp;context=csse_fac">Does Test-Driven Development Really Improve Software Design Quality?</a> What do these tell us? They tell us that TDD costs us about 10-30% in short-term productivity; reduces bugs by 30-90%, and decreases code complexity by about 30%. As <a href="https://web.archive.org/web/20210922164031/http://www.cc2e.com/Default.aspx">Code Complete</a> tells us (in section 20.5, with studies to back it up), improving quality reduces development costs. So, like most Agile practices, this is a case where spending a bit more time in the short term leads to time savings in the long term.</p>
+<p>The more important lesson in the talk was that you have to do what works best for you and your situation. If TDD doesn&#8217;t give better results, then either find out how to make it give better results, or stop using it. As we often say in the Agile world, Agile doesn&#8217;t mean that you can stop using your brain. While I think TDD is appropriate in most situations, there are cases where it&#8217;s not worth the additional up-front cost. If the most important thing for your project is time-to-market, then not testing might be the right decision for you.</p>
+<p>To me, TDD provides a bunch of benefits. First and foremost, TDD is a design discipline. It ensures that I think about how my code will be used before I think about how to implement it. This is very powerful in ensuring that the code is well-written from the perspective of other code using it.</p>
+<p>Tested code provides confidence to be able to make changes without breaking things. If we write tests after the code, we&#8217;re less likely to write them. Tests written after the code also tend to test the implementation instead of the desired functionality. What we really want is tests written as a specification. With tests as a specification, we can come back later and understand why code was written. Without tests, or with poor tests, we can&#8217;t understand why the code is there; if we want to rewrite it, we don&#8217;t have the confidence that we&#8217;re not missing something. Writing tests first also ensures that we only write the code that is needed to implement the required functionality.</p>
+<p>I&#8217;m not sure why DHH hasn&#8217;t &#8220;gotten&#8221; TDD. I&#8217;m not sure if it&#8217;s because he&#8217;s  a better coder than average, or if he just thinks in a different way than most of us. I think it&#8217;s partly because he doesn&#8217;t understand TDD, which he admitted might be the case. And I think he&#8217;s conflating TDD and unit testing.</p>
+<p>DHH is influential in the developer community, especially those newer to Ruby and Rails. People listen to what he has to say. I was happy to see almost every other speaker made fun of DHH&#8217;s ideas, and most of the crowd knew better. But there will be a lot of others who will hear DHH, respect his opinions, and not give TDD the try that it deserves. And that&#8217;s sad, because it will lead to an overall reduction in code quality in the world.</p>
+<p>Here are some other people&#8217;s thoughts on the matter:</p>
+<ul>
+<li><a href="https://web.archive.org/web/20210922164031/http://blog.8thlight.com/uncle-bob/2014/04/25/MonogamousTDD.html">Monogamous TDD</a> by Uncle Bob Martin</li>
+<li><a href="https://web.archive.org/web/20210922164031/http://blog.8thlight.com/uncle-bob/2014/04/30/When-tdd-does-not-work.html">When TDD doesn&#8217;t work</a> by Uncle Bob Martin</li>
+<li><a href="https://web.archive.org/web/20210922164031/https://www.facebook.com/notes/kent-beck/rip-tdd/750840194948847">RIP TDD</a> by Kent Beck</li>
+<li><a href="https://web.archive.org/web/20210922164031/http://codon.com/how-testability-can-help">How testability can help</a> by Tom Stuart</li>
+<li><a href="https://web.archive.org/web/20210922164031/http://www.thisagilelife.com/47/">This Agile Life Episode 47</a> (including myself)</li>
+</ul>
+<p>&nbsp;</p>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-footer">
+		<span class="byline"><span class="author vcard"><img alt="" src="https://web.archive.org/web/20210922164031im_/http://2.gravatar.com/avatar/52bfd7cb9ac37808464919f9685ca62f?s=49&amp;d=blank&amp;r=g" srcset="https://web.archive.org/web/20210922164031im_/http://2.gravatar.com/avatar/52bfd7cb9ac37808464919f9685ca62f?s=98&amp;d=blank&amp;r=g 2x" class="avatar avatar-49 photo" height="49" width="49"/><span class="screen-reader-text">Author </span> <a class="url fn n" href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/author/booch">Craig Buchek</a></span></span><span class="posted-on"><span class="screen-reader-text">Posted on </span><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2014/05/05/tdd-is-alive-and-well" rel="bookmark"><time class="entry-date published" datetime="2014-05-05T23:50:07+00:00">May 5, 2014</time><time class="updated" datetime="2014-05-27T22:36:25+00:00">May 27, 2014</time></a></span><span class="cat-links"><span class="screen-reader-text">Categories </span><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/agile" rel="category tag">Agile</a>, <a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/webdev/rails" rel="category tag">Ruby on Rails</a>, <a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/agile/tdd" rel="category tag">TDD</a></span><span class="comments-link"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2014/05/05/tdd-is-alive-and-well#comments">2 Comments<span class="screen-reader-text"> on TDD Is Alive And Well</span></a></span>			</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+
+<article id="post-104" class="post-104 post type-post status-publish format-standard hentry category-oop category-ruby category-rails">
+	<header class="entry-header">
+		
+		<h2 class="entry-title"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2014/02/10/includable-activerecord" rel="bookmark">Includable ActiveRecord</a></h2>	</header><!-- .entry-header -->
+
+	
+	
+	<div class="entry-content">
+		<p>I created a Ruby gem recently, called <a href="https://web.archive.org/web/20210922164031/https://github.com/boochtek/includable-activerecord">includable-activerecord</a>. It&#8217;s pretty small, but I thought I might explain why I created it, and discuss its implementation.</p>
+<h1>Classical Inheritance</h1>
+<p>When you use ActiveRecord, you normally include it in your model like this:</p>
+<pre>class User &lt; ActiveRecord::Base
+  # ...
+end</pre>
+<p>Your <code>User</code> class is inheriting from the <code>ActiveRecord::Base</code> class. This is class-based inheritance, also called &#8220;classical&#8221; inheritance. (That&#8217;s &#8220;classical&#8221; as in &#8220;class&#8221;, not as a synonym for &#8220;traditional&#8221;.) Class-based inheritance represents an &#8220;is-a&#8221; relationship. So we&#8217;re saying that a user is an ActiveRecord base. Another way to say this is that <code>User</code> is a subclass of <code>ActiveRecord::Base.<br/>
+</code><br/>
+There are a few problems with this. First, what is a &#8220;base&#8221;? The name was chosen because it&#8217;s a base class. But just like we don&#8217;t give factory classes names like <code>UserFactory</code> (at least not in Ruby), we shouldn&#8217;t name base classes <code>Base</code>.</p>
+<p>I suppose that we&#8217;re trying to say that this is an ActiveRecord model. That sounds fine at first glance &#8212; this is our model for users. But what if we also want to say that a user is a person? Ruby doesn&#8217;t allow inheriting from multiple classes. Now we have to choose whether to inherit from <code>ActiveRecord::Base</code> or <code>Person</code>. <code>Person</code> makes more sense, because it fills the &#8220;is-a&#8221; rule better. Class inheritance is intended for a hierarchical &#8220;is-a&#8221; relationship, such as &#8220;a user is a person&#8221;, or &#8220;a circle is a shape&#8221;. But since <code>ActiveRecord::Base</code> is a base class, we <strong>have</strong> to use it as our base class.</p>
+<p>We could work around this problem by subclassing <code>Person</code> from <code>ActiveRecord::Base</code> and then subclassing <code>User</code> from <code>Person</code>. That&#8217;s fine if <code>Person</code> is also a model that we store in the database. But if that&#8217;s not the case, then we have a problem.</p>
+<p><span style="color: #000000; font-weight: bold;">Mixins</span></p>
+<p>Ruby provides another way of implementing inheritance &#8212; mixins. We often don&#8217;t think of this as an inheritance model, but it really is. When we include a module, that module gets added to the class&#8217;s ancestor chain. We can mix in as many modules as we want.</p>
+<p>Mixins indicate more of an &#8220;acts like&#8221; relationship than an &#8220;is-a&#8221; relationship. It&#8217;s for shared behavior between classes that don&#8217;t have a hierarchical relationship. For example, when we mix in the <code>Enumerable</code> module, we&#8217;re saying that we want our class to act like other classes that include <code>Enumerable</code>. That sounds more like what we want ActiveRecord to be. We want our user model to behave like other ActiveRecord models, in the way that they can persist to a database.</p>
+<p>But ActiveRecord doesn&#8217;t support that. Almost all the other Ruby ORMs do; as we&#8217;ve shown above, this is for good reasons.</p>
+<h1>Implementation</h1>
+<p>So I decided to see if I could implement the equivalent of the <code>ActiveRecord::Base</code> class as a module that could be mixed into model classes. I decided to call my mixin module <code>ActiveRecord::Model</code>, because classes that mix it in will behave as ActiveRecord models.</p>
+<p>It turns out that <code>ActiveRecord::Base</code> is a pretty complex class. It includes and extends a lot of other modules. Luckily, as of ActiveRecord 4.0, that&#8217;s <strong>all</strong> the code it includes.</p>
+<p>The module only defines a single class method, <a href="https://web.archive.org/web/20210922164031/http://www.ruby-doc.org/core-2.0.0/Module.html#method-i-included"><code>included</code></a>. This is one of <a href="https://web.archive.org/web/20210922164031/http://stackoverflow.com/questions/5127819/is-this-a-comprehensive-list-of-ruby-hook-methods">Ruby&#8217;s many hook methods</a>. It gets called when the module in question gets included in another module, and receives that other model as its argument. All we need to have this method do is to <code style="font-style: inherit;">include</code> everything that <code style="font-style: inherit;">ActiveRecord::Base</code> includes, and <code style="font-style: inherit;">extend</code> everything that <code style="font-style: inherit;">ActiveRecord::Base</code> extends. Ruby provides a method that&#8217;s defined on all classes, called <code style="font-style: inherit;">included_modules</code>, which we can use to get the list of everything that&#8217;s included in <code style="font-style: inherit;">ActiveRecord::Base</code>. Unfortunately, there&#8217;s no equivalent list of <code style="font-style: inherit;">extended_modules</code>. But a quick search on Stack Overflow found <a href="https://web.archive.org/web/20210922164031/http://stackoverflow.com/a/5197277">an implementation of <code>extended_modules</code></a> that we could use.</p>
+<p>So with a bit of magic (i.e. hooks and meta-programming), we can get the lists of constituent modules from the <code>ActiveRecord::Base</code> class, and include them in our <code>ActiveRecord::Model</code> module.</p>
+<p>So with all that, we can now include the <a href="https://web.archive.org/web/20210922164031/https://github.com/boochtek/includable-activerecord">includable-activerecord</a> gem and mix it in, with all the advantages that provides:</p>
+<pre>class User
+  include ActiveRecord::Model
+  # ...
+end</pre>
+<p>It was exciting to be able to make this work. Since I wrote it as a proof of concept, I haven&#8217;t written any tests yet. But it seems to be working just fine. The main thing I really need to look into is making sure that plugins that extend <code>ActiveRecord::Base</code> from their own code will still work. I&#8217;m pretty sure this will work out of the box, because the <code>ActiveRecord::Model.included</code> doesn&#8217;t run until the model class is loaded, and that happens after those plugins have initialized themselves.</p>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-footer">
+		<span class="byline"><span class="author vcard"><img alt="" src="https://web.archive.org/web/20210922164031im_/http://2.gravatar.com/avatar/52bfd7cb9ac37808464919f9685ca62f?s=49&amp;d=blank&amp;r=g" srcset="https://web.archive.org/web/20210922164031im_/http://2.gravatar.com/avatar/52bfd7cb9ac37808464919f9685ca62f?s=98&amp;d=blank&amp;r=g 2x" class="avatar avatar-49 photo" height="49" width="49"/><span class="screen-reader-text">Author </span> <a class="url fn n" href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/author/booch">Craig Buchek</a></span></span><span class="posted-on"><span class="screen-reader-text">Posted on </span><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2014/02/10/includable-activerecord" rel="bookmark"><time class="entry-date published" datetime="2014-02-10T12:09:53+00:00">February 10, 2014</time><time class="updated" datetime="2014-02-18T16:28:58+00:00">February 18, 2014</time></a></span><span class="cat-links"><span class="screen-reader-text">Categories </span><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/programming/oop" rel="category tag">OOP</a>, <a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/programming/programming-languages/ruby" rel="category tag">Ruby</a>, <a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/webdev/rails" rel="category tag">Ruby on Rails</a></span><span class="comments-link"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2014/02/10/includable-activerecord#respond">Leave a comment<span class="screen-reader-text"> on Includable ActiveRecord</span></a></span>			</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+
+<article id="post-93" class="post-93 post type-post status-publish format-standard hentry category-oop category-rails category-tdd">
+	<header class="entry-header">
+		
+		<h2 class="entry-title"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2014/01/26/testing-rails-validators" rel="bookmark">Testing Rails Validators</a></h2>	</header><!-- .entry-header -->
+
+	
+	
+	<div class="entry-content">
+		<p>It&#8217;s challenging to test Rails custom validators.</p>
+<p>I recently had to write a validator to require that an entered date is before or after a specified date.</p>
+<p>It didn&#8217;t seem like writing the validator would be too difficult &#8211; I&#8217;ve written custom validators before, and date comparisons aren&#8217;t all that tricky. But when it came time to write the tests, I ran into several issues. And since I always try to follow TDD / test-first, I was blocked before I even began.</p>
+<p>The biggest issue was the <code>ActiveModel::EachValidator#validates_each</code> API. It&#8217;s definitely not a well-designed API. You write your validator as a subclass, overriding <code>validates_each</code>. The method takes a model object, the name of the attribute of the model being tested, and the value of that attribute. You can also get the options passed to the custom validator via the <code>options</code> method. To perform a validation, you have to update the model&#8217;s <code>errors</code> hash.</p>
+<p>The big flaw in the API is that instead of returning a result, you have to update the model. This needlessly couples the model and the validator. And it violates the Single Responsibility Principle &#8212; it has to determine validity of the field, and it has to update the <code>errors</code> hash of the model. This is not conducive to testing. Testing this method requires testing that the side-effect has taken place in the collaborator (model), which means it&#8217;s not really a unit test any more.</p>
+<p>So to make it easier to unit test the validator, I broke the coupling by breaking it into 2 pieces, one for each responsibility. I moved the responsibility for determining validity to a separate method, which I called <code>errors_for</code>. It returns a hash of the errors found. This simplified the <code>validates_each</code> method to simply take the result of <code>errors_for</code> and update the <code>errors</code> hash of the model:</p>
+<pre>def validate_each(record, attribute_name, attribute_value)
+  record.errors[attribute_name].concat(errors_for(attribute_value, options))
+end</pre>
+<p>This made it much easier to unit test the <code>errors_for</code> method. This method doesn&#8217;t even need to know about the model &#8212; only about the value of the attribute we&#8217;re trying to validate. We simply pass in the attribute&#8217;s value and the options.</p>
+<p>So we could write the tests without even pulling in ActiveRecord or any models:</p>
+<pre>describe DateValidator do
+  let(:validator) { DateValidator.new(attributes: :attribute_name) }
+  let(:errors) { validator.errors_for(attribute_value, validation_options) }
+
+  describe 'when attribute value is NOT a valid date' do
+    let(:attribute_value) { 'not a valid date' }
+    it { errors.must_include 'is not a valid date' }
+  end
+
+  describe 'when attribute value IS a valid date' do
+    let(:attribute_value) { Date.parse('2013-12-11') }
+    it { errors.must_be :empty? }
+  end
+end</pre>
+<p>And the <code>errors_for</code> method looked something like this:</p>
+<pre>def errors_for(attribute_value, options)
+  unless attribute_value.is_a?(Date)
+    return [options.fetch(:message, "is not a valid date")]
+  end
+  []
+end</pre>
+<p>Integration testing can also be a bit of a challenge. I recommend following the example from <a href="https://web.archive.org/web/20210922164031/http://stackoverflow.com/a/17739176">this Stack Overflow answer</a>. Basically, create a minimal model object that contains the field and the validation. Then test that the model behaves like you expect with different values and validations.</p>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-footer">
+		<span class="byline"><span class="author vcard"><img alt="" src="https://web.archive.org/web/20210922164031im_/http://2.gravatar.com/avatar/52bfd7cb9ac37808464919f9685ca62f?s=49&amp;d=blank&amp;r=g" srcset="https://web.archive.org/web/20210922164031im_/http://2.gravatar.com/avatar/52bfd7cb9ac37808464919f9685ca62f?s=98&amp;d=blank&amp;r=g 2x" class="avatar avatar-49 photo" height="49" width="49"/><span class="screen-reader-text">Author </span> <a class="url fn n" href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/author/booch">Craig Buchek</a></span></span><span class="posted-on"><span class="screen-reader-text">Posted on </span><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2014/01/26/testing-rails-validators" rel="bookmark"><time class="entry-date published updated" datetime="2014-01-26T23:27:07+00:00">January 26, 2014</time></a></span><span class="cat-links"><span class="screen-reader-text">Categories </span><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/programming/oop" rel="category tag">OOP</a>, <a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/webdev/rails" rel="category tag">Ruby on Rails</a>, <a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/agile/tdd" rel="category tag">TDD</a></span><span class="comments-link"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/2014/01/26/testing-rails-validators#respond">Leave a comment<span class="screen-reader-text"> on Testing Rails Validators</span></a></span>			</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+
+		</main><!-- .site-main -->
+	</div><!-- .content-area -->
+
+
+	<aside id="secondary" class="sidebar widget-area" role="complementary">
+		<section id="pages-2" class="widget widget_pages"><h2 class="widget-title">Pages</h2>		<ul>
+			<li class="page_item page-item-2"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/about">About</a></li>
+		</ul>
+		</section><section id="categories-4" class="widget widget_categories"><h2 class="widget-title">Categories</h2>		<ul>
+	<li class="cat-item cat-item-17"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/agile">Agile</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/programming/architecture">Architecture</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/blogging">Blogging</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/programming/programming-languages/brilliant">Brilliant</a>
+</li>
+	<li class="cat-item cat-item-30"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/agile/empathy">Empathy</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/agile/estimation-agile">Estimation</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/gadgets">Gadgets</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/open-source/linux">GNU/Linux</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/programming/programming-languages">Languages</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/programming/oop">OOP</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/open-source">Open Source</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/programming">Programming</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/programming/programming-languages/python">Python</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/resolutions">Resolutions</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/agile/retrospectives">Retrospectives</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/programming/programming-languages/ruby">Ruby</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/webdev/rails">Ruby on Rails</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/security">Security</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/programming/programming-languages/shell">Shell</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/sysadmin">System Admin</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/agile/tdd">TDD</a>
+</li>
+	<li class="cat-item cat-item-4 current-cat"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/category/webdev">Web Development</a>
+</li>
+		</ul>
+</section>	</aside><!-- .sidebar .widget-area -->
+
+		</div><!-- .site-content -->
+
+		<footer id="colophon" class="site-footer" role="contentinfo">
+			
+			
+			<div class="site-info">
+								<span class="site-title"><a href="https://web.archive.org/web/20210922164031/http://blog.boochtek.com/" rel="home">BoochTek, LLC</a></span>
+				<a href="https://web.archive.org/web/20210922164031/https://wordpress.org/">Proudly powered by WordPress</a>
+			</div><!-- .site-info -->
+		</footer><!-- .site-footer -->
+	</div><!-- .site-inner -->
+</div><!-- .site -->
+
+<script type="text/javascript" src="https://web.archive.org/web/20210922164031js_/http://blog.boochtek.com/wp-content/themes/twentysixteen/js/skip-link-focus-fix.js?ver=20150825"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var screenReaderText = {"expand":"expand child menu","collapse":"collapse child menu"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://web.archive.org/web/20210922164031js_/http://blog.boochtek.com/wp-content/themes/twentysixteen/js/functions.js?ver=20150825"></script>
+<script type="text/javascript" src="https://web.archive.org/web/20210922164031js_/http://blog.boochtek.com/wp-includes/js/wp-embed.min.js?ver=4.7.2"></script>
+</body>
+</html>
+<!--
+     FILE ARCHIVED ON 16:40:31 Sep 22, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 08:33:29 Feb 23, 2024.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  exclusion.robots: 0.209
+  exclusion.robots.policy: 0.191
+  cdx.remote: 0.171
+  esindex: 0.014
+  LoadShardBlock: 63.701 (6)
+  PetaboxLoader3.datanode: 67.846 (7)
+  load_resource: 66.915
+  PetaboxLoader3.resolve: 26.827
+-->

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Open Source &#8211; BoochTek, LLC</title>
+	<atom:link href="http://blog.boochtek.com/category/open-source/feed" rel="self" type="application/rss+xml" />
+	<link>http://blog.boochtek.com</link>
+	<description>Web Development, Ruby on Rails, Open Source</description>
+	<lastBuildDate>Thu, 07 Jul 2016 04:22:08 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.3</generator>
+	<item>
+		<title>Burying the Lede</title>
+		<link>http://blog.boochtek.com/2014/03/11/readable-shell-scripts</link>
+		<comments>http://blog.boochtek.com/2014/03/11/readable-shell-scripts#respond</comments>
+		<pubDate>Wed, 12 Mar 2014 04:28:22 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[GNU/Linux]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[System Admin]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=110</guid>
+		<description><![CDATA[Most of us don&#8217;t write very readable shell scripts. There are plenty of things we could do better, but today I want to talk about one in particular — burying the lede. The term &#8220;burying the lede&#8221; comes from the field of journalism. Here&#8217;s the Wiktionary definition: To begin a story with details of secondary importance to the reader &#8230; <a href="http://blog.boochtek.com/2014/03/11/readable-shell-scripts" class="more-link">Continue reading<span class="screen-reader-text"> "Burying the Lede"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Most of us don&#8217;t write very readable shell scripts. There are plenty of things we could do better, but today I want to talk about one in particular — burying the lede.</p>
+<p>The term &#8220;burying the lede&#8221; comes from the field of journalism. Here&#8217;s the <a href="http://en.wiktionary.org/wiki/bury_the_lede">Wiktionary definition</a>:</p>
+<blockquote><p>To begin a story with details of secondary importance to the reader while postponing more essential points or facts.</p></blockquote>
+<p>Like a good news article, code should tell a story. And the story should start with what&#8217;s most important. In the case of code, the most important information is the high-level functionality — a succinct summary of what the program does. In other words, write (and organize) the code top-down, as opposed to bottom-up.</p>
+<p>Unfortunately, shell script doesn&#8217;t make this easy. Due to the way shell scripts are interpreted, you can&#8217;t call a function until after you&#8217;ve defined it. This leads to most of us structuring our code like this:</p>
+<pre>function do_something { ... }
+function do_something_else { ... }
+
+do_something
+do_something_else</pre>
+<p>The problem with this is that the function definitions will likely take quite a few lines, and we won&#8217;t see what the top-level functionality is until we reach the end of the script.</p>
+<p>I&#8217;d like to propose a standard way to structure shell scripts to mitigate this issue. (I&#8217;m really only talking about shell scripts that have function definitions within them.) I&#8217;m sure I&#8217;ve seen a few scripts do this, but it&#8217;s not very common at all.</p>
+<p>My proposal is simple:</p>
+<pre>function main {
+  do_something
+  do_something_else
+}
+function do_something { ... }
+function do_something_else { ... }
+
+main</pre>
+<p>This structure lets us start with the lede. We describe the top-level functionality right away. Only then do we get to the secondary details. The name <code>main</code> makes it pretty clear that it contains the top-level functionality.</p>
+<p>I&#8217;ve recently started writing my shell code like this, and I&#8217;m happy with the results. I&#8217;ve also started to use some other programming techniques in my shell scripts to improve readability: better naming, extracting more methods, and moving helper methods into separate files. It feels good to treat shell scripts like real code instead of just some stuff I&#8217;ve hacked together.</p>
+<p>PS. The WordPress theme I&#8217;m currently using (Twenty Eleven) also buries the lede — I can barely even see the title of the blog post on my screen without scrolling. I&#8217;m going to have to change that soon.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2014/03/11/readable-shell-scripts/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>What&#8217;s Your Open Source Resolution?</title>
+		<link>http://blog.boochtek.com/2014/01/04/open-source-resolutions</link>
+		<comments>http://blog.boochtek.com/2014/01/04/open-source-resolutions#respond</comments>
+		<pubDate>Sun, 05 Jan 2014 05:02:42 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Open Source]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=14</guid>
+		<description><![CDATA[I&#8217;ve been using GNU/Linux since 1994, starting with a Slackware 2.2 CD-ROM I ordered from the back of a magazine. I&#8217;ve been heavily involved in my local GNU/Linux community since 1999, and I give frequent presentations at various groups. I&#8217;ve made some small contributions to several Open Source projects. But I don&#8217;t feel like I&#8217;ve &#8230; <a href="http://blog.boochtek.com/2014/01/04/open-source-resolutions" class="more-link">Continue reading<span class="screen-reader-text"> "What&#8217;s Your Open Source Resolution?"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;ve been using GNU/Linux since 1994, starting with a Slackware 2.2 CD-ROM I ordered from the back of a magazine. I&#8217;ve been heavily involved in my local GNU/Linux community since 1999, and I give frequent presentations at various groups. I&#8217;ve made some small contributions to several Open Source projects.</p>
+<p>But I don&#8217;t feel like I&#8217;ve done enough to contribute to the wider community. So this year, I&#8217;m going to resolve to step up my contributions, and do more.</p>
+<h2>Change my role in the LUG</h2>
+<p>I was lucky enough this past year to find someone interested in helping to run the <a href="http://stllinux.org">St. Louis GNU/Linux Users Group (STLLUG)</a>. I&#8217;ve been running the group so long that I&#8217;ve somewhat stagnated. It&#8217;s great to find someone who will bring a fresh energy and new ideas. Thanks, Andrew!</p>
+<p>Mostly freed from the more general administrative tasks (mostly planning meeting topics and speakers), I&#8217;m hoping to find the time to work on a few projects. First, I want to overhaul the web site. It needs a new look, as well as an easier way to update it. I&#8217;m planning to implement some sort of CMS &#8212; possibly WordPress or Octopress, or at the very least, a git repo to manage updates.</p>
+<h2>Blog regularly</h2>
+<p>I installed WordPress a long time ago, but I haven&#8217;t published many posts. I&#8217;ve got a few drafts in various stages. So this year I&#8217;m going to actually get the blog going, and hopefully post about once a week. I&#8217;ll be sharing things I learn on the Internet, as well as some of the things I learn from my experiences with various technologies and techniques.</p>
+<h2>Contribute more significant patches</h2>
+<p>There are a few items I&#8217;ve been meaning to work on and contribute. I&#8217;d like to finally get around to them:</p>
+<ul>
+<li>Make the GNU sort command be able to (easily) sort a list of IP addresses, or semantic version numbers.</li>
+<li>Add MySQL-style commands to PostgreSQL: SHOW DATABASES; SHOW TABLES; DESCRIBE table. (I&#8217;m not sure how welcome these additions might be, but I think they&#8217;d make transitioning from MySQL easier for people.)</li>
+</ul>
+<h2>Publish and maintain several Ruby gems</h2>
+<p>I&#8217;ve been working on a few Ruby gems. I&#8217;d like to get them to a state where they&#8217;re useful to more people. These include:</p>
+<ul>
+<li>A way to simplify standard CRUD controller actions</li>
+<li>A way to declare list views in a manner similar to SimpleForm or Formtastic</li>
+<li>A way to declare ActiveRecord attributes in models using Virtus</li>
+<li>A higher-level interface to ROM (Ruby Object Mapper)</li>
+<li>A similar high-level way to define Perpetuity attributes in models using Virtus</li>
+<li>My Rails template, making it much easier to start a Rails app</li>
+</ul>
+<h2>Build some apps</h2>
+<p>I enjoyed building a quick Rails app during last year&#8217;s Rails Rumble, even if it doesn&#8217;t turn out to be useful or make any money. I&#8217;d like to create a few small apps again this year, either in Rails or Apache Cordova. I&#8217;ve got some ideas &#8212; we&#8217;ll see how if they turn into anything useful or worth selling.</p>
+<h2>Podcast more often</h2>
+<p>Last year, I started joining the <a href="http://www.thisagilelife.com/">This Agile Life</a> podcast. I enjoy it. I&#8217;m hoping to continue with that, and possibly doing some podcasting about Ruby and Rails.</p>
+<h2>Present at a conference</h2>
+<p>I&#8217;m going to attempt to give a presentation at a conference. I often give presentations at local groups, but haven&#8217;t addressed a larger audience. I&#8217;ve got a few ideas rattling around, and will see if I can turn them into presentations worthy of a larger conference.</p>
+<p>What&#8217;s your Open Source resolution?</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2014/01/04/open-source-resolutions/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Bulk Rename in Bash</title>
+		<link>http://blog.boochtek.com/2011/08/26/bulk-rename-in-bash</link>
+		<comments>http://blog.boochtek.com/2011/08/26/bulk-rename-in-bash#respond</comments>
+		<pubDate>Sat, 27 Aug 2011 03:53:58 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[GNU/Linux]]></category>
+		<category><![CDATA[System Admin]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=46</guid>
+		<description><![CDATA[Here&#8217;s a relatively simple way to rename a bunch of files from the command line. It uses sed within a command substitution to compute the new names from the old names. In this example, we&#8217;re renaming files that start with &#8220;ABC&#8221; to start with &#8220;XYZ&#8221; instead: for i in ABC*; do mv $i $(echo $i &#8230; <a href="http://blog.boochtek.com/2011/08/26/bulk-rename-in-bash" class="more-link">Continue reading<span class="screen-reader-text"> "Bulk Rename in Bash"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Here&#8217;s a relatively simple way to rename a bunch of files from the command line. It uses <code>sed</code> within a command substitution to compute the new names from the old names.</p>
+<p>In this example, we&#8217;re renaming files that start with &#8220;ABC&#8221; to start with &#8220;XYZ&#8221; instead:</p>
+<pre class="bash code">  <code class="bash">for i in ABC*; do mv $i $(echo $i | sed -e s/^ABC/XYZ/); done</code></pre>
+<p>You&#8217;ll have to use shell globbing (wildcards) in the first part, to determine which files will be the source of the renaming, and regular expressions in the second part to translate the old names into the new names.</p>
+<p>It&#8217;s a good idea to use <code>echo</code> in place of <code>mv</code> before running this, to see what the results will be, so you don&#8217;t make a mistake.</p>
+<p>Depending on the situation, you may need to adapt this for your particular needs. For example, if you have too many files to rename, you would need to use <code>xargs</code>. Or <code>sed</code> might not be up for the task of transforming the names that you want. Or you might need to use <code>find</code> to find files within a hierarchy. As with any UNIX idiom, there are hundreds of variations on the theme.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2011/08/26/bulk-rename-in-bash/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

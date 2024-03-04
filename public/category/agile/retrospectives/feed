@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Retrospectives &#8211; BoochTek, LLC</title>
+	<atom:link href="http://blog.boochtek.com/category/agile/retrospectives/feed" rel="self" type="application/rss+xml" />
+	<link>http://blog.boochtek.com</link>
+	<description>Web Development, Ruby on Rails, Open Source</description>
+	<lastBuildDate>Thu, 07 Jul 2016 04:22:08 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.3</generator>
+	<item>
+		<title>Team Values</title>
+		<link>http://blog.boochtek.com/2016/01/04/team-values</link>
+		<comments>http://blog.boochtek.com/2016/01/04/team-values#respond</comments>
+		<pubDate>Tue, 05 Jan 2016 04:56:46 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Agile]]></category>
+		<category><![CDATA[Retrospectives]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=294</guid>
+		<description><![CDATA[I held a retrospective with my new team last week. The team includes 2 senior developers, 2 junior developers, a product owner, and a product analyst. I&#8217;ve joined the team as an engineering manager, which I think of more as a team lead with an elevated title. Being new to this group, I wanted a &#8230; <a href="http://blog.boochtek.com/2016/01/04/team-values" class="more-link">Continue reading<span class="screen-reader-text"> "Team Values"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I held a retrospective with my new team last week. The team includes 2 senior developers, 2 junior developers, a product owner, and a product analyst. I&#8217;ve joined the team as an engineering manager, which I think of more as a team lead with an elevated title. Being new to this group, I wanted a way to understand their values. What motivates them? What common values do we share that we can leverage to move forward in the same direction?</p>
+<p>I started out with a pretty simple question: &#8220;What do you value (in regards to what we&#8217;re building); what are you willing to fight for?&#8221; I asked them each to write down several values and then put them on the board before looking at everyone else&#8217;s answers. I also asked each person to rank their values in order of importance.</p>
+<p>It turned out that my question was a little vague. Some people thought about the question in terms of the end result, and some in terms of the process of creating the software. In some ways that was a bit of a problem, because the different interpretations led people in different directions. But in other ways, not pushing them in any particular direction got more varied answers, exposing how they think about the project and the product.</p>
+<p>My list (in order) was Effectiveness (doing the right thing), Quality (doing things right the first time), Happiness, Purpose, and Teamwork. In retrospect, I should have put Happiness first. If I&#8217;m not happy at work, I don&#8217;t really want to be there, and need to move on. (Sometimes I can trade some happiness at work for more happiness at home, but I&#8217;m definitely a person that needs to be happy at work.) The other values serve to improve my happiness, but the happiness is more important.</p>
+<p>My own issue ranking my values turned out to be a problem with the ranking in general. Should they be ranked in importance of the necessity of the value as an outcome, or in importance of the necessity to focus on the value? I think the former is what I was looking for, but even I wasn&#8217;t clear on that when I began the exercise.</p>
+<p>After everyone put their values up on the board, we read them off. Then I asked the team to choose several values that we share as a team. We pulled them off the individual members&#8217; lists, and put them in the team list. Then I asked each person to come up and rank those values, then explain why they had ordered them that way, especially when they ordered them significantly different than the last person. I was hoping to come to some convergence of the rank over time, so we could document our values in rank order. That didn&#8217;t happen. But the discussion was illuminating to me and to everyone on the team.</p>
+<p>I think the most interesting part about the lack of convergence was the difference between the developers and the product guys. The product guys definitely viewed the values more in terms of outcomes than the process. That makes sense — they&#8217;re not as intimately involved in the process of building the product.</p>
+<p>We were able to converge on the top priority though: Will the user buy the product? This was a combination of a couple different values that we merged together. This included the end user experience as well as making sure the team would continue to have a reason for existing. The rest of the values we left unordered: <span class="s1">Teamwork (cohesiveness), Data driven decisions, Team ownership, Simplicity, Effectiveness, Maintainability / Supportability, Quality, Automation, and Performance. I think that&#8217;s a pretty decent list.</span></p>
+<p><span class="s1">As a couple teammates pointed out, those values are probably in part a reflection of this current point in time. If I asked the same question some other time, under different conditions and team dynamics, the answers would probably change a bit. And we&#8217;d probably come up with other answers if asked again, just due to randomness of the way we think about these things.</span></p>
+<p>But I don&#8217;t think I&#8217;d do this activity a second time with the team. It was really about understanding our motivations — both our own, and those of our teammates. I found it effective in that way, and also in helping the team to think about our culture and how we can work to shape it to help us all push in the same direction.</p>
+<p>There are a few caveats. When I asked for feedback on the exercise, one teammate pointed out that it wouldn&#8217;t work if people weren&#8217;t honest about their values, and they answered with what they thought management or their teammates wanted to hear. I don&#8217;t think that was an issue with this group, but it&#8217;s something to keep in mind.</p>
+<p>The other major thing I&#8217;d do is to make it clear up front that I&#8217;m not looking for any action items from this activity; it&#8217;s more about understanding each other and ourselves. And next time, I&#8217;ll work to clarify how to rank the values.</p>
+<p>I would recommend this activity for a new team, or when the makeup of the team is changing in some significant way. I wish there was a way to help a team converge on the ranking of their values, but I suppose I should be happy that agreeing on the set of important values went pretty quickly. And the diversity of ideas and opinions is probably a blessing that I should be embracing — the more ideas we have, the wider the variety of solutions we can imagine.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2016/01/04/team-values/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>2015 Year in Review</title>
+		<link>http://blog.boochtek.com/2015/12/28/year-in-review-2015</link>
+		<comments>http://blog.boochtek.com/2015/12/28/year-in-review-2015#respond</comments>
+		<pubDate>Tue, 29 Dec 2015 05:28:38 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Blogging]]></category>
+		<category><![CDATA[Brilliant]]></category>
+		<category><![CDATA[Languages]]></category>
+		<category><![CDATA[Resolutions]]></category>
+		<category><![CDATA[Retrospectives]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=287</guid>
+		<description><![CDATA[It&#8217;s that time of year again — time for a retrospective on how I did on my goals for the year. I had 5 main goals for 2015: Job Hunting Conferences Blogging Programming Language Design Writing an Agile Book Job Hunting I got pretty lucky on this one. My main contract with Mercy got extended several times. Amos and &#8230; <a href="http://blog.boochtek.com/2015/12/28/year-in-review-2015" class="more-link">Continue reading<span class="screen-reader-text"> "2015 Year in Review"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>It&#8217;s that time of year again — time for a retrospective on how I did on <a href="http://blog.boochtek.com/2015/02/02/resolutions">my goals</a> for the year. I had 5 main goals for 2015:</p>
+<ul>
+<li>Job Hunting</li>
+<li>Conferences</li>
+<li>Blogging</li>
+<li>Programming Language Design</li>
+<li>Writing an Agile Book</li>
+</ul>
+<h2>Job Hunting</h2>
+<p>I got pretty lucky on this one. My main contract with <a href="https://www.mercy.net/">Mercy</a> got extended several times. <a href="https://twitter.com/adkron">Amos</a> and I must have been doing a good job of keeping the customer happy. We even made it through a couple rounds of layoffs. I&#8217;m wrapping up the gig at Mercy now. I&#8217;m working one day a week there, as the project winds down.</p>
+<p>I also started a new gig this month at <a href="https://www.ctl.io/">CenturyLink</a>. I&#8217;m working on a cloud development team. Our current project involves selling <a href="https://www.ctl.io/wordpress/">WordPress as a service</a>. The manager had been courting me for most of the year. I&#8217;m excited about my new role; I&#8217;ll be writing about it in a blog post soon.</p>
+<h2>Conferences</h2>
+<p>I set a goal in 2014 to give my first conference talk. I accomplished that, giving <a href="http://confreaks.tv/videos/rubyconf2014-ruby-idioms-you-re-not-using-yet">an ambitious talk</a> at <a href="http://confreaks.tv/events/rubyconf2014">RubyConf</a>. I enjoyed having done that, and vowed to do more conference speaking.</p>
+<p>I gave 3 conference talks in 2015. I gave a <a href="https://www.youtube.com/watch?v=kmfUfjpDpz0">workshop</a> on <a href="https://rawgit.com/booch/presentations/master/HTTP_Exploration/slides.html#1">HTTP</a> at RailsConf. I <a href="http://tinyurl.com/madruby-ii">talked</a> about <a href="https://www.youtube.com/watch?v=F6MZi9OlW1Q">immutable infrastructure</a> at Madison+ Ruby. At RubyConf, I gave a talk <a href="https://www.youtube.com/watch?v=MZVSK4cjeF4">on a micro-ORM</a> <a href="https://github.com/boochtek/ruby_preserves">I wrote</a>. I also gave a <a href="https://rawgit.com/booch/presentations/master/No_Estimates/slides.html#1">lightning talk</a> about Agile estimation (#noestimates).</p>
+<p>I was an alternate speaker at Windy City Rails, but did not give my talk on <a href="https://rawgit.com/booch/presentations/master/Alternatives_to_ActiveRecord/slides.html#1">Alternatives to ActiveRecord</a>. I also went to Strange Loop, mainly to see several friends and acquaintances speak.</p>
+<h2>Blogging</h2>
+<p>I wrote 24 blog articles this year. That&#8217;s about one every other week. What really kept me going was participating in a <a href="https://github.com/booch/pact#readme">writing pact</a>. When the pact was going, I had a 75% blogging rate. That&#8217;s pretty good.</p>
+<p>I&#8217;m not so sure about the quality of my blog writing though. I know that practicing writing is supposed to make you better. I know I wrote some really good articles over the past year, but I think I also wrote some articles that weren&#8217;t very good. I think sometimes the deadline has caused more harm than good. I&#8217;m not really sure what to do about that; perhaps just pushing on is the right answer.</p>
+<h2>Programming Language Design</h2>
+<p>I&#8217;ve taken a lot of notes on the design of my programming language. Any time I learn something interesting about another language, or come up with another idea, I write it down.</p>
+<p>But I haven&#8217;t worked on the implementation. (I last worked on the implementation in 2014.) I should be experimenting with some ideas, implementing them to see how they work out. I&#8217;ve even kicked around the idea of starting with a Forth variant, just to get something working quickly.</p>
+<p>I haven&#8217;t written any articles on my ideas this year either. My notes are pretty extensive, and it would be good to write some articles to help get my thoughts straight.</p>
+<h2>Writing an Agile Book</h2>
+<p>I&#8217;ve got some things to say about Agile, and want to write a book to express those ideas. I&#8217;ve made a start — I&#8217;ve got the chapters outlines, and have started on a few chapters. But I haven&#8217;t made as much progress as I&#8217;d like to. I shared what I&#8217;ve got with Amos, and he showed some interest in pairing with me on the writing. Hopefully we&#8217;ll work on it together in 2016 and publish it.</p>
+<h2>Other</h2>
+<p>There were a few other accomplishments that weren&#8217;t explicitly on my list, but I&#8217;d like to call attention to.</p>
+<p>I&#8217;ve continued participating on the <a href="http://www.thisagilelife.com/">This Agile Life</a> podcast. I was in 12 of the 33 episodes that were recorded in 2015. I hope to participate in more in 2016. We&#8217;re considering scheduling a standard recording night each week, which might help us record more regularly.</p>
+<p>I recently took over as maintainer of <a href="https://github.com/solnic/virtus#readme">Virtus</a>, a library to declare attributes for Ruby model classes. I haven&#8217;t done a lot yet, since I&#8217;ve been busy with travel, vacation, and holidays. But I hope to catch up with all the pending pull requests and issues in the next month or so.</p>
+<p>The accomplishment I&#8217;m most proud of is mentoring for the <a href="http://royclaysr.com/">Roy Clay Sr. Tech Impact</a> program. This is a program begun as a result of the Ferguson protest movement. We&#8217;re helping teach kids (from 14 to 25) web design and development. My personal goal was to give these kids an opportunity that they would not have otherwise had. But it turned out that some of them have actually started a business building web sites for small companies. I&#8217;m so proud of the progress they&#8217;ve made in such a short time; it&#8217;s a challenging program.</p>
+<h2>Conclusion</h2>
+<p>I&#8217;m pretty happy with my accomplishments this year. I made at least some progress on each of the goals I set. I&#8217;ve been thinking about my goals for next year; I&#8217;ll write that as a separate blog article next week.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2015/12/28/year-in-review-2015/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Happiness Retrospective</title>
+		<link>http://blog.boochtek.com/2015/11/09/happiness-retrospective</link>
+		<comments>http://blog.boochtek.com/2015/11/09/happiness-retrospective#respond</comments>
+		<pubDate>Tue, 10 Nov 2015 05:56:58 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Agile]]></category>
+		<category><![CDATA[Retrospectives]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=268</guid>
+		<description><![CDATA[I facilitated a retrospective today; it was one of the best retros I&#8217;ve ever been involved with. I figured out what activities I wanted to do earlier in the morning. They were really quite simple. I wanted to focus on happiness. How happy are you at work? I started with two questions that I&#8217;ve used &#8230; <a href="http://blog.boochtek.com/2015/11/09/happiness-retrospective" class="more-link">Continue reading<span class="screen-reader-text"> "Happiness Retrospective"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I facilitated a retrospective today; it was one of the best retros I&#8217;ve ever been involved with. I figured out what activities I wanted to do earlier in the morning. They were really quite simple. I wanted to focus on happiness.</p>
+<h2>How happy are you at work?</h2>
+<p>I started with two questions that I&#8217;ve used with teams before, to some success (although not so successful for one particular team). The first question I asked was &#8220;How happy are you at work?&#8221; I had them put a rating from 0 to 10, with 0 meaning they should have quit last week, and 10 meaning they couldn&#8217;t imaging being happier at work.</p>
+<p>The answers were mostly 7s and 8s, with a 5 and a 9. The average came to 7.5, which is pretty good. The 5 concerns me a bit, especially that it&#8217;s 2 points lower than anyone else&#8217;s answer.</p>
+<h2>How effective do you think the teams is?</h2>
+<p>The next question I asked was &#8220;How effective do you think the teams is?&#8221;. Again, from 0 to 10, with 0 meaning they can&#8217;t accomplish anything, and 10 meaning you couldn&#8217;t imagine a more effective team.</p>
+<p>When I ask both of these questions, the scores are always highly correlated. If your team isn&#8217;t doing good work, it&#8217;ll make you unhappy. And if you are unhappy, you&#8217;re less likely to do your best work. This team was no different; the 5 and 9 became a 6 and a 10, and most of the 7s became 8s, for an average of just under 8.</p>
+<h2>What makes you happy at work?</h2>
+<p>The next question I asked was &#8220;What makes you happy at work?&#8221;. The answers were mostly about the teamwork and teammates. This went quicker than I expected. At this point, I was worried the retro would only last a little more than 30 minutes.</p>
+<h2>What would make you happier at work?</h2>
+<p>The final question I asked was &#8220;What would make you happier at work?&#8221;. This was the real pay-off. We spent about half an hour just talking about the things that would make us happier, and what we could do to improve our happiness. We came up with 10 potential action items. I usually limit teams to trying 3 or 4 action items, but most of the items are quite small, so we&#8217;re going to try 6 of them. One is just observing another team&#8217;s standup meetings, to see how they&#8217;re using their time effectively.</p>
+<p>Everyone went away feeling that this was a really good retro. It felt good to focus on happiness. Happiness is something I&#8217;ve been talking a lot about on the This Agile Life podcast, and it felt good to take some action on it. I&#8217;ve done &#8220;positive-only&#8221; retros before, but this one felt even better than that, by specifically targeting happiness and how we can achieve it.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2015/11/09/happiness-retrospective/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Impromptu Retrospective</title>
+		<link>http://blog.boochtek.com/2015/11/02/impromptu-retrospective</link>
+		<comments>http://blog.boochtek.com/2015/11/02/impromptu-retrospective#respond</comments>
+		<pubDate>Tue, 03 Nov 2015 03:44:44 +0000</pubDate>
+		<dc:creator><![CDATA[Craig Buchek]]></dc:creator>
+				<category><![CDATA[Agile]]></category>
+		<category><![CDATA[Retrospectives]]></category>
+
+		<guid isPermaLink="false">http://blog.boochtek.com/?p=265</guid>
+		<description><![CDATA[I&#8217;m surprised that I haven&#8217;t gotten this story down in print before. It&#8217;s something I&#8217;ve mentioned many times — including a few times on the podcast. It&#8217;s a great story about the power of retrospectives, and it&#8217;s a great story about the power of a blameless post-mortem. I don&#8217;t recall all the specifics at this point. It was about 5 &#8230; <a href="http://blog.boochtek.com/2015/11/02/impromptu-retrospective" class="more-link">Continue reading<span class="screen-reader-text"> "Impromptu Retrospective"</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;m surprised that I haven&#8217;t gotten this story down in print before. It&#8217;s something I&#8217;ve mentioned many times — including a few times on <a href="http://www.thisagilelife.com">the podcast</a>. It&#8217;s a great story about the power of retrospectives, and it&#8217;s a great story about the power of a blameless post-mortem.</p>
+<p>I don&#8217;t recall all the specifics at this point. It was about 5 years ago. I&#8217;d just noticed that Arun had made some sort of mistake. That&#8217;s fine, people make mistakes. The thing that was different about his mistake was that I had made the same mistake about a week prior. And <a href="http://dirtyinformation.com">Amos</a> had made the same mistake about a week before that.</p>
+<p>Noticing a pattern of mistakes, Amos and I called an impromptu retrospective. We gathered all the developers into a conference room. We explained the problem that we were running into. At first, Arun was defensive. That&#8217;s understandable; he thought we were there to come down on him, to lay blame. But we made it clear that we weren&#8217;t focusing on him. We admitted that we had also made the same mistake recently. We weren&#8217;t there to lay blame; we were there to figure out how our team could stop making the mistake. It took Arun a few minutes to get over the defensiveness.</p>
+<p>With the defensiveness out of the way, we could focus on the issue at hand. We were able to figure out the root cause of us all making the mistake. (I don&#8217;t know if we played the &#8220;5 whys&#8221; game, but I&#8217;m sure we effectively did something similar.) And with that, we were able to change our process, so that nobody else would make the same mistake again.</p>
+<p>There are 2 important points to this story. First, you don&#8217;t have to wait until a scheduled retrospective to hold a retrospective. This one was impromptu, and it&#8217;s the best one we ever had. We saw a problem, addressed it, and found a solution in less than an hour. Had we waited until the end of the week, we would have forgotten some of the details, and wouldn&#8217;t have been as effective at solving the problem. Second, when addressing problems, take your ego out of the equation. If you&#8217;re in a position of authority, take the blame — but never place blame. Focus on what&#8217;s important — solving the problem.</p>
+<p>And don&#8217;t forget the Retrospective Prime Directive:</p>
+<blockquote><p>Regardless of what we discover, we understand and truly believe that everyone did the best job they could, given what they knew at the time, their skills and abilities, the resources available, and the situation at hand.</p></blockquote>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>http://blog.boochtek.com/2015/11/02/impromptu-retrospective/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>
