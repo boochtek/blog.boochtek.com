@@ -3,16 +3,17 @@ name: Hugo - Initialize
 # Original source: htts://github.com/boochtek/hugo-init
 # Original author: Craig Buchek (@booch).
 
-# TODO:
-#   Tell user what to do next.
-#   Determine the latest Hugo version.
-#   Change baseURL in config file to "https://$(cat CNAME)/", if it exists.
-#   Allow setting languageCode to something other than 'en-us'.
-#   Allow setting title to something other than 'My New Hugo Site'.
-
 on:
     # Run manually from the Actions tab.
     workflow_dispatch:
+        title:
+            description: "Title of the site"
+            required: true
+            type: string
+        language_code:
+            description: "ISO Language Code for the site"
+            type: string
+            default: "en-us"
 
 # Set permissions of the GITHUB_TOKEN to allow pushing.
 permissions:
@@ -25,29 +26,56 @@ defaults:
 jobs:
     hugo-init:
         runs-on: ubuntu-latest
-        env:
-            HUGO_VERSION: "0.120.4"
         steps:
+            - name: Install Hugo CLI
+              run: |
+                HUGO_LATEST_RELEASE_JSON=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest)
+                HUGO_VERSION=$(echo $HUGO_LATEST_RELEASE_JSON | tr -cd '[:print:]' | jq -r '.tag_name' | cut -c2-)
+                HUGO_DEB_URL="https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
+                wget -O "${{ runner.temp }}/hugo.deb" "$HUGO_DEB_URL" \
+                  && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+
             - name: Checkout
               uses: actions/checkout@v4
               with:
                   submodules: recursive
                   fetch-depth: 0
+
             - name: Make sure we don't already have a Hugo config
               run: |
                   [[ ! -f hugo.toml && ! -f hugo.yaml && ! -f hugo.json && ! -d config ]]
-            - name: Install Hugo CLI
-              run: |
-                  HUGO_DEB_URL="https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
-                  wget -O "${{ runner.temp }}/hugo.deb" "$HUGO_DEB_URL"
-                  sudo dpkg -i "${{ runner.temp }}/hugo.deb"
+
             - name: Initalize Hugo
               run: |
                   hugo new site . --force
+
             - name: Make sure any new empty directories get committed
               run: |
                   find . -type d -empty -not -regex '.*/\.git/.*' -exec touch '{}/.gitkeep' ';'
+
+            - name: Add base URL to Hugo config
+              run: |
+                CONFIG_FILE="hugo.toml"
+                CNAME="$(cat CNAME)"
+                if [[ -n "$CNAME" ]]; then
+                    sed -i "s/^baseURL = \".*\"/baseURL = \"https://$CNAME/\"/" $CONFIG_FILE
+                fi
+
             - name: Commit changes
               uses: EndBug/add-and-commit@v9
               with:
                   message: Add Hugo
+
+    next-steps:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print next steps
+              run: |
+                  echo "1. Edit `hugo.toml` to configure your site."
+                  echo "2. Add a theme - you can use the GitHub Action."
+                  echo "3. Pull down the repo to your computer."
+                  echo "4. Start the Hugo server:"
+                  echo "    hugo server -D"
+                  echo "5. Open http://localhost:1313/ to see your new site."
+                  echo "6. Add or update content. Commit changes to git."
+                  echo "7. Push to publish to GitHub Pages via GitHub Action."
