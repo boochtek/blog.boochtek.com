@@ -62,3 +62,11 @@ jobs:
               uses: EndBug/add-and-commit@v9
               with:
                   message: "Add Hugo theme: ${{ inputs.theme_name }}"
+
+    next-steps:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print next steps
+              run: |
+                echo 'Run this locally:'
+                echo '    git submodule update --init --recursive'
