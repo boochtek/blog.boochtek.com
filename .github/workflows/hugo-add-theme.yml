@@ -7,11 +7,18 @@ on:
     # Run this workflow manually from the Actions tab.
     workflow_dispatch:
         inputs:
-            theme_url:
-                description: "URL of the theme to add"
+            theme_author:
+                description: "Theme Author (GitHub username)"
                 required: true
                 type: string
+                default: "gohugoio"
+            theme_name:
+                description: "Theme Name (Repository name)"
+                required: true
+                type: string
+                default: "hugoThemes"
 
+# Set permissions of the GITHUB_TOKEN to allow pushing.
 permissions:
     contents: write
 
@@ -20,26 +27,38 @@ defaults:
         shell: bash
 
 jobs:
-    gugo-add-theme:
+    hugo-add-theme:
         runs-on: ubuntu-latest
-        env:
-            HUGO_VERSION: 0.120.2
         steps:
             - name: Install Hugo CLI
               run: |
-                  wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+                HUGO_LATEST_RELEASE_JSON=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest)
+                HUGO_VERSION=$(echo $HUGO_LATEST_RELEASE_JSON | tr -cd '[:print:]' | jq -r '.tag_name' | cut -c2-)
+                HUGO_DEB_URL="https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
+                wget -O "${{ runner.temp }}/hugo.deb" "$HUGO_DEB_URL" \
                   && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+
             - name: Checkout
               uses: actions/checkout@v4
               with:
                   submodules: recursive
                   fetch-depth: 0
+
             - name: Add git submodule pointing at the theme
               run: |
-                  THEME_URL="${{ inputs.theme_url }}"
-                  THEME_NAME="$(basename ${THEME_URL%.*})"
-                  git submodule add "$THEME_URL" "themes/${THEME_NAME}"
-                  git submodule update --init --recursive
-            - name: Add theme to config # TODO
+                THEME_AUTHOR="${{ github.event.inputs.theme_author }}"
+                THEME_NAME="${{ github.event.inputs.theme_name }}"
+                git submodule add https://github.com/$THEME_AUTHOR/$THEME_NAME.git themes/$THEME_NAME
+                git submodule update --init --recursive
+
+            # NOTE: This assumes we're using the new default `hugo.toml` as our config file.
+            - name: Add theme to config
               run: |
-                  echo "OK"
+                THEME_NAME="${{ github.event.inputs.theme_name }}"
+                CONFIG_FILE="hugo.toml"
+                sed -i "s/^theme = \".*\"/theme = \"$THEME_NAME\"/" $CONFIG_FILE
+
+            - name: Commit changes
+              uses: EndBug/add-and-commit@v9
+              with:
+                  message: "Add Hugo theme: ${{ inputs.theme_name }}"
